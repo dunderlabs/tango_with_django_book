@@ -2,37 +2,38 @@
 
 
 
-New in TwD 1.7
+Novidades em TwD 1.7
 ==============
 
-.. warning:: Please note that this version of the book is still in the draft phase. Though it should all pretty much work (however some links and screenshots need to be updated). Please report any bugs, problems, etc, or submit change requests via GitHub: https://github.com/leifos/tango_with_django_book/tree/master/17 
+.. warning:: Aviso: Por favor, note que esta versão do livro ainda está em fase de construção. Embora ele funcione bem, alguns links e imagens precisam ser atualizados. Por favor, reporte qualquer erro, problemas, etc, ou envie solicitações de mudanças via GitHub: https://github.com/indacode/tango_with_django_book/tree/master/17_pt-br
 
 
 In this version of the online tutorial / book, we have updated and added a number of things:
+Nesta versão online do livro/tutorial, nós atualizamos e adicionamos uma série de coisas:
 
-* The code has been ported to work with Django 1.7
+* O código foi portado para trabalhar com Django 1.7
 	
-	* The database interaction has been updated from ``syncdb`` to ``migratesql`` and ``migrate``
-	* Rendering responses has been updated from ``render_to_response`` to ``render``. So now there is no need to request the context in every view.
-	* The ``url`` template tag is now being used in templates, which provides a relative reference to urls rather than an absolute reference..
-	* Loading static files in the templates is now done with {% load staticfiles %}
-	* Using ``slugify`` to create well formed URL strings
+	* A interação do banco de dados foi atualizada de ``syncdb`` para ``migratesql`` e  ``migrate``
+	* Renderização do(s) response(s) foi atualizado de ``render_to_response`` para ``render``. Então agora não há necessidade de requisitar (request) o contexto (context) em cada view.
+	* A template tag ``url`` agora está sendo usada em templates, que fornece uma referência relativa para urls em vez de uma referência absoluta...
+	* Carregamento de arquivos estátivos nos templates agora é feito com {% load staticfiles %}
+	* Usando ``slugify`` para criar strings URL bem formadas.
 
-* A new chapter on authentication has been added
+* Um novo capítulo sobre autênticação foi adicionado
 
-	* Where the login and registration is done with Django-Registration-Redux (see Chapter :ref:`login-redux-label`)
+	* Quando o login e registro é feito com Django-Registration-Redux (veja o Capítulo :ref:`login-redux-label`)
 
-* The Bootstrap chapter has been updated to use Bootstrap 3.2.0 (see Chapter :ref:`bootstrap-chapter`)
+* O capítulo Bootstrap foi atualizado para usar Bootstrap 3.2.0 (veja o Capítulo :ref:`bootstrap-chapter`)
 
-	* Also, includes some notes on how to use Django-Bootstrap-Toolkit
+	* Além disso, incluso algumas notas sobre como usar Django-Bootstrap-Toolkit
 	
-* A new chapter has been added on using template tags (see Chapter :ref:`template-tag-chapter` )
+* Um novo capítulo sobre o uso de template tags foi adicionado (veja o Capítulo :ref:`template-tag-chapter` )
 
-* Add a chapter on using JQuery with Django (see Chapter :ref:`jquery`)
+* Adicionado um capítulo sobre o uso de JQuery com Django (veja o Capítulo :ref:`jquery`)
 
-* The chapter on testing has been expanded - but is still a work in progress (see Chapter :ref:`test-chapter`)
+* O capítulo sobre testes foi expandido - mas o trabalho continua em andamento (veja o Capítulo :ref:`test-chapter`)
 
-	* Includes how to use the package ``coverage`` to measure test coverage (see http://nedbatchelder.com/code/coverage/ )
+	* Incluso como usar o pacote ``coverage`` para medir a cobertura do teste (veja http://nedbatchelder.com/code/coverage/ )
 	
 	
 
