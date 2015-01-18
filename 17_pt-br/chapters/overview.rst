@@ -1,16 +1,18 @@
 .. _overview-label:
 
-Overview
+Visão geral
 ========
-The aim of this book is to provide you with a practical guide to web development using *Django 1.7.* The book is designed primarily for students, providing a walkthrough of the steps involved in getting your first web applications up and running, as well as deploying them to a web server.
+O objetivo deste livro é prover você com um guia prático para desenvolvimento web usando *Django 1.7.* O livro é principalmente para estudantes, fornecendo uma explicação passo a passo das etadas envolvidas no desenvolvimento da sua primeira aplicação web instalada e rodando, bem como fazer deploy dela em um servidor web.
 
-This book seeks to complement the `official Django Tutorials <https://docs.djangoproject.com/en/1.7/intro/tutorial01/>`_ and many of the other excellent tutorials available online. By putting everything together in one place, this book fills in many of the gaps in the official Django documentation providing an example-based design driven approach to learning the Django framework. Furthermore, this book provides an introduction to many of the aspects required to master web application development.
+Este livro visa complementar o `official Django Tutorials <https://docs.djangoproject.com/en/1.7/intro/tutorial01/>`_ e vários dos outros excelentes tutoriais disponíveis online. Colocando tudo junto em um só lugar, este livro preenche muitas das lacunas na documentação oficial do Django proporcionando um design orientado na abordagem de exemplos para aprender o framework Django. Além disso, este livro fornece uma introdução a vários dos aspectos para dominar o desenvolvimento de aplicações web.
 
-Why Work with this Book?
-------------------------
-**This book will save you time.** On many occasions we've seen clever students get stuck, spending hours trying to fight with Django and other aspects of web development. More often than not, the problem was usually because a key piece of information was not provided, or something was not made clear. While the occasional blip might set you back 10-15 minutes, sometimes they can take hours to resolve. We've tried to remove as many of these hurdles as possible. This will mean you can get on with developing your application, and not have to sit there scratching your head.
+Porque trabalhar com este livro?
+--------------------------------
+**Este livro salvará seu tempo.** Em muitas ocasiões, nós temos vistos estudantes inteligentes ficarem presos, gastando horas tentado lutar com Django e outros aspectos de desenvolvimento web. Na maioria das vezes, o problema normalmente era porque uma peça chave da informação não foi fornecida, ou algo não ficou claro. Enquanto o desvio ocasional pode definir seu regresso 10-15 minutos, as vezes eles podem levar horas para resolver. Nós tentamos remover o maior número possível desses obstáculos. Isto significa que você pode continuar com o desenvolvimento de sua aplicação, e não ter que sentar lá coçando a cabeça.
 
-**This book will lower the learning curve.** Web application frameworks can save you a lot of hassle and lot of time. Well, that is if you know how to use them in the first place! Often the learning curve is steep. This book tries to get you going - and going fast. By showing you how to put together a web application with all the bells and whistle from the onset, the book shortens the learning curve. 
+**Este livro vai diminuir a curva de aprendizado.** Frameworks para aplicações web podem salvar você de um monte de problemas e muito tempo. Bem, isso é se você sabe como usá-los em primeiro lugar! Geralmente a curva de aprendizado é íngreme. Este livro tenta fazer você ir - e ir rápido.
+
+This book tries to get you going - and going fast. By showing you how to put together a web application with all the bells and whistle from the onset, the book shortens the learning curve. 
 
 **This book will improve your workflow.** Using web application frameworks requires you to pick up and run with a particular design pattern - so you only have to fill in certain pieces in certain places. After working with many students, we heard lots of complaints about using web application frameworks - specifically about how they take control away from them (i.e. inversion of control).  To help you, we've created a number of workflows to focus your development process so that you can regain that sense of control and build your web application in a disciplined manner.
 
