@@ -1,7 +1,7 @@
 .. _overview-label:
 
 Visão geral
-========
+===========
 O objetivo deste livro é prover você com um guia prático para desenvolvimento web usando *Django 1.7.* O livro é principalmente para estudantes, fornecendo uma explicação passo a passo das etadas envolvidas no desenvolvimento da sua primeira aplicação web instalada e rodando, bem como fazer deploy dela em um servidor web.
 
 Este livro visa complementar o `official Django Tutorials <https://docs.djangoproject.com/en/1.7/intro/tutorial01/>`_ e vários dos outros excelentes tutoriais disponíveis online. Colocando tudo junto em um só lugar, este livro preenche muitas das lacunas na documentação oficial do Django proporcionando um design orientado na abordagem de exemplos para aprender o framework Django. Além disso, este livro fornece uma introdução a vários dos aspectos para dominar o desenvolvimento de aplicações web.
@@ -10,39 +10,37 @@ Porque trabalhar com este livro?
 --------------------------------
 **Este livro salvará seu tempo.** Em muitas ocasiões, nós temos vistos estudantes inteligentes ficarem presos, gastando horas tentado lutar com Django e outros aspectos de desenvolvimento web. Na maioria das vezes, o problema normalmente era porque uma peça chave da informação não foi fornecida, ou algo não ficou claro. Enquanto o desvio ocasional pode definir seu regresso 10-15 minutos, as vezes eles podem levar horas para resolver. Nós tentamos remover o maior número possível desses obstáculos. Isto significa que você pode continuar com o desenvolvimento de sua aplicação, e não ter que sentar lá coçando a cabeça.
 
-**Este livro vai diminuir a curva de aprendizado.** Frameworks para aplicações web podem salvar você de um monte de problemas e muito tempo. Bem, isso é se você sabe como usá-los em primeiro lugar! Geralmente a curva de aprendizado é íngreme. Este livro tenta fazer você ir - e ir rápido.
+**Este livro vai diminuir a curva de aprendizado.** Frameworks para aplicações web podem salvar você de um monte de problemas e muito tempo. Bem, isso é se você sabe como usá-los em primeiro lugar! Geralmente a curva de aprendizado é íngreme. Este livro tenta fazer você ir - e ir rápido. Ao mostrar-lhe como montar uma aplicação web com todos os recursos desde o início, o livro reduz a curva de aprendizado.
 
-This book tries to get you going - and going fast. By showing you how to put together a web application with all the bells and whistle from the onset, the book shortens the learning curve. 
+**Este livro irá melhorar seu fluxo de trabalho.** Usando frameworks para aplicações web exige que você aproveite um padrão de design particular - então você só tem que preencher certos pedaços em certos lugares. Depois de trabalhar com muitos estudantes, nós ouvimos muitas reclamações sobre o uso de frameworks de aplicações web - especificamente sobre como eles tomam o controle deles (ou seja, inversão de controle). Para ajudar você, nós criamos uma série de fluxos de trabalho para focar seu processo de desenvolvimento, de modo que você pode recuperar o senso de controle e construir sua aplicação web de uma maneira disciplinada.
 
-**This book will improve your workflow.** Using web application frameworks requires you to pick up and run with a particular design pattern - so you only have to fill in certain pieces in certain places. After working with many students, we heard lots of complaints about using web application frameworks - specifically about how they take control away from them (i.e. inversion of control).  To help you, we've created a number of workflows to focus your development process so that you can regain that sense of control and build your web application in a disciplined manner.
+**Este livro não foi projetado para ser lido.** Faça o que fizer, não leia este livro! Ele é um guia prático para construir aplicações web em Django. Ler não é fazer. Para aumentar o valor que você ganha nesta experiência, vá e desenvolva a aplicação. Quando você codificar a aplicação, *não faça apenas copiar e colar o código.* Digite-o, pense sobre o que ele faz, então leia as explicações que nós fornecemos para descrever o que está acontecendo. Se você continuar não entendendo, então confira a documentação do Django, vá no `Stack Overflow <http://stackoverflow.com/questions/tagged/django>`_ ou outros sites de ajuda e preencha esta lacuna no seu conhecimento. Se você acha que vale a pena mencionar, por favor entre em contato conosco, para que possamos melhorar o livro - nós já temos uma série de contribuidores e nós teremos o maior prazer de reconhecer sua contribuição!
 
-**This book is not designed to be read.** Whatever you do, do not read this book! It is a hands-on guide to building web applications in Django. Reading is not doing. To increase the value you gain from this experience, go through and develop the application. When you code up the application, *do not just cut and paste the code.* Type it in, think about what it does, then read the explanations we have provided to describe what is going on. If you still do not understand, then check out the Django documentation, go to `Stack Overflow <http://stackoverflow.com/questions/tagged/django>`_ or other helpful websites and fill in this gap in your knowledge. If you think it is worth mentioning, please get in touch with us so that we can improve the book - we already have a number of contributors and we will happily acknowledge your contribution!
 
-What You will Learn
--------------------
-In this book, we will be taking an exampled-based approach (or inquiry-based learning). The book will show you how to design a web application called *Rango* (see the Design Brief in Section :ref:`overview-design-brief-label` below). Along the way, we'll show you how to perform the following tasks.
+O que você irá aprender
+-----------------------
+Neste livro, nós estaremos levando uma abordagem baseada em exemplo (ou aprendizagem baseada na pesquisa). O livro mostrará pra você como projetar uma aplicação web chamada *Rango* (veja o resumo do projeto na Seção	:ref: `overview-design-brief-label` abaixo). Ao longo do caminho, nós mostraremos pra você como realizar as tarefas seguintes.
 
-* Setup a development environment - including how to use the terminal, the Pip installer, how to work with Git, etc.
-* Setup a Django project and create a basic Django application.
-* Configure the Django project to serve static media and other media files.
-* Work with Django's *Model-View-Template* design pattern.
-* Create database models and use the object relational mapping functionality provided by Django.
-* Create forms that can utilise your database models to create dynamically generated webpages.
-* Use the User Authentication services provided by Django.
-* Incorporate external services into the application.
-* Include *Cascading Styling Sheets (CSS)* and *JavaScript* within a web application.
-* Design and apply CSS to improve the look and feel the web application.
-* Work with cookies and sessions with Django.
-* Include more advanced functionality like *AJAX* into your application.
-* Deploy your application to a web server using *PythonAnywhere.*
+* Instalar e configurar um ambiente de desenvolvimento - incluindo como usar o terminal, o gerenciador de pacotes Pip, como trabalhar com Git e etc.
+* Configurar o projeto Django para servir arquivos estáticos e outros arquivos de mídia.
+* Trabalhar com o padrão *Model-View-Template* do Django.
+* Crie os modelos do banco de dados e usar a funcionalidade de mapeamento objeto relacional fornecida pelo Django.
+* Crie formulários que podem utilizar seu modelo de banco de dados para criar páginas web geradas dinamicamente.
+* Use o serviço de Autenticação do Usuário fornecido pelo Django.
+* Incorporar serviços externos na sua aplicação.
+* Inclua *Folhas de Estilo (CSS)* e *JavaScript* dentro de uma aplicação web.
+* Projete e aplique CSS para melhorar a aparência da aplicação web.
+* Trabalhar com cookies e sessões com Django.
+* Inclua funcionalidades mais avançadas como *AJAX* na sua aplicação.
+* Suba sua aplicação para um servidor web usando *PythonAnywhere*.
 
-At the end of each chapter, we have included a number of exercises designed to push you harder and to see if you can apply what you have learned. The later chapters of the book provide a number of open development exercises along with coded solutions and explanations. Finally, all the code is available from *GitHub* at https://github.com/leifos/tango_with_django.
+No final de cada capítulo, nós incluímos uma série de exercícios projetados para pressionar mais e ver se você consegue aplicar o que você aprendeu. Os últimos capítulos do livro fornecem uma série de exercícios de desenvolvimento abertos, juntamente com as soluções codificadas e explicações. Finalmente, todo o código está disponível no *GitHub* em https://github.com/leifos/tango_with_django.
 
-To see a fully-functional version of the application, you can also visit the `How to Tango with Django <http://www.tangowithdjango.com/>`_ website at http://www.tangowithdjango.com/rango/.
+Para ver uma versão completa e funcional da aplicação, você pode vistar o site `How to Tango with Django <http://www.tangowithdjango.com/>`_ no link http://www.tangowithdjango.com/rango/.
 
-Technologies and Services
--------------------------
-Through the course of this book, we will used various technologies and external services, including:
+Tecnologias e Serviços
+----------------------
+Através do curso deste livro, vamos usar várias tecnologias e serviços externos, incluindo:
 
 * Python, http://www.python.org
 * Pip, http://www.pip-installer.org
@@ -57,65 +55,66 @@ Through the course of this book, we will used various technologies and external 
 * Bing Search API via Azure Datamarket, http://datamarket.azure.com
 * PythonAnywhere, https://www.pythonanywhere.com
 
-We've selected these technologies and services as they are either fundamental to web development, and/or enable us to provide examples on how to integrate your web application with CSS toolkits (like *Twitter Bootstrap*), external services like (those provided by *Microsoft Azure*) and deploy your application quickly and easily (with PythonAnywhere).
+Nós selecionamos estas tecnologias e serviços sendo elas tão fundamentais para o desenvolvimento web, e/ou permitir-nos fornecer exemplos sobre como integrar sua aplicação web com frameworks CSS (como o *Twitter Bootstrap*), serviços externos como (os fornecidos pela *Microsoft Azure*) e subir sua aplicação de forma rápida e fácil (com PythonAnywhere).
 
-Rango: Initial Design and Specification
----------------------------------------
-As previously mentioned, the focus of this book will be to develop an application called *Rango*. As we develop this application, it will cover the core components that need to be developed when building any web application.
+Rango: Projeto inicial e Especificação
+--------------------------------------
+Como mencionado anteriormente, o foco deste livro será desenvolver uma aplicação chamada *Rango*. À medida que desenvolvemos esta aplicação, cobriremos os principais componentes que precisam ser desenvolvidos na construção de qualquer aplicação web.
 
 .. _overview-design-brief-label:
 
-Design Brief
-............
-Your client would like you to create a website called *Rango* that lets users browse through user-defined categories to access various web pages. In Spanish, the word rango is used to mean *"a league ranked by quality"* or *"a position in a social hierarchy"* (see https://www.vocabulary.com/dictionary/es/rango).
+Resumo do Projeto
+.................
+Seu cliente gostaria que você crie um site chamado *Rango* que permita usuários procure páginas web através das categorias definidas por ele. Em espanhol, a palavra rango é usada no significado de *"uma liga classificada por qualidade"* ou *"uma posição numa hierarquia social"* (veja https://www.vocabulary.com/dictionary/es/rango).
 
-* For the *main page* of the site, they would like visitors to be able to see:
-	* the 5 most viewed pages;
-	* the five most rango'ed categories; and
-	* some way for visitors to browse or search through categories.
-* When a user views a *category page*, they would like it to display:
-	* the category name, the number of visits, the number of likes;
-	* along with the list of associated pages in that category (showing the page's title and linking to its url); and.
-	* some search functionality (via Bing's Search API) to find other pages that can be linked to this category.
-* For a particular category, the client would like the name of the category to be recorded, the number of times each category page has been visited, and how many users have clicked a "like" button (i.e. the page gets rango'ed, and voted up the social hierarchy).
-* Each category should be accessible via a readable URL - for example, ``/rango/books-about-django/``.
-* Only registered users will be able to search and add pages to categories. And so, visitors to the site should be able to register for an account.
+* Para a página principal do site, ele gostaria que os visitantes sejam capazes de ver:
+	* As 5 páginas mais vistas;
+	* As 5 vategorias mais rangoadas; e
+	* .. note:: NT: Aqui o autor faz um jogo com o significado etimológico da palavra rango.
+	* Alguma maneira para os visitantes navegar ou procurar através das categorias.
+* Quando um usuário visualizasse uma *página de categoria*, eles gostariam de visualizar:
+	* O nome da categoria, o número de visitantes, o número de likes;
+	* Juntamente com a lista de páginas associadas naquela categoria (mostrando os títulos das páginas e links para suas url); and.
+	* Alguma funcionalidade de pesquisa (via API de pesquisa do Bing) para procurar outras páginas que podem estar linkadas a esta categoria.
+* Para uma categoria particular, o cliente gostaria que o nome da categoria para ser gravado, o número de vezes que cada categoria foi visitada, e quantos usuários clicaram no botão "like" (por exemplo, a página recebe um rango e sobe na hierarquia social).
+* Cada categoria deve ser accessível através de uma URL amigável - por exemplo, ``/rango/books-about-django/``.
+* Apenas usuários registrados serão capazes de pesquisar e adicionar páginas nas categorias. E assim, visitantes ao site devem ser capazes de registrarem uma conta.
 
-At first glance, the application to develop seems reasonably straightforward. In essence, it is just a list of categories which link to pages, right? However, there are a number of complexities and challenges that need to be addressed. First, let's try and build up a better picture of what needs to be developed by laying down some high-level designs.
+À primeira vista, a aplicação para desenvolver parece razoavelmente simples. Em essência é apenas uma lista de categorias que linkam para páginas, certo? Entretanto, existem uma série de complexidades e desafios que precisam ser abordados. Primeiro, vamos tentar construir uma imagem melhor do que precisa ser desenvolvido ao estabelecer alguns projetos de alto nível.
 
-Exercises
----------
-Before going any further, think about these specifications and draw up the following design artefacts.
+Exercícios
+----------
+Antes de fazer qualquer coisa, pense sobre estas especificações e elabore os seguintes artefatos de design.
 
-* An N-Tier or System Architecture diagram.
-* Wireframes of the Main Page and the Category Page.
-* The URL Mappings.
-* An Entity-Relationship diagram to describe the data model that we'll be implementing.
+* Um `N-Tier <http://pt.stackoverflow.com/questions/26735/o-que-realmente-%C3%A9-uma-aplica%C3%A7%C3%A3o-n-tier/>`_ ou um diagrama de arquitetura de sistema.
+	.. note:: NT: Não confuda N-Tier com `MVC <http://stackoverflow.com/questions/698220/mvc-vs-n-tier-architecture/>`_
+* `Wireframe <http://pt.wikipedia.org/wiki/Website_wireframe>`_ da página principal e a página categoria.
+* Os mapeamentos de URL.
+* Um diagrama entidade-relacionamento para descrever o modelo de dados que nós estaremos implementando.
 
-N-Tier Architecture
--------------------
-The high-level architecture for most web applications is a *3-Tier architecture.* Rango will be a variant on this architecture as it interfaces with an external service.
+Arquitetura N-Camadas (N-Tier)
+------------------------------
+A arquitetura de alto nível para a maioria das aplicações web é uma *Arquitetura de 3 camadas.* Rango será uma variante desta arquitetura como ele interage com um serviço externo.
 
 .. _fig-ntier:
-
-.. figure:: ../images/rango-ntier-architecture.svg
+.. figure:: ../images/rango-ntier-architecture.png
 	:scale: 100%
 	:figclass: align-center
-	
-	Overview of the system architecture for Rango. Note the inclusion of an external Search *Application Programming Interface (API).*
 
-Since we are building a web application with Django, we will use the following technologies for the following tiers.
+	Visão geral da arquitetura do sistema para o Rango. Note a inclusão de uma *Interface de Programação de Aplicação (API)* de pesquisa.
 
-* The *client* will be a web browser (i.e Chrome, Firefox, Safari, etc.) which will render HTML/CSS pages.
-* The *middleware* will be a Django application, and will be dispatched through Django's built-in development web server while we develop.
-* The *database* will be the Python-based *SQLite3* Database engine.
-* The *search API* will be the *Bing Search API.*
+Uma vez que nós estamos construindo uma aplicação web com Django, nós iremos usar as seguintes tecnologias para as seguintes camadas.
 
-For the most part, this book will focus on developing the middleware, though it should be quite evident from Figure :num:`fig-ntier` that we will have to interface with all the other components.
+* O *cliente* será um navegador web (por exemplo: Chrome, Firefox, Safari, etc.) que irá renderizar páginas HTML/CSS.
+* O `middleware <http://pt.wikipedia.org/wiki/Middleware>`_ será uma aplicação Django, e será despachado pelo servidor web padrão de desenvolvimento enquanto nós desenvolvemos.
+* O *banco de dados* será o *`SQLite3 <https://docs.python.org/2/library/sqlite3.html>`_*, engine do banco de dados escrita em Python.
+* A *API de pesquisa* será o *Bing Search API.*
+
+Para a maior parte, este livro focará no desenvolvimento do middleware, embora isto esteja evidente a partir da figura :num:`fig-ntier` que vamos ter para interafir com todos os outros componentes.
 
 Wireframes
 ----------
-Wireframes are great way to provide clients with some idea of what the application should look like when complete. They save a lot of time, and can vary from hand drawn sketches to exact mockups depending on the tools that you have available. For Rango, we'd like to make the index page of the site look like the screen shot shown in Figure :num:`fig-index-page`. Our category page is shown in Figure :num:`fig-cat-page`.
+Wireframes são ótimas maneiras de fornecer aos cliente uma ideia visual de como a aplicação deve parecer quando finalizada. Eles economizam muito tempo, e podem variar de esboços feitos a mão para `mockups <http://pt.wikipedia.org/wiki/Mockup>`_ exatos, dependendo de qual ferramenta que você tem disponível. Para o Rango, gostaríamos de fazer a página inicial parecida com a captura de tela mostrada na figura :num:`fig-index-page`. Nossa página categoria é mostrada na figura :num:`fig-cat-page`.
 
 .. _fig-index-page:
 
@@ -123,49 +122,49 @@ Wireframes are great way to provide clients with some idea of what the applicati
 	:scale: 60%
 	:figclass: align-center
 
-	The index page with the categories bar on the left, also showing the top five pages and top five categories.
+	A página inicial com a barra de categorias na esquerda, também mostrando as cinco páginas top, e as cinco categorias top.
 
 .. _fig-cat-page:
 
 .. figure:: ../images/ch1-rango-cat-page.png
 	:scale: 60%
 	:figclass: align-center
-	
-	The category page showing the pages in the category (along with the number of views). Below, a search for *Python* has been conducted, with the results shown underneath.
 
-Pages and URL Mappings
-----------------------
-From the specification, we have already identified two pages that our application will present to the user at different points in time. To access each of these pages we will need to describe in some fashion the URL mappings. Think of a URL mapping as the text a user will have to enter into a browser's address bar to reach the given page. The basic URL mappings for Rango are shown below.
+	A página categoria mostrando as páginas na categoria (juntamente com o número de visitas). Abaixo, uma busca por *Python* foi realizada, com os resultados mostrados por baixo.
 
-* ``/rango/`` will point to the main (or index) page view.
-* ``/rango/about/`` will point to an about page view.
-* ``/rango/category/<category_name>/`` will point to the category page view for ``<category_name>``, where the category might be:
-	* games;
-	* python recipes; or
-	* code and compilers.
-* ``/rango/etc/``, where ``etc`` could be replaced with a URL for any later function we wish to implement.
-
-As we build our application, we will probably need to create other URL mappings. However, the ones listed above will get us started. We will also at some point have to transform category names in a valid URL string, as well as handle scenarios where the supplied category name does not exist. 
-
-As we progress through the book, we will flesh out how to construct these pages using the Django framework and use its Model-View-Template design pattern. However, now that we have a gist of the URL mappings and what the pages are going to look like, we need to define the data model that will house the data for our web application.
-
-Entity-Relationship Diagram
+Páginas e mapeamento de URL
 ---------------------------
-Given the specification, it should be clear that we have at least two entities: a *category* and a *page*. It should also be clear that a *category* can house many *pages*. We can formulate the following ER Diagram to describe this simple data model.
+A partir da especificação, nós já identificamos duas páginas que nossa aplicação irá apresentar para o usuário em diferentes ponto no tempo. Para acessar cada uma dessas páginas vamos precisar descrever de forma bonita o mapeamento de URL. Pense em um mapeamento de URL como o texto que um usuário terá que entrar na barra de endereço do navegador para chegar a determinada página. O mapeamento básico de URL para o Rango está mostrado abaixo.
+
+* ``/rango/`` apontará para a página principal (ou inicial).
+* ``/rango/about/`` apontará para uma página 'sobre'.
+* ``/rango/category/<category_name>/`` apontará para a página da categoria indicada ``<category_name>``, onde a categoria pode ser:
+	* games;
+	* Dicas Python; ou
+	* Códigos e compiladores.
+* ``/rango/etc/``, onde ``etc`` pode ser substituído com uma URL por qualquer função que nós implementarmos depois.
+
+À medida que construimos nossa aplicação, nós iremos provavelmete precisar criar outros mapeamentos de URL. Entretanto, as listadas acima serão um bom começo. Iremos também em algum ponto ter que transformar os nomes das categorias em uma string de URL válida, bem como também manipular cenários onde o nome da categoria fornecida não existe.
+
+À medida que progredimos no livro, iremos detalhar como contruir essas páginas usando o framework Django, e usar seu padrão Model-View-Template. Entretanto, agora que nós temos o conteúdo essencial do mapeamento das URLs e que as páginas vão parecer, nós precisamos definir o modelo de dados que abrigará os dados para nossa aplicação web.
+
+`Diagrama Entidade Relacionamento <pt.wikipedia.org/wiki/Modelo_de_entidade_e_relacionamento>`_
+--------------------------------
+Dada a especificação, deve ficar claro que temos no mínimo duas entidades: uma *categoria* e uma *página*. Deve também ficar claro que uma *categoria* pode abrigar muitas *páginas*. Nós podemos formular o seguinte diagrama ER para descrever este modelo de dados simples.
 
 .. _fig-rango-erd:
 
-.. figure:: ../images/rango-erd.svg
+.. _figure:: ../images/rango-erd.svg
 	:scale: 100%
 	:figclass: align-center
 
-	The Entity Relationship Diagram of Rango's two main entities.
+	O diagrama Entidade Relacionamento do Rango tem 2 entidades principais.
 
-Note that this specification is vague. One page may be in one or many categories. So we could model the relationship as a many-to-many. This approach however introduces a number of complexities, so we will make the simplifying assumption that *one category contains many pages, but one page is assigned to one category.* This does not preclude that the same page can be assigned to different categories - but the page would have to be entered twice, which may not be ideal.
+Note que esta especificação é vaga. Uma página pode estar em uma ou mais categorias. Então nós poderíamos modelar o relacionamento como um muitos-para-muitos (ou `N-para-N <http://pt.wikipedia.org/wiki/N_para_N>`_). Esta abordagem, no entanto, introduz uma série de complexidades, então nós iremos fazer a hipótese simplificadora que *uma categoria contém muitas páginas, mas uma páginas está atribuída a uma categoria.* Isto não evita que a mesma página pode ser atribuída para diferentes categorias - mas a página teria que ser digitada duas vezes, que pode não ser ideal.
 
-It's good practice to note down any working assumptions like this. You never know when they may come back to haunt you! By noting them down, this means you can communicate it with your development team and make sure that the assumption is sensible and that they are happy to proceed under such an assumption.
+É uma boa prática anotar qualquer hipótese de trabalho como este. Você nunca sabe quando eles podem voltar para assombrar você! Observando-os, isso significa que você pode se comunicar com sua equipe de desenvolvimento e certificar-se que a hipótese é sensata e que eles estão felizes de proceder com tal suposição.
 
-The resulting tables are shown below, where ``Str`` denotes a ``string`` or ``char`` field, ``Int`` denotes an ``integer`` field, ``URL`` denotes a URL field and ``FK`` denotes a Foreign Key.
+As tabelas resutantes são mostradas abaixo, onde ``Str`` indica uma ``string`` ou um campo ``char``, ``Int`` indica um campo inteiro ``inteiro``, ``URL`` indica um campo de URL e ``FK`` indica uma `Chave Estrangeira <http://pt.wikipedia.org/wiki/Chave_estrangeira>`_ (Foreign Key).
 
 .. raw:: html
 	
@@ -204,19 +203,19 @@ The resulting tables are shown below, where ``Str`` denotes a ``string`` or ``ch
 		<table>
 			
 			<tr class="table-header">
-				<th colspan="2">Category Table</th>
+				<th colspan="2">Tabela Categoria</th>
 				<th class="none">&nbsp;</th>
-				<th colspan="2">Page Table</th>
+				<th colspan="2">Tabela Página</th>
 			</tr>
 			
 			<tr>
-				<th style="width: 20%;">Field</th>
-				<th style="width: 20%;">Type</th>
+				<th style="width: 20%;">Campo</th>
+				<th style="width: 20%;">Tipo</th>
 			
 				<th class="none"></th>
 			
-				<th style="width: 20%;">Field</th>
-				<th style="width: 20%;">Type</th>
+				<th style="width: 20%;">Campo</th>
+				<th style="width: 20%;">Tipo</th>
 			</tr>
 		
 			<tr>
@@ -262,17 +261,17 @@ The resulting tables are shown below, where ``Str`` denotes a ``string`` or ``ch
 		</table>
 	</div>
 
-We will also have a ``User`` table - which we have not shown here, but shall introduce later in the book. In the following chapters will we see how to instantiate these data models in Django and how to use Django's Object Relational Mapping to connect to the database. 
+Nós iremos ter também uma tabela ``User`` - que nós não mostramos aqui, mas deveremos introduzir mais tarde no livro. Nos capítulos seguintes nós veremos como instanciar esses modelos de dados no Django e como usar o Mapeamento Objeto Relacional dele para conectar ao banco de dados.
 
-Summary
--------
-These high level design and specifications will serve as a useful reference point when building our web application. While we will be focusing on using specific technologies, these steps are common to most database driven web sites. It's a good idea to become familiar and comfortable with producing such specifications and designs.
+Resumo
+------
+Este projeto e especificações de alto nível servirão como um útil ponto de referência na construção de nossa aplicação web. Enquanto nós estaremos focando no uso de tecnologias específicas, esses passoas são comuns para a maioria dos bancos de dados orientados para websites. É uma boa ideia para se tornar familiar e confortável com a produção de tais especificações e modelos.
 
-If you already have Python 2.7 and Django 1.7 installed, you have a good working knowledge of the command line, configured your paths, then you can skip straight to the :ref:`Django Basics <django-basics>` chapter. Otherwise, get started with Chapter :ref:`requirements-label`.
+Se você já tem Python 2.7 e Django 1.7 instalado, você tem um bom conhecimento prático da linha de comando, configurado seus paths, então você pode pular direto para o capítulo :ref:`Django Básico <django-basics>`. Caso contrário, começe com o capítulo :ref:`requirements-label`.
 
-Working with The Official Django Tutorials
-..........................................
-We suggest undertaking the `Official Django Tutorials <https://docs.djangoproject.com/en/1.7/intro/tutorial01/>`_ as part of the exercises associated with each of this book's chapters. You can find a mapping between the tutorial exercises and book chapters below. The tutorial exercises will help reinforce your understanding of the Django framework, and also help you build up your skills.
+Trabalho com os Tutoriais Oficiais do Django
+............................................
+Nós sugerimos a realização do `Tutoriais Oficiais do Django <https://docs.djangoproject.com/en/1.7/intro/tutorial01/>`_ como parte dos exercícios associados com cada capítulo deste livro. Você pode encontrar uma correspondência entre os exercícios do tutorial e os capítulos abaixo do livro. Os exercícios do tutorial ajudarão a reforçar seu entendimento do framework Django, e também ajudará você a fortalecer suas habilidades.
 
 .. raw:: html
 	
@@ -316,32 +315,32 @@ We suggest undertaking the `Official Django Tutorials <https://docs.djangoprojec
 			</tr>
 			
 			<tr>
-				<td>Chapter 3</td>
+				<td>Capítulo 3</td>
 				<td><a href="https://docs.djangoproject.com/en/1.7/intro/tutorial01/">Part 1 - Models</a></td>
 			</tr>
 			
 			<tr>
-				<td>Chapter 5</td>
+				<td>Capítulo 5</td>
 				<td><a href="https://docs.djangoproject.com/en/1.7/intro/tutorial02/">Part 2 - The Admin Interface</a></td>
 			</tr>
 			
 			<tr>
-				<td>Chapter 6</td>
+				<td>Capítulo 6</td>
 				<td><a href="https://docs.djangoproject.com/en/1.7/intro/tutorial03/">Part 3 - URLs and Views</a></td>
 			</tr>
 			
 			<tr>
-				<td>Chapter 7</td>
+				<td>Capítulo 7</td>
 				<td><a href="https://docs.djangoproject.com/en/1.7/intro/tutorial04/">Part 4 - Templates</a></td>
 			</tr>
 			
 			<tr>
-				<td>Chapter 18</td>
+				<td>Capítulo 18</td>
 				<td><a href="https://docs.djangoproject.com/en/1.7/intro/tutorial05/">Part 5 - Testing</a></td>
 			</tr>
 			
 			<tr>
-				<td>Chapter 11</td>
+				<td>Capítulo 11</td>
 				<td><a href="https://docs.djangoproject.com/en/1.7/intro/tutorial06/">Part 6 - CSS</a></td>
 			</tr>
 	
