@@ -1,46 +1,46 @@
 .. _requirements-label:
 
-Getting Ready to Tango
-======================
-Let's get set up! To tango with Django, you'll need to ensure that you have everything you need installed on your computer and that you have a sound understanding of your development environment. This chapter walks you through what you need and what you need to know.
+Preparando-se para o Tango
+==========================
+Vamos começar a instalação! Para dançar com Django, você precisará garantir que você tem tudo que você precisa instalado no seu computador e que você tem um bom entendimento do seu ambiente de desenvolvimento. Este capítulo leva você através do que você precisa e o que tem que saber.
 
-For this tutorial, you'll require the following key pieces of software.
+Para este tutorial, você necessitará das seguintes peças-chave de software.
 
-* Python version 2.7.5+
-* Django version 1.7
+* Python versão 2.7.5+
+* Django versão 1.7
 
-As Django is a web application framework written in the Python programming language, you will be required to have a working knowledge of Python. If you haven't used Python before or you simply wish to brush up on your skills, then we highly recommend that you check out and work through one or more of the following guides.
+Como Django é um framework para aplicações web escrito na linguagem de programação Python, você vai ser obrigado a ter um conhecimento prático de Python. Se você não tiver usando Python antes ou você deseja simplesmente aperfeiçoar suas habilidades, então nós recomendamos fortemente que você confira e trabalhe em um ou mais dos seguintes guias.
 
-* **A quick tutorial** - Learn Python in 10 Minutes by Stavros, http://www.korokithakis.net/tutorials/python/.
-* **The Official Python Tutorial** at http://docs.python.org/2/tutorial/.
-* **A brilliant book**: Think Python: How to Think like a Computer Scientist by Allen B. Downey, available online at http://www.greenteapress.com/thinkpython/.
-* **An amazing online course**: Learn to Program, by Jennifer Campbell and Paul Gries at https://www.coursera.org/course/programming1.
+* **Um rápido tutorial** - Aprenda Python em 10 minutos, por Stavros, http://www.korokithakis.net/tutorials/.
+* **O Tutorial Oficial de Python** em http://docs.python.org/2/tutorial/.
+* **Um brilhante livro**: Pense Python: Como pensar como um Cientista da Computação, por Allen B. Downey, disponível online em http://www.greenteapress.com/thinkpython/.
+* **Um curso online incrível**: Aprenda a programar, por Jennifer Campbell e Paul Gries em https://www.coursera.org/course/programming1.
 
-Using the Terminal
-------------------
-In order to set up your environment learning how to use the *Command Line Interpreter (CLI)* provided by your Operating System is really important. Through the course of this tutorial, you will be interacting with the CLI routinely. If you are already familiar with using the command line interface you can skip directly to :ref:`Installing the Software <installing-software>` section.
+Usando o Terminal
+-----------------
+A fim de criar seu ambiente, aprender como usar o *Interpretador em Linha de Comando (CLI)* fornecido pelo seu sistema operacional é realmente importante. Ao longo do curso deste tutorial, você estará interagindo com o CLI rotineiramente. Se você já está familiarizado com o uso da interface da linha de comando, você pode pular diretamente para a seção :ref:`Instalando o Software <installing-software>`.
 
-UNIX-based operating systems all use a similar-looking `terminal <http://www.ee.surrey.ac.uk/Teaching/Unix/unixintro.html>`_. Descendants, derivatives and clones of UNIX include `Apple's OS X <http://en.wikipedia.org/wiki/OS_X>`_ and the `many available Linux distributions <http://en.wikipedia.org/wiki/List_of_Linux_distributions>`_ available today. All of these operating systems contain a core set of commands which help you navigate through your filesystem and launch programs, all without the need of any graphical interface. This section provides the key commands you should familiarise yourself with.
+Todos os Sistemas Operacionais baseados no UNIX usam um `terminal <http://www.ee.surrey.ac.uk/Teaching/Unix/unixintro.html>`_ de aparência semelhante. Descendentes, derivador e clones do UNIX incluindo o `Apple's OS X <http://en.wikipedia.org/wiki/OS_X>`_ e as `muitas distribuições Linux <pt.wikipedia.org/wiki/Lista_de_distribuições_de_Linux>`_ disponíveis atualmente. Todos esses sistemas operacionais contêm um conjunto básico de comandos que ajudam você a navegar através do seu sistemas de arquivos e rodar programas, tudo sem a necessidade de qualquer interface gráfica. Esta seção fornece os comandos que você deve se familiarizar.
 
-.. note:: This tutorial is focused towards users of UNIX-based or UNIX-derived operating systems. While Python and Django can run in a Windows-based environment, many of the commands that we use in this book are for  UNIX-based terminals. These commands can however be replicated in Windows by using the graphical user interface, `using the relevant command in a Windows Command Prompt <http://www.ai.uga.edu/mc/winforunix.html>`_, or using `Windows PowerShell <http://technet.microsoft.com/en-us/library/bb978526.aspx>`_ which provides an CLI like similar to a UNIX terminal.
+.. note:: Este tutorial é focado para usuários de sistemas operacionais baseados em UNIX ou dericados. Embora Python e Django possam rodar em um ambiente Windows, muitos dos comandos que nós usamos neste livro são paa terminais baseados em UNIX. Esses comandos podem, entretanto, serem repetidos no Windows usando a interface gráfica do usuário, `usando o comando relativo em um tela de comando Windows<http://www.ai.uga.edu/mc/winforunix.html>`_, ou usando `Windows PowerShell <http://technet.microsoft.com/en-us/library/bb978526.aspx>`_ que fornece um CLI similar ao terminal UNIX.
 
-Upon launching a new terminal instance, you'll typically be presented with something like:
+Após abrir uma nova instância do terminal, você será tipicamente apresentado com algo como:
 
 .. code-block:: guess
 	
 	sibu:~ leif$
 
-This is called the *prompt*, and indicates when the system is waiting to execute your every command. The prompt you see varies depending on the operating system you are using, but all look generally very similar. In the example above, there are three key pieces of information to observe:
+Isto é chamado de *prompt*, e indica quando o sistema está esperando para executar cada comando seu. O prompt que você vê varia dependendo do sistema operacional que você está usando, mas todos geralmente são muito parecidos. No exemplo acima, existem três peças chaves de informação para observar:
 
-* your username and computer name (username of ``leif`` and computer name of ``sibu``);
-* your *current working directory* (the tilde, or ``~``); and
-* the privilege of your user account (the dollar sign, or ``$``).
+* seu nome de usuário (username) e o nome do computador (username do ``leif`` e o nome do computador ``sibu``);
+* seu *diretório atual de trabalho* (o til, ou ``~``); e
+* o privilégio da sua conta de usuário (o sinal de dólar, ou ``$``).
 
-The dollar sign (``$``) typically indicates that the user is a standard user account. Conversely, a hash symbol (``#``) may be used to signify the user logged in has `root privileges <http://en.wikipedia.org/wiki/Superuser>`_. Whatever symbol is present is used to signify that the computer is awaiting your input. 
+O sinal de dólar (``$``) geralmente indica que o usuário é uma conta de usuário padrão. Por outro lado, um jogo da velha (``#``) pode ser usado para significar que o usuário logado tem `privilégios root <http://pt.wikipedia.org/wiki/Superusu%C3%A1rio>`_. Seja qual for o símbolo, é usado para significar que o computador está esperando sua entrada.
 
-Open up a terminal window and see what your prompt looks like.
+Abra uma janela do terminal e veja como seu prompt parece.
 
-When you are using the terminal, it is important to know where you are in the file system. To find out where you are, you can issue the command ``pwd``. This will display your present working directory. For example, check the example terminal interactions below.
+Quando você usar o terminal, é importante saber onde você está no sistema de arquivos. Para descobrir onde você está, você pode executar o comando ``pwd``. Isto mostraá seu atual diretório. Por exemplo, cheque a interação no terminal abaixo.
 
 .. code-block:: guess
 	
@@ -49,25 +49,25 @@ When you are using the terminal, it is important to know where you are in the fi
 	/Users/leif
 	sibu:~ leif$
 
-You can see that the present working directory in this example is: ``/Users/leif``.
+Você pode ver que o diretório atual neste exemplo é: ``Users/leif``.
 
-You'll also note that the prompt indicates that my present working directory is ~. This is because the tilde (``~``) represents your *home directory*. The base directory in any UNIX-based file system is the *root directory*. The path of the root directory is denoted by a single forward slash (``/``).
+Você também notará que o prompt indica que meu diretório atual é ~. Isto é porque o til (``~``) representa seu *diretócial inicial* (que chamaremos de home). O diretório base em qualquer sistema de arquivos baseados em UNIX é o *diretório raiz* (que chamaremos de root). O caminho do diretório raiz é denoado por uma simples barra (``/``).
 
-If you are not in your home directory you can change directory (``cd``) to your home directory by issuing the following command.
+Se você não está no seu diretório home você pode mudar o diretório (``cd``) para ele ao executar o seguinte comando.
 
 .. code-block:: guess
 	
 	$ cd ~
 
-Let's create a directory called ``code``. To do thus, use the make directory command (``mkdir``), as shown below.
+Vamos criar um diretório chamado ``code``. Para fazer isso, use o comando que cria diretórios (``mkdir``), como mostrado abaixo.
 
 .. code-block:: guess
 	
 	$ mkdir code
-	
-To move to the newly-created ``code`` directory, enter ``cd code``. If you now check your current working directory, you'll notice that you will be in ``~/code/``. This may also be reflected by your prompt. Note in the example below that the current working directory is printed after the ``sibu`` computer name.
 
-.. note:: Whenever we refer to ``<workspace>``, we'll be referring to your ``code`` directory.
+Para mover para entrar no diretório ``code`` recentemente criado, digite ``cd code``. Se você agora checar seu diretório de trabalho atual, você notará que você estará em ``~/code/``. Isto Isto pode também ser refletido pelo seu prompt. Note no exemplo abaixo que o diretório de trabalho atual está impresso depois do nome do computador ``sibu``.
+
+.. note:: Sempre que nos referirmos para ``<workspace>``, nós estaremos nos referindo para seu diretório ``code``.
 
 .. code-block:: guess
 	
@@ -77,9 +77,9 @@ To move to the newly-created ``code`` directory, enter ``cd code``. If you now c
 	sibu:code leif$ pwd
 	/Users/leif/code
 
-To list the files that are in a directory, you can issue the command ``ls``. You can also see hidden files or directories - if you have any - you can issue the command ``ls -a``, where ``a`` stands for *all.* If you ``cd`` back to your home directory (``cd ~``) and then issue ``ls``, you'll see that you have something called ``code`` in your home directory.
+Para listar os arquivos que estão no diretório, você pode executar o comando ``ls``. Você pode também ver arquivos ou diretórios ocultos - if você tiver algum - você pode executar o comando ``ls -a``, onde ``a`` significa *all*. Se você voltar para o diretório home (``cd ~``) e então executar ``ls``, você verá que tem algo chamado ``code`` no seu diretório home.
 
-To find out a bit more about what is in your directory, issue ``ls -l``. This will provide a more detailed *listing* of your files and whether it is a directory or not (denoted by a ``d`` at the start of the line).
+Para saber um pouco mais sobre o que está no seu diretório, execute um ``ls -l``. Isto fornecerá uma *listagem* mais detalhada dos seus arquivos e se é um diretório ou não (denotado por um ``d`` no começo da linha).
 
 .. code-block:: guess
 	
@@ -88,17 +88,19 @@ To find out a bit more about what is in your directory, issue ``ls -l``. This wi
 	
 	drwxr-xr-x   36 leif  staff    1224 23 Sep 10:42 code
 
-The output also contains information on the `permissions associated to the directory <http://www.elated.com/articles/understanding-permissions/>`_, who created it (``leif``), the group (``staff``), the size, the date/time the file was modified at, and, of course, the name.
+A saída também contêm informações sobre `permissões associadas ao diretório <http://www.infowester.com/linuxpermissoes.php>`_, quem criou (``leif``), o grupo (``staff``), o tamanho, a data/hora em que o arquivo foi modificado, e, claro, o nome.
 
-You may also find it useful to be able to edit files within your terminal. There are many editors which you can use - some of which may already be installed on your computer. The `nano <http://www.nano-editor.org/>`_ editor for example is a straightforward editor - unlike `vi <http://en.wikipedia.org/wiki/Vi>`_ which can take some time to learn. Below are a list of commonly-used UNIX commands that you will find useful.
+Você também pode achar útil ser capaz de editar arquivos dentro do seu terminal. Existem muitos editores que você pode usar - alguns dos quais pode já estar instalado no seu computador. O editor `nano <http://www.nano-editor.org/>`_ por exemplo, é um editor simples, ao contrário do `vi <http://pt.wikipedia.org/wiki/Vi>`_ que pode levar algum tempo para aprender. Abaixo está uma lista de comandos UNIX costumeiramente usados que você achará útil.
 
-Core Commands
-*************
-All UNIX-based operating systems come with a series of built-in commands - with most focusing exclusively on file management. The commands you will use most frequently are listed below, each with a short explanation on what they do and how to use them.
+Comandos Básicos
+****************
+Todos os sistemas operacionais baseados em UNIX vêm com uma série de comandos embutidos - com o foco maior exclusivamente para gerenciamento de arquivos. Os comandos que você usará mais frequentemente estão listados abaixo, cada um com uma pequena explicação sobre o que eles fazem e como usá-los.
 
-- ``pwd``: *Prints* your current *working directory* to the terminal. The full path of where you are presently is displayed.
-- ``ls``: Prints a list of files in the current working directory to the terminal. By default, you do not see the sizes of files - this can be achieved by appending ``-lh`` to ``ls``, giving the command ``ls -lh``.
-- ``cd``: In conjunction with a path, allows you to *change* your current working *directory*. For example, the command ``cd /home/leif/`` changes the current working directory to ``/home/leif/``. You can also move up a directory level without having to provide the `absolute path <http://www.uvsc.edu/disted/decourses/dgm/2120/IN/steinja/lessons/06/06_04.html>`_ by using two dots, e.g. ``cd ..``.
+- ``pwd``: *Imprime* na tela do seu terminal seu diretório de trabalho atual. O caminho completo de onde você está é mostrado.
+- ``ls``: Mostra no terminal uma lista dos arquivos no seu diretório atual. Por padrão, você não pode ver os tamanhos dos arqvuiso - isto pode ser conseguido ao adicionar ``-lh`` ao ``ls``, dando o comando ``ls -lh``.
+- ``cd``: Em conjunto com um caminho, permite você *mudar* seu *diretório* de trabalho. Por exemplo, o comando ``cd /home/leif`` muda o diretório de trabalho atual para ``/home/leif/``. Você pode também subir um nível de diretório sem ter que fornecer o `caminho absoluto <http://www.uvsc.edu/disted/decourses/dgm/2120/IN/steinja/lessons/06/06_04.html>`_ ao usar dois pontos, por exemplo, ``cd ..``.
+- ``cp``: copia arquivos e/ou diretório. Você precisa fornecer o *original* e o *destino*. Por exemplo, para fazer uma cópia de um arquivo ``input.py`` no mesmo diretório, você executaria o comando ``cp input.py input_backup.py``.
+
 - ``cp``: Copies files and/or directories. You must provide the *source* and the *target*. For example, to make a copy of the file ``input.py`` in the same directory, you could issue the command ``cp input.py input_backup.py``.
 - ``mv``: Moves files/directories. Like ``cp``, you must provide the *source* and *target*. This command is also used to rename files. For example, to rename ``numbers.txt`` to ``letters.txt``, issue the command ``mv numbers.txt letters.txt``. To move a file to a different directory, you would supply either an absolute or relative path as part of the target - like ``mv numbers.txt /home/david/numbers.txt``.
 - ``mkdir``: Creates a directory in your current working directory. You need to supply a name for the new directory after the ``mkdir`` command. For example, if your current working directory was ``/home/david/`` and you ran ``mkdir music``, you would then have a directory ``/home/david/music/``. You will need to then ``cd`` into the newly created directory to access it.
