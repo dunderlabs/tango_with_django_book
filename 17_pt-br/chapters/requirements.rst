@@ -101,110 +101,112 @@ Todos os sistemas operacionais baseados em UNIX vêm com uma série de comandos 
 - ``cd``: Em conjunto com um caminho, permite você *mudar* seu *diretório* de trabalho. Por exemplo, o comando ``cd /home/leif`` muda o diretório de trabalho atual para ``/home/leif/``. Você pode também subir um nível de diretório sem ter que fornecer o `caminho absoluto <http://www.uvsc.edu/disted/decourses/dgm/2120/IN/steinja/lessons/06/06_04.html>`_ ao usar dois pontos, por exemplo, ``cd ..``.
 - ``cp``: copia arquivos e/ou diretório. Você precisa fornecer o *original* e o *destino*. Por exemplo, para fazer uma cópia de um arquivo ``input.py`` no mesmo diretório, você executaria o comando ``cp input.py input_backup.py``.
 
-- ``cp``: Copies files and/or directories. You must provide the *source* and the *target*. For example, to make a copy of the file ``input.py`` in the same directory, you could issue the command ``cp input.py input_backup.py``.
-- ``mv``: Moves files/directories. Like ``cp``, you must provide the *source* and *target*. This command is also used to rename files. For example, to rename ``numbers.txt`` to ``letters.txt``, issue the command ``mv numbers.txt letters.txt``. To move a file to a different directory, you would supply either an absolute or relative path as part of the target - like ``mv numbers.txt /home/david/numbers.txt``.
-- ``mkdir``: Creates a directory in your current working directory. You need to supply a name for the new directory after the ``mkdir`` command. For example, if your current working directory was ``/home/david/`` and you ran ``mkdir music``, you would then have a directory ``/home/david/music/``. You will need to then ``cd`` into the newly created directory to access it.
-- ``rm``: Shorthand for *remove*, this command removes or deletes files from your filesystem. You must supply the filename(s) you wish to remove. Upon issuing a ``rm`` command, you will be prompted if you wish to delete the file(s) selected. You can also remove directories `using the recursive switch <http://www.computerhope.com/issues/ch000798.htm>`_. Be careful with this command - recovering deleted files is very difficult, if not impossible!
-- ``rmdir``: An alternative command to remove directories from your filesystem. Provide a directory that you wish to remove. Again, be careful: you will not be prompted to confirm your intentions.
-- ``sudo``: A program which allows you to run commands with the security privileges of another user. Typically, the program is used to run other programs as ``root`` - the `superuser <http://en.wikipedia.org/wiki/Superuser>`_ of any UNIX-based or UNIX-derived operating system.
+- ``mv``: Move arquivos ou diretórios. Você precisa fornecer o *original* e o *destino*. Este comando é também usado para renomear arquivos. Por exemplo, para renomear ``numbers.txt`` para ``letters.txt``, execute o comando ``mv numbers.txt letters.txt``. Para mover um arquivo para um diretório diferente, você iria fornecer ou um caminho absoluto ou relativo como parte do destino - algo como isto ``mv numbers.txt /home/david/numbers.txt``.
 
-.. note:: This is only a brief list of commands. Check out ubuntu's documentation on `Using the Terminal <https://help.ubuntu.com/community/UsingTheTerminal>`_  for a more detailed overview, or the `Cheat Sheet 
- <http://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/>`_ by FOSSwire for a quick reference guide.
+- ``mkdir``: Cria um diretório no seu diretório atual. Você precisa fornece um nome para o novo diretório depois do comando ``mkdir``. Por exemplo, se o seu diretório atual era ``/home/david/`` e você executou ``mkdir music``, você deverá então ter um diretório ``/home/david/music``. Você precisará, em seguida, executar um ``cd`` para entrar no diretório recentemente criado.
+
+- ``rm``: Abreviação para *remoção*, este comando remove ou deleta arquivos do seu sistema de arquivos. Você precisa fornecer o(s) nome(s) do(s) arquivo(s) que você deseja remover. Após executar um comando ``rm``, você será perguntado se você deseja deletar os arquivos selecionados. Você também pode remover diretórios `usando a opção recursiva <http://www.computerhope.com/issues/ch000798.htm>`_, Seja cuidadoso com este comando - recuperação de arquivos deletados é muito difícil, se não impossível!
+
+- ``rmdir``: Um comando alternativo para remover diretórios do seu sistema de arquivos. Forneça um diretório que você deseja remover. Novamente, seja cuidadoso: você não será perguntado para confirmar suas intenções ao apagar.
+
+- ``sudo``: Um programa que permite que você rode comando com os privilégios de segurança de outro usuário. Geralmente, o programa é usado para rodar outros programas como ``root`` - o `super usuário <http://pt.wikipedia.org/wiki/Superusuário>`_ de qualquer sistema operacional baseado ou derivado do UNIX.
+
+.. note:: Isto é apenas um resumo da lista de comandos. Confira a documentação do ubuntu em `Usando o terminal <https://help.ubuntu.com/community/UsingTheTerminal>`_ para uma visão mais detalhada, ou o `Cheat Sheet <http://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/>`_ feito por FOSSwire para ser um rápido guia de referências.
 
 .. _installing-software:
 
-Installing the Software
------------------------
-Now that you have a decent understanding of how to interact with the terminal, you can begin to install the software required for this tutorial.
+Instalando os Softwares
+---------------------
+Agora que você tem um bom conhecimento de como interagir com o terminal, você pode começar a instalar os softwares requeridos para este tutorial.
 
-Installing Python
-*****************
-So, how do you go about installing Python 2.7.5 on your computer? You may already have Python installed on your computer - and if you are using a Linux distribution or OS X, you will definitely have it installed. Some of your operating system's functionality `is implemented in Python <http://en.wikipedia.org/wiki/Yellowdog_Updater,_Modified>`_, hence the need for an interpreter!
+Instalando Python
+-----------------
+Então, como é que você vai instalar o Python 2.7.5 no seu computador? Você pode já ter Python instalado no seu computador - e se você estiver usando uma distribuição Linux ou OS X, você definitivamente já o tem instalado. Algumas das funcionalidades desses sistemas operacionais `estão implementadas em Python <http://en.wikipedia.org/wiki/Yellowdog_Updater,_Modified>`_, daí a necessidade de um interpretador.
 
-Unfortunately, nearly all modern operating systems utilise a version of Python that is older than what we require for this tutorial. There's many different ways in which you can install Python, and many of them are sadly rather tricky to accomplish. We demonstrate the most commonly used approaches, and provide links to additional reading for more information.
+Infelizmente, quase todos os sistemas operacionais modernos utilizam uma versão do Python que mais antiga do que a que nós estamos requerendo para este tutorial. Existem muitas maneiras diferentes nas quais você pode instalar Python, e muitas delas são, infelizmente, bastante complicadas de realizar. Nós demonstraremos a abordagem mais comumente usada, e fornecer links adicionais de leitura para mais informações.
 
-.. warning:: This section will detail how to run Python 2.7.5 *alongside* your current Python installation. It is regarded as poor practice to remove your operating system's default Python installation and replace it with a newer version. Doing so could render aspects of your operating system's functionality broken!
+.. warning:: Esta seção detalhará como rodar Python 2.7.5 *ao lado* da sua atual instalação do Python. É considerada como má prática remover do seu sistema operacional a instalação Padrão do Python e substitui-la por uma nova versão. Fazer isso pode quebrar as funcionalidades do seu sistema operacional!
 
 Apple OS X
 ..........
-The most simple way to get Python 2.7.5 installed on your Mac is to download and run the simple installer provided on the official Python website. You can download the installer by visiting the webpage at http://www.python.org/getit/releases/2.7.5/.
+A maneira mais simples de ter Python 2.7.5 instalado no seu Mac é baixando e rodando o simples instalador fornecido no site oficial Python. Você pode baixar o instalador ao visitar a página em http://www.python.org/getit/releases/2.7.5/.
 
-.. warning:: Ensure that you download the ``.dmg`` file that is relevant to your particular OS X installation!
+.. warning:: Garanta que você baixou o arquivo ``.dmg`` que é relevante para sua versão do OS X!
 
-#. Once you have downloaded the ``.dmg`` file, double-click it in the Finder.
-#. The file mounts as a separate disk and a new Finder window is presented to you.
-#. Double-click the file ``Python.mpkg``. This will start the Python installer.
-#. Continue through the various screens to the point where you are ready to install the software. You may have to provide your password to confirm that you wish to install the software.
-#. Upon completion, close the installer and eject the Python disk. You can now delete the downloaded ``.dmg`` file.
+#. Depois que você baixou o arquivo ``.dmg``, dê um clique duplo no `Finder <http://pt.wikipedia.org/wiki/Finder>`_.
+#. O arquivo monta como um disco separado e uma nova janela do Finder é aprensetada para você.
+#. Duplo clique no arquivo ``Python.mpkg``. Isto iniciará o instalador Python.
+#. Continue através das diversas tela até o ponto onde você já está pronto para instalar o software. Você pode ter que fornecer sua senha para confirmar que você deseja instalar.
+#. Uma vez completada, feche o instalador e ejete o disco Python. Você pode agora deleter o arquivo ``.dmg`` baixado.
 
-You should now have an updated version of Python installed, ready for Django! Easy, huh?
+Você deve ter agora uma versão atualizada do Python instalada, pronta para o Django! Fácil, né?
 
-Linux Distributions
+Distribuições Linux
 ...................
-Unfortunately, there are many different ways in which you can download, install and run an updated version of Python on your Linux distribution. To make matters worse, methodologies vary from distribution to distribution. For example, the instructions for installing Python on `Fedora <http://fedoraproject.org/>`_ may differ from those to install it on an `Ubuntu <http://www.ubuntu.com/>`_ installation.
+Infelizmente, existem muitas maneiras diferentes em que você pode baixar, instalar e rodar uma versão atualizada do Python na sua distribuição Linux. Para piorar a situação, metodologias variam de distribuições para distribuições. Por exemplo, as instruções para instalar Python no `Fedora <http://fedoraproject.org/>`_ pode diferenciar daquelas para instalar no `Ubuntu <http://www.ubuntu.com/>`_.
 
-However, not all hope is lost. An awesome tool (or a *Python environment manager*) called `pythonbrew <https://github.com/utahta/pythonbrew>`_ can help us address this difficulty. It provides an easy way to install and manage different versions of Python, meaning you can leave your operating system's default Python installation alone. Hurrah!
+Entretanto, nem toda esperança está perdida. Uma ferramenta incrível (ou um *Gerenciador de ambiente Python*) chamado `pythonbrew <https://github.com/utahta/pythonbrew>`_ pode nos ajudar a resolver este problema. Ela fornece uma maneira fácil para instalar e gerenciar diferentes versões do Python, o que significa que você pode deixar a instalação padrão do Python no seu sistema operacional sozinha. Irrá!
 
-Taken from the instructions provided from `the pythonbrew GitHub page <https://github.com/utahta/pythonbrew>`_ and `this Stack Overflow question and answer page <http://stackoverflow.com/questions/5233536/python-2-7-on-ubuntu>`_, the following steps will install Python 2.7.5 on your Linux distribution.
+Retirando as instruções fornecidas `da página do pythonbrew no Github <https://github.com/utahta/pythonbrew>`_ e `desta thread na página do Stack Overflow <http://stackoverflow.com/questions/5233536/python-2-7-on-ubuntu>`_, os seguintes passos irão instalar o Python 2.7.5 na sua distribuição Linux.
 
-#. Open a new terminal instance.
-#. Run the command ``curl -kL http://xrl.us/pythonbrewinstall | bash``. This will download the installer and run it within your terminal for you. This installs pythonbrew into the directory ``~/.pythonbrew``. Remember, the tilde (``~``) represents your home directory!
-#. You then need to edit the file ``~/.bashrc``. In a text editor (such as ``gedit``, ``nano``, ``vi`` or ``emacs``), add the following to a new line at the end of ``~/.bashrc``: ``[[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc``
-#. Once you have saved the updated ``~/.bashrc`` file, close your terminal and open a new one. This allows the changes you make to take effect.
-#. Run the command ``pythonbrew install 2.7.5`` to install Python 2.7.5.
-#. You then have to *switch* Python 2.7.5 to the *active* Python installation. Do this by running the command ``pythonbrew switch 2.7.5``.
-#. Python 2.7.5 should now be installed and ready to go.
+#. Abra uma nova instância do Terminal
+#. Execute o comando ``curl -kL http://xrl.us/pythonbrewinstall | bash``. Isto irá baixar o instalador e executar executá-lo dentro do seu terminal para você. Isto instala o pythonbrew dentro do seguinte diretório ``~/.pythonbrew``. Lembre, o til (``~``) representa o seu diretório home!
+#. Você precisa então editar o arquivo ``~/.bashrc``. Em um editor de texto (como o ``gedit``, ``nano``, ``vi`` ou ``emacs``), e adicione o seguinte em uma nova linha no final do arquivo ``~/.bashrc``: ``[[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc``
+#. Uma vez que você salvou as alterações no arquivo ``~/.bashrc``, feche seu terminal e abra um novo. Isto permitirar que as alterações sejam então aplicadas.
+#. Execute o comando ``pythonbrew install 2.7.5`` para instalar o Python 2.7.5.
+#. Você precisa então *mudar* para o Python 2.7.5 para *ativar* a nova instalação. Faça isto executando o comando ``pythonbrew switch 2.7.5``.
+#. Python 2.7.5 deverá agora estar instalado e pronto para uso.
 
-.. note:: Directories and files beginning with a period or dot can be considered the equivalent of *hidden files* in Windows. `Dot files <http://en.wikipedia.org/wiki/Dot-file>`_ are not normally visible to directory-browsing tools, and are commonly used for configuration files. You can use the ``ls`` command to view hidden files by adding the ``-a`` switch to the end of the command, giving the command ``ls -a``.
+.. note:: Diretórios e arquivos que começam com um ponto podem ser considerados equivalentes aos *arquivos ocultos* do Windows.`Arquivos com ponto <http://en.wikipedia.org/wiki/Dot-file>`_ normalmente não são visíveis no visualizador de diretórios, e são comumente usados para configurações de arquivos. Você pode usar o comando ``ls`` para visualizar arquivos ocultos ao adicionar o ``-a`` no final do comando, ficando da seguinte forma ``ls -a``.
 
 .. _requirements-install-python-windows:
 
 Windows
 .......
-By default, Microsoft Windows comes with no installations of Python. This means that you do not have to worry about leaving existing versions be; installing from scratch should work just fine. You can download a 64-bit or 32-bit version of Python from `the official Python website <http://www.python.org/download/>`_. If you aren't sure which one to download, you can determine if your computer is 32-bit or 64-bit by looking at the instructions provided `on the Microsoft website <http://windows.microsoft.com/en-gb/windows7/32-bit-and-64-bit-windows-frequently-asked-questions>`_.
+Por padrão, o Microsoft Windows vem sem nenhuma instalação do Python. Isto significa que você não tem que se preocupar em deixar versões diferentes juntas; instalando do início deve funcionar bem. Você pode baixar uma versão 64-bit ou 32-bit do Python a partir do `site oficial Python <http://www.python.org/download/>`_. Se você não está certo sobre qual baixar, você pode descobrir se o seu computador é 32-bit ou 64-bit ao olhar nas instruções fornecidas `no site da Microsoft <http://windows.microsoft.com/en-gb/windows7/32-bit-and-64-bit-windows-frequently-asked-questions>`_.
 
-#. When the installer is downloaded, open the file from the location to which you downloaded it.
-#. Follow the on-screen prompts to install Python.
-#. Close the installer once completed, and delete the downloaded file.
+#. Quano o instalador estiver baixado, abra o arquivo no local onde baixou.
+#. Siga os passos na tela para instalar o Python.
+# Feche o instalador assim que completar a instalação, e delete os arquivos baixados.
 
-Once the installer is complete, you should have a working version of Python ready to go. By default, Python 2.7.5 is installed to the folder ``C:\Python27``. We recommend that you leave the path as it is.
 
-Upon the completion of the installation, open a Command Prompt and enter the command ``python``. If you see the Python prompt, installation was successful. However, in certain circumstances, the installer may not set your Windows installation's ``PATH`` environment variable correctly. This will result in the ``python`` command not being found. Under Windows 7, you can rectify this by performing the following:
+Assim que o instalador terminou, você deve ter uma versão do Python pronta para uso. Por padrão, Python 2.7.5 está instalado na pasta ``C:\Python27``. Nós recomendamos que você deixe esse caminho como está.
 
-#. Click the *Start* button, right click *My Computer* and select *Properties*.
-#. Click the *Advanced* tab.
-#. Click the *Environment Variables* button.
-#. In the *System variables* list, find the variable called *Path*, click it, then click the *Edit* button.
-#. At the end of the line, enter ``;C:\python27;C:\python27\scripts``. Don't forget the semicolon - and certainly *do not* add a space.
-#. Click OK to save your changes in each window.
-#. Close any Command Prompt instances, open a new instance, and try run the ``python`` command again.
+Após a conclusão da instalação, abra um prompt de comando e execute o comando ``python``. Se você ver o prompt do Python, a instalação foi um sucesso. Entretanto, em algumas circunstâncias, o instalador pode não setar suas variáveis de ambiente do Windows no ``PATH`` corretamente. Isto resultará no comando ``python`` não ter sido encontrado. No Windows 7, você pode corrigir isto fazendo o seguinte:
 
-This should get your Python installation fully working. Windows XP, `has slightly different instructions <http://www.computerhope.com/issues/ch000549.htm>`_, and `so do Windows 8 installationsthis <http://stackoverflow.com/a/14224786>`_.
+#. Clique no *iniciar*, então com o botão direito clique em *Meu Computador* e selecione *Propriedades*.
+#. Clique em *Avançado*.
+#. Clique no botão *Variáveis de Ambiente*.
+#. Na lista *Variáveis do Sistema*, procura a variável chamada *Path*, clique nela, e então clique no botão *Editar*.
+#. No fim da linha, coloque ``;C:\python27;C:\python27\scripts``. Não esqueça do ponto e vírgula -  e certamente *não* adicione um espaço.
+#. Cliquem em OK em cada janela para salvar suas mudanças.
+#. Fecha qualquer janela do prompt de comandos aberta, e abra uma nova instância, e tenta agora rodar o comando ``python`` novamente.
 
-Setting Up the ``PYTHONPATH``
+Isto deve fazer a sua instalação do Python funcionar. No Windows XP, `tem instruções ligeiramente diferentes <http://www.computerhope.com/issues/ch000549.htm>`_, e `com o Windows 8 fazer desta forma <http://stackoverflow.com/a/14224786>`_.
+
+Configurando o ``PYTHONPATH``
 *****************************
-With Python now installed, we now need to check that the installation was successful. To do this, we need to check that the ``PYTHONPATH``
-`environment variable <http://en.wikipedia.org/wiki/Environment_variable>`_ is setup correctly. ``PYTHONPATH`` provides the Python interpreter with the location of additional Python `packages and modules <http://stackoverflow.com/questions/7948494/whats-the-difference-between-a-python-module-and-a-python-package>`_ which add extra functionality to the base Python installation. Without a correctly set ``PYTHONPATH``, we'll be unable to install and use Django!
+Agora com Python instalado, nós precisamos verificar se a instalação foi bem sucedida. Para fazer isto, nós precisamos checar se a `variável de ambiente <http://pt.wikipedia.org/wiki/Vari%C3%A1vel_de_ambiente>`_ ``PYTHONPATH`` está configurada corretamente. ``PYTHONPATH`` fornece o interpretador Python com a localização dos `pacotes e módulos <http://stackoverflow.com/questions/7948494/whats-the-difference-between-a-python-module-and-a-python-package>`_ adicionais do Python que adicionam funcionalidades extras para a instalação base do Python. Sem a correta configuração do ``PYTHONPATH``, nós não seremos capazes de instalar e usar o Django!
 
-First, let's verify that our ``PYTHONPATH`` variable exists. Depending on the installation technique that you chose, this may or may not have been done for you. To do this on your UNIX-based operating system, issue the following command in a terminal.
+Primeiro, vamos verificar se nossa variável ``PYTHONPATH`` existe. Dependendo da técnica de instalação que você escolheu, isto pode ou não ter sido feito pra você. Para fazer isto no seu sistema operacional baseado no UNIX, execute o seguinte comando no terminal.
 
 .. code-block:: guess
-	
+
 	$ echo $PYTHONPATH
 
-On a Windows-based machine, open a Command Prompt and issue the following.
+Em uma máquina Windows, abra o prompt de comando e execute o seguinte.
 
-.. code-block:: guess
-	
 	$ echo %PYTHONPATH%
 
-If all works, you should then see output that looks something similar to the example below. On a Windows-based machine, you will obviously see a Windows path, most likely originating from the C drive.
+Se tudo funcionar, você deve então ver uma saída que parece com o exemplo abaixo. Em uma máquina Windows, você verá obviamente um caminho Windows, provavelmente proveniente da unidade C.
 
 .. code-block:: guess
 	
 	/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages:
 
-This is the path to your Python installation's ``site-packages`` directory, where additional Python packages and modules are stored. If you see a path, you can continue to the next part of this tutorial. If you however do not see anything, you'll need to do a little bit of detective work to find out the path. On a Windows installation, this should be a trivial exercise: ``site-packages`` is located within the ``lib`` folder of your Python installation directory. For example, if you installed Python to ``C:\Python27``, ``site-packages`` will be at ``C:\Python27\Lib\site-packages\``.
+Este é o caminho para o seu diretório ``site-packages`` da sua instalação Python, onde pacotes e módulos Python adicionais estão armazenados. Se você vê um caminho, você pode continuar para a próxima parte deste tutorial. Se, no entanto, você não vê nada, você precisará fazer um pequeno trabalho de detetive para descobrir o caminho. Em uma instalação Windows, isto deve ser um exercício trivial: ``site-packages`` está localizado dentro da pasta ``lib`` do diretório da sua instalação Python. Por exemplo, se você instalou Python em ``C:\Python27``, ``site-packages`` estará em ``C:\Python27\Lib\site-packages\``.
+
+
 
 UNIX-based operating systems however require a little bit of detective work to discover the path of your ``site-packages`` installation. To do this, launch the Python interpreter. The following terminal session demonstrates the commands you should issue.
 
