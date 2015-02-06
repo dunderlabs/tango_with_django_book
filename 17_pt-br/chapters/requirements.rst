@@ -206,9 +206,7 @@ Se tudo funcionar, você deve então ver uma saída que parece com o exemplo aba
 
 Este é o caminho para o seu diretório ``site-packages`` da sua instalação Python, onde pacotes e módulos Python adicionais estão armazenados. Se você vê um caminho, você pode continuar para a próxima parte deste tutorial. Se, no entanto, você não vê nada, você precisará fazer um pequeno trabalho de detetive para descobrir o caminho. Em uma instalação Windows, isto deve ser um exercício trivial: ``site-packages`` está localizado dentro da pasta ``lib`` do diretório da sua instalação Python. Por exemplo, se você instalou Python em ``C:\Python27``, ``site-packages`` estará em ``C:\Python27\Lib\site-packages\``.
 
-
-
-UNIX-based operating systems however require a little bit of detective work to discover the path of your ``site-packages`` installation. To do this, launch the Python interpreter. The following terminal session demonstrates the commands you should issue.
+No entanto, sistemas operacionais baseados em UNIX requerem um pequeno trabalho de detetive para descobrir o caminho do seu ``site-packages`` na sua instalação. Para fazer isso, abra seu interpretador Python. A seguinte sessão no terminal demonstra os comandos que você deve executar.
 
 .. code-block:: python
 	
@@ -225,104 +223,106 @@ UNIX-based operating systems however require a little bit of detective work to d
 	
 	>>> quit()
 
-Calling ``site.getsitepackages()`` returns a list of paths that point to additional Python package and module stores. The first typically returns the path to your ``site-packages`` directory - changing the list index position may be required depending on your installation. If you receive an error stating that ``getsitepackages()`` is not present within the ``site`` module, verify you're running the correct version of Python. Version 2.7.5 should include this function. Previous versions of the language do not include this function.
+Chamando ``site.getsitepackages()`` teremos como retorno uma lista de caminhos que apontam para o pacote Python adicional e os módulos armazenados. O primeiro normalmente retorna o caminho para o seu diretório ``site-packages`` - pode ser necessário mudar a posição do índice da lista depedendo da sua instalação. Se você receber uma mensagem de erro indicando que ``site-packages()`` não está presente dentro do módulo ``site``, verifique se você está rodando a versão correta do Python. A versão 2.7.5 deve incluir esta função. Versões anteriores da linguagem não incluem esta função.
 
-The string which is shown as a result of executing ``print site.getsitepackages()[0]`` is the path to your installation's ``site-packages`` directory. Taking the path, we now need to add it to your configuration. On a UNIX-based or UNIX-derived operating system, edit your ``.bashrc`` file once more, adding the following to the bottom of the file.
-
+A string que é mostrada como um resultado da execução do ``print site.getsitepackages()[0]`` é o caminho para o diretório ``site-packages`` da sua instalação. Tendo o caminho, nós agora precisamos adicioná-lo na sua configuração. Em um sistema operacional baseado ou derivado do UNIX, edit seu arquivo ``.bashrc`` mais uma vez, adicionando o seguinte ao final do arquivo.
 
 .. code-block:: guess
 	
 	export PYTHONPATH=$PYTHONPATH:<PATH_TO_SITE-PACKAGES>
 
-Replace ``<PATH_TO_SITE-PACKAGES>`` with the path to your ``site-packages`` directory. Save the file, and quit and reopen any instances of your terminal.
+Substitua ``<PATH_TO_SITE-PACKAGES>`` com o caminho so seu diretório ``site-packages`` que você conseguiu anteriormente com a função ``site.getsitepackages()``. Salve o arquivo, e feche e abra uma nova instância do seu terminal.
 
-On a Windows-based computer, you must follow the instructions shown in Section :num:`requirements-install-python-windows` to bring up the environment variables settings dialog. Add a ``PYTHONPATH`` variable with the value being set to your ``site-packages`` folder, which is typically ``C:\Python27\Lib\site-packages\``.
+Em um computador com Windows, você tem que seguir as instruções mostradas na Seção :num:`requirements-install-python-windows` para abrir a janela de configuração de variáveis de ambiente. Adicione uma variável ``PYTHONPATH`` com o valor a ser definido para a sua pasta ``site-packages``, que geralmente está em ``C:\Python27\Lib\site-packages\``.
 
-Using Setuptools and Pip
-************************
-Installing and setting up your development environment is a really important part of any project. While it is possible to install Python Packages such as Django separately, this can lead to numerous problems and hassles later on. For example, how would you share your setup with another developer? How would you set up the same environment on your new machine? How would you upgrade to the latest version of the package? Using a package manager removes much of the hassle involved in setting up and configuring your environment. It will also ensure that the package you install is the correct for the version of Python you are using, along with installing any other packages that are dependent upon the one you want to install.
+Usando Setuptools e Pip
+***********************
+Instalar e configurar seu ambiente de desenvolvimento é uma parte realmente importante de qualquer projeto. Embora seja possível instalar pacotes Python como o Django separadamente, isso pode levar a numerosos problemas e dificuldades mais tarde. Por exemplo, como você compartilharia sua configuração com outro desenvolvedor? Como você configuraria o mesmo ambiente em uma máquina nova? Como você atualizaria para a última versão do pacote? Usando um gerenciador de pacotes remove muitos dos problemas envolvidos em instalar e configurar seu ambiente. Ele também garantirá que os pacotes que você instala é correto para a versão do Python que você está utilizando, juntamente com a instalação de qualquer outro pacote que seja dependência de algum pacote que você queira instalar.
 
-In this book, we will be using *Pip*. Pip is a user-friendly wrapper over the *Setuptools* Python package manager. Because Pip depends on Setuptools, we are required to ensure that both are installed on your computer.
+Neste livro, nós estaremos usando o *Pip*. Pip é um gerenciador de pacotes amigável envolta do *Setuptools*. Por causa do Pip depender do Setuptools, somos obrigados a garantir que ambos estão instalados no seu computador.
 
-To start, we should download Setuptools from the `official Python package website <https://pypi.python.org/pypi/setuptools/1.1.6>`_. You can download the package in a compressed ``.tar.gz`` file. Using your favourite file extracting program, extract the files. They should all appear in a directory called ``setuptools-1.1.6`` - where ``1.1.6`` represents the Setuptools version number. From a terminal instance, you can then change into the directory and execute the script ``ez_setup.py`` as shown below.
+Para começar, nós devemos baixar o Setuptools do `site oficial de pacotes Python <https://pypi.python.org/pypi/setuptools/1.1.6>`_. Você pode baixar o pacote em um arquivo compactado ``tar.gz``. Usando seu programa favorito para extrair, extraia os arquivos. Todos eles devem aparecer em um diretório chamado ``setuptools-1.1.6`` - onde ``1.1.6`` representa o número da versão do Setuptools. A partir do terminal, você pode então entrar no diretório e executar o script ``ez_setup.py`` como mostrado abaixo.
 
 .. code-block:: guess
 	
 	$ cd setuptools-1.1.6
 	$ sudo python ez_setup.py
 
-In the example above, we also use ``sudo`` to allow the changes to become system-wide. The second command should install Setuptools for you. To verify that the installation was successful, you should be able to see output similar to that shown below.
+No exemplo acima, nós também usamos ``sudo`` para permitir que as mudanças sejam feitas em todo o sistema. O segundo comando deve instalar o Setuptools para você. Para verificar se a instalação foi um sucesso, você deve ser capaz de ver uma saída parecida com a mostrada abaixo.
 
 .. code-block:: guess
 	
 	Finished processing dependencies for setuptools==1.1.6
 
-Of course, ``1.1.6`` is substituted with the version of Setuptools you are installing. If this line can be seen, you can move onto installing Pip. This is a trivial process, and can be completed with one simple command. From your terminal instance, enter the following.
+Claro que, ``1.1.6`` é substituido com a versão do Setuptools que você está instalando. Se esta linha aparecer, você pode então instalar o pip. Esse é um processo trivial, e pode ser completado com um simples comando. A partir do terminal, entre com o seguinte comando.
 
 .. code-block:: guess
 	
 	$ sudo easy_install pip
 
-This command should download and install Pip, again with system-wide access. You should see the following output, verifying Pip has been successfully installed.
+Este comando deve baixar e instalar o Pip, novamente com acesso ao todo o sistema. Você deve ver a seguinte saída, verificando que o Pip foi instalado com sucesso.
 
 .. code-block:: guess
 	
 	Finished processing dependencies for pip
 
-Upon seeing this output, you should be able to launch Pip from your terminal. To do so, just type ``pip``. Instead of an unrecognised command error, you should be presented with a list of commands and switches that Pip accepts. If you see this, you're ready to move on!
+Após ver esta saída, você deve ser capaz de iniciar o Pip no seu terminal. Para fazer isso, apenas digite ``pip``. Ao invés de um erro de comando desconhecido, você deve ser apresentado ao uma lista de comandos e chaves que o Pip aceita. Se você ver isso, você está pronto para seguir em frente!
 
-.. note:: With Windows-based computers, follow the same basic process. You won't need to enter the ``sudo`` command, however.
+.. note:: Em computadores com Windows, siga os mesmos processos básicos. Entretanto, você não precisa entrar com o comando ``sudo``.
 
-Installing Django
+Instalando Django
 *****************
-Once the Python package manager Pip is successfully installed on your computer, installing Django is easy. Open a Command Prompt or terminal window, and issue the following command.
+Uma vez que o gerenciador de pacotes Pip está instalado com sucesso no seu computador, instalar Django é fácil. Abra uma janela do terminal, e execute o seguinte comando.
 
 .. code-block:: guess
 	
 	$ pip install -U django==1.7
 
-If you are using a UNIX-based operating system and receive complaints about insufficient permissions, you will need to run the command with elevated privileges using the ``sudo`` command. If this is the case, you must then run the following command instead.
+Se você está usando um sistema operacional baseado em UNIX e receber alertas sobre permissões insuficientes, você precisará rodar o comando com privilégios elevados usando o comando ``sudo``. Se for este o caso, você deve então rodar o seguinte comando no lugar.
 
 .. code-block:: guess
 	
 	$ sudo pip install -U django==1.7
 
-The package manager will download Django and install it in the correct location for you. Upon completion, Django should be successfully installed. Note, if you didn't include the ``==1.7``, then a different version of Django may be installed.
+O gerenciador de pacotes irá baixar o Django e instalar no lugar correto para você. Após a conclusão, Django deverá estar instalado com sucesso. Note, se você não incluir o ``==1.7``, então uma versão diferente do Djando pode ser instalada.
 
-Installing the Python Imaging Library
-*************************************
-During the course of building Rango, we will be uploading and handling images. This means we will need support from the `Pillow (Python Imaging Library) <https://pillow.readthedocs.org/en/latest/>`_. To install this package issue the following command.
+instalando o Python Imaging Library
+***********************************
+Durante o curso de construção do Rango, nós estaremos fazendo upload e manipulando imagens. Isto significa que nós precisaremos do apoio do `Pillow (Python Imaging Library) <https://pillow.readthedocs.org/en/latest/>`_. Para instalar este pacote, execute o seguinte comando.
 
 .. code-block:: guess
 	
 	$ pip install pillow
 
-Again, use ``sudo`` if required. 
+Novamente, use ``sudo`` se for preciso.
 
-
-Installing Other Python Packages
+Instalando outros pacotes Python
 ********************************
-It is worth noting that additional Python packages can be easily downloaded using the same manner. `The Python Package Index <https://pypi.python.org/pypi>`_ provides a listing of all the packages available through Pip.
+Vale a pena norta que pacotes Python adicionais podem ser facilmente baixados usando a mesma maneira. O `O índice de pacotes Python <https://pypi.python.org/pypi>`_ fornecem uma lista de todos os pacotes Python disponíveis pelo pip.
 
-To get a list of the packages installed, you can run the following command.
+Para obter uma lista dos pacotes instalados, você pode rodar o seguinte comando.
 
 .. code-block:: guess
 	
 	$ pip list
 
-Sharing your Package List
-*************************
-You can also get a list of the packages installed in a format that can be shared with other developers. To do this issue the following command.
+Compartilhando sua lista de pacotes
+***********************************
+Você também pode pegar uma lista de pacotes instalados em um formato que pode ser compartilhado com outros desenvolvedores. Para fazer isso, execute o seguinte comando.
 
 .. code-block:: guess
 	
 	$ pip freeze > requirements.txt
 
-If you examine ``requirements.txt`` using either the command ``more``, ``less`` or ``cat``, you will see the same information but in a slightly different format. The ``requirements.txt`` can then use to install the same setup by issuing the following command. This is incredibly useful for setting up your environment on another computer, for example.
+Se você examinar o ``requirements.txt`` usando o comando ``more``, ``less`` ou ``cat``, você verá a mesma informação mas em um formato ligeiramente diferente. Isso é incrivelmente útil para configurar seu ambiente ou outro computador, por exemplo.
 
-::
+.. code-block:: guess
 	
 	$ pip install -r requirements.txt
+
+Ambiente de desenvolvimento Integrado (IDE)
+-------------------------------------
+Embora não seja absolutamente necessário, um bom ambiente de desenvolvimento integrado (chamaremos de IDE) em Python pode ser muito útil durante seu processo de desenvolvimento.
 
 Integrated Development Environment
 ----------------------------------
