@@ -322,30 +322,24 @@ Se você examinar o ``requirements.txt`` usando o comando ``more``, ``less`` ou 
 
 Ambiente de desenvolvimento Integrado (IDE)
 -------------------------------------
-Embora não seja absolutamente necessário, um bom ambiente de desenvolvimento integrado (chamaremos de IDE) em Python pode ser muito útil durante seu processo de desenvolvimento.
+Embora não seja absolutamente necessário, um bom ambiente de desenvolvimento integrado (chamaremos de IDE) em Python pode ser muito útil durante seu processo de desenvolvimento. Existem vários, como o JetBrains da `PyCharm <http://www.jetbrains.com/pycharm/>`_ e o *PyDev* (um plugin da IDE `Eclipse <http://www.eclipse.org/downloads/>`_) destacam-se como os mais populares na escolha. A `Python Wiki <http://wiki.python.org.br//IdesPython>`_ fornece uma lista atualizada das IDEs Python.
 
-Integrated Development Environment
-----------------------------------
-While not absolutely necessary, a good Python-based integrated development environment (IDE) can be very helpful to you during the development process. Several exist, with perhaps JetBrains' `*PyCharm* <http://www.jetbrains.com/pycharm/>`_ and *PyDev* (a plugin of the `Eclipse IDE <http://www.eclipse.org/downloads/>`_) standing out as popular choices. The `Python Wiki <http://wiki.python.org/moin/IntegratedDevelopmentEnvironments>`_ provides an up-to-date list of Python IDEs.
+Pesquise qual dessas é melhor para você, e esteha ciente que alguns podem requerer que você compre uma licença. De preferẽncia, você irá querer selecionar uma IDE que suporte integração com Django. Tanto PyCharm quanto PyDev surportam integração com Django por padrão - embora você terá que apontar para a IDE para a versão do Python que você está usando.
 
-Research which one is right for you, and be aware that some may require you to purchase a licence. Ideally, you'll want to select an IDE that supports integration with Django. PyCharm and PyDev both support Django integration out of the box - though you will have to point the IDE to the version of Python that you are using.
+Ambientes Virtuais
+******************
+Nós estamos com quase tudo pronto para começar! No entanto, antes de nós continuarmos, é importante ressaltar que enquanto esta configuração está boa para iniciar, existem algumas desvantagens. E se você tiver outra aplicação Python que precise de uma versão diferente para rodar? Ou você queira trocar para uma nova versão do Django, mas quer continuar mantendo seu projeto Django 1.7?
 
+A solução para isso é usar `ambientes virtuais <http://www.arruda.blog.br/programacao/python/usando-virtualenvwrapper/>`_. Ambiente virtuais permitem que diferentes instalações do Python e seus pacotes relevantes existam em harmonia. Esta é geralmente a abordagem aceita para configurar uma instalação Python hoje em dia.
 
+Eles são fáceis de instalar, uma vez que você tenha pip instalado, e saiba o comando certo. Você precisa instalar um par de pacotes adicionais.
 
-Virtual Environments
-********************
-We're almost all set to go! However, before we continue, it's worth pointing out that while this setup is fine to begin with, there are some drawbacks. What if you had another Python application that requires a different version to run? Or you wanted to switch to the new version of Django, but still wanted to maintain your Django 1.7 project?
-
-The solution to this is to use `virtual environments <http://simononsoftware.com/virtualenv-tutorial/>`_. Virtual environments allow multiple installations of Python and their relevant packages to exist in harmony. This is the generally accepted approach to configuring a Python setup nowadays.  
-
-
-They are pretty easy to setup, once you have pip installed, and you know the right commands. You need to install a couple of additional packages.
-
-::
+.. code-block:: guess
 	
 	$ pip install virtualenv
 	$ pip install virtualenvwrapper
 	
+
 
 The first package provides you with the infrastructure to create a virtual environment.  See `a non-magical introduction to Pip and Virtualenv for Python Beginners <http://dabapps.com/blog/introduction-to-pip-and-virtualenv-python/>`_ by Jamie Matthews for details about using virtualenv. However, using just *virtualenv* alone is rather complex. The second package provides a wrapper to the functionality in the virtualenv package and makes life a lot easier. 
 
