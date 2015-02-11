@@ -116,7 +116,7 @@ Todos os sistemas operacionais baseados em UNIX vêm com uma série de comandos 
 .. _installing-software:
 
 Instalando os Softwares
----------------------
+-----------------------
 Agora que você tem um bom conhecimento de como interagir com o terminal, você pode começar a instalar os softwares requeridos para este tutorial.
 
 Instalando Python
@@ -339,63 +339,54 @@ Eles são fáceis de instalar, uma vez que você tenha pip instalado, e saiba o 
 	$ pip install virtualenv
 	$ pip install virtualenvwrapper
 	
+O primeiro pacote fornece a infraestrutura para criar um ambiente virtual. Veja `uma introduçãoao Pip e Virtualenv para iniciantes Python <http://dabapps.com/blog/introduction-to-pip-and-virtualenv-python/>`_ por Jamie Matthews, para mais detalhes sobre o uso de virtualenv. No entanto, usando apenas o *virtualenv* é bastante complicado. O segundo pacote fornece um container (wrapper) para as funcionalidades no virtualenv, tornando a vida bem mais fácil.
 
+Se você está usando algum sistema baseado no UNIX, para usar este wrapper você precisa chamar o seguinte script shell na sua linha de comando:
 
-The first package provides you with the infrastructure to create a virtual environment.  See `a non-magical introduction to Pip and Virtualenv for Python Beginners <http://dabapps.com/blog/introduction-to-pip-and-virtualenv-python/>`_ by Jamie Matthews for details about using virtualenv. However, using just *virtualenv* alone is rather complex. The second package provides a wrapper to the functionality in the virtualenv package and makes life a lot easier. 
-
-
-If you are using a linux/unix based OS, then to use the wrapper you need to call the following shell script from your command line:
-::
+.. code-block:: guess
 
 	$ source virtualenvwrapper.sh
 
-It is a good idea to add this to your bash/profile script. So you dont have to run it each and every time you want to use virtualenvironments.
+É uma boa ideia adicionar isso ao seu script bash do perfil. Então você não terá que rodar isso cada vez que você quiser usar os ambientes virtuais.
 
-However, if you are using windows, then install the `virtualenvwrapper-win <https://pypi.python.org/pypi/virtualenvwrapper-win>`_ package:
+No entanto, se você está usando Windows, então instale o pacote `virtualenvwrapper-win <https://pypi.python.org/pypi/virtualenvwrapper-win>`_:
 
-
-::
+.. code-block:: guess
 
 	$ pip install virtualenvwrapper-win
 	
 
-	
-Now you should be all set to create a virtual environment:
+Agora você deve estar com tudo pronto para criar um ambiente virtual:
 
-::
+.. code-block:: guess
 
 	$ mkvirtualenv rango
 
-You can list the virtual environments created with ``lsvirtualenv'', and you can activate a virtual environment as follows:
+Você pode listar os ambientes virtuais criados com ``lsvirtualenv``, e você pode ativar um ambiente virtual da seguinte forma:
 
-::
+.. code-block:: guess
 
 	$ workon rango
 	(rango)$
-	
-Your prompt with change and the current virtual environment will be displayed, i.e. rango. Now within this environment you will be able to install all the packages you like, without interferring with your standard or other environements. Try ``pip list'' to see you dont have Django or Pillow installed in your virtual environment. You can now install them with pip so that they exist in your virtual environment.
 
-Later on when we go to deploy the application, we will go through a similar process see Chapter :ref:`Deploying your Application<virtual-environment>` and set up a virtual environment on PythonAnywhere.
+Seu prompt irá mudar mostrando o ambiente virtual atual, como no exemplo anterior, rango. Agora dentro deste ambiente você será capaz de instalar todos os pacotes que você quiser, sem interferir com seu ambiente padrão ou qualquer outro criado. Tente ``pip list`` para ver que você não tem Django ou o Pillow instalado no seu ambiente virtual. Você pode agora instalá-los com o pip, e então eles só existirão no seu ambiente virtual.
 
-Code Repository
-***************
-We should also point out that when you develop code, you should always house your code within a version-controlled repository such as `SVN <http://subversion.tigris.org/>`_ or `GIT <http://git-scm.com/>`_. We won't be going through this right now so that we can get stuck into developing an application in Django. We have however provided a :ref:`crash course on GIT <git-crash-course>`. We highly recommend that you set up a GIT repository for your own projects. Doing so could save you from disaster.
+Mais tarde, quando nós formos fazer deploy da aplicação, nós iremos passar por um processo similar. Veja o Capítulo :ref:`Fazendo Deploy da sua aplicação<virtual-environment>` e configure um ambiente virtual no PythonAnywhere.
 
+Repositório de Códigos
+**********************
+Devemos também ressaltar que quando você está desenvolvendo, você deve sempre abrigar seu código dentro de um repositório controlador de versão, tal como o `SVN <http://subversion.tigris.org/>`_ ou o `GIT <http://git-scm.com/>`_. Nós não passaremos por esse assunto agora, para que possamos estar focados em desenvolver a aplicação em Django. No entanto, nós fornecemos um :ref:`Curso Intensivo sobre GIT <git-crash-course>`. Nós recomendamos fortemente que você configure um repositório GIT para seus próprios projetos. Fazendo isso você pode acabar se salvando de umd desastre.
 
+Exercícios
+----------
+Para ficar confortável com seu ambiente, tente realizar os seguintes exercícios.
 
-
-Exercises
----------
-To get comfortable with your environment, try out the following exercises.
-
-* Install Python 2.7.5+ and Pip.
-* Play around with your CLI and create a directory called ``code``, which we use to create our projects in.
-* Install the Django and Pillow packages.
-* Setup your Virtual Environment
-* Setup your account on GitHub
-* Download and setup a Integrated Development Environemnt (like PyCharm)
-* We have made the code for the book and application that you build available on GitHub, see `Tango With Django Book <https://github.com/leifos/tango_with_django_book>`_  and  `Rango Application <https://github.com/leifos/tango_with_django>`_ .
-	* If you spot any errors or problem with the book, you can make a change request! 
-	* If you have any problems with the exercises, you can check out the repository and see how we completed them.
-
-
+* Instalar Python 2.7.5+ e Pip.
+* Brinque com seu terminal/linha de comando (CLI) e crie um diretório chamado ``code``, que nós usaremos para criar nosso projeto nele.
+* Instalar os pacotes do Django e Pillow.
+* Configurar seu ambiente virtual
+* Configurar sua conta no GitHub
+* Baixar e configurar um Ambiente de Desenvolvimento Integrado (IDE) (como o PyCharm)
+* Nós fizemos o código para o livro e a aplicação que você irá construir e disponibilizamos no GitHub, para ver acesse `Tango With Django Book <https://github.com/leifos/tango_with_django_book>`_ e `Rango Application <https://github.com/leifos/tango_with_django>`_ .
+	* Se você notar qualquer erro ou problemas com o livro, você pode fazer uma mudança e submetê-la!
+	* Se você tiver qualquer problema com os exercícios, você pode checar o repositório e ver como nós completamos eles.
