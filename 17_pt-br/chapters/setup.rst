@@ -2,65 +2,65 @@
 
 .. _django-basics:
 
-Django Basics
+Django Básico
 =============
-Let's get started with Django! In this chapter, we'll be giving you an overview of the how to get started with Django. You'll be setting up a new project and a new web application. By the end of this chapter, you will have a simple Django-power webpage up and running!
+Vamos começar com Django! Nesse capítulo, nós estaremos dando a você uma visão geral de como começar com Django. Você estará configurando um novo projeto e uma nova aplicação web. Ao fim desse capítulo, você terá uma página web simples feita com Django e rodando!
 
-Testing your Setup
-------------------
-Let's start by checking that your Python and Django installations are installed correctly, and are at the correct version for this tutorial. To do this, open a new terminal instance and issue the following command.
+Testando sua instalação
+-----------------------
+Vamos começar checando se sua instalação do Python e Django estão instaladas corretamente, e estão na versão correta para esse tutorial. Para fazer isso, abra uma nova janela do terminal e execute o seguinte comando.
 
-::
+.. code-block:: guess
 	
 	$ python --version
 	2.7.5
 
-This starts your Python interpreter and executes the code within the string provided as part of the ``-c`` switch. You should see the version of your Python installation printed as the output to the process. If the version displayed is anything but ``2.7.5``, you will need to go back to Section :ref:`installing-software` and verify you have completed all the relevant steps for your operating system.
+Isso inicia seu interpretador Python e executa o código dentro da string fornecida como parte da chave ``-c``. Você deverá ver a versão da sua instalação Python impressa como a saída para o processo. Se a versão mostrada é qualquer outra coisa menos ``2.7.5``, você precisará voltar para a Seção :ref:`installing-software` e verificar se você completou todos os passos relevantes para o seu sistema operacional.
 
-After verifying your Python installation, check your Django installation by issuing the following command.
+Depois de verificar sua instalação Python, cheque sua instalação Django executando o seguinte comando.and.
 
-::
+.. code-block:: guess
 	
 	$ python -c "import django; print(django.get_version())"
 	1.7
 
-The command again executes the code within the string provided as part of the ``-c`` switch. After importing Django, you should see ``1.7`` printed underneath. If you see a different set of numbers or are greeted with a Python ``ImportError``, go back to Section :ref:`installing-software` or consult the `Django Documentation on Installing Django <https://docs.djangoproject.com/en/1.7/topics/install/>`_ for more information. If you find that you have got a different version of Django, it is possible that you will come across problems at some point. It's definitely worth making sure you have Django 1.7 installed. 
+O comando novamente executa o código dentro da string fornecida como parte da chave ``-c``. Depois de importar o Django, você deverá ver ``1.7`` mostrado logo abaixo. Se você ver um conjunto diferente de números ou recebe um erro Python ``ImportError``, volte para a Seção :ref:`installing-software` ou consulte a `A Documentação sobre instalação do DJango <https://docs.djangoproject.com/en/1.7/topics/install/>`_ para mais informações. Se você achar que você tem uma versão diferente de Django, é possível que você vai se deparar com problemas em algum ponto. Definitivamente vale a pena ter certeza que você tenha o Django 1.7 instalado.
 
-Creating your Django Project
-----------------------------
-To create a new Django Project, go to your ``code`` directory (i.e. your ``<workspace>`` directory), and issue the following command:
+Criando seu Projeto Django
+--------------------------
+Para criar um novo projeto Django, vá para o seu diretório ``code`` (isto é, seu diretório de trabalho), e execute o seguinte comando:
 
 ``$ django-admin.py startproject tango_with_django_project``
 
-.. note:: On Windows you may have to use the full path to the django-admin.py script. i.e. ``python c:\python27\scripts\django-admin.py startproject tango_with_django_project`` as suggested on `StackOverflow <http://stackoverflow.com/questions/8112630/cant-create-django-project-using-command-prompt>`_.
+.. note:: No Windows você pode ter que usar o caminho completo para o script django-admin.py. Isto é, ``python c:\python27\scripts\django-admin.py startproject tango_with_django_project`` como sugerido no `StackOverflow <http://stackoverflow.com/questions/8112630/cant-create-django-project-using-command-prompt>`_.
 
-This command will invoke the ``django-admin.py`` script, which will set up a new Django project called ``tango_with_django_project`` for you. Typically, we append ``_project`` to the end of our Django project directories so we know exactly what they contain - but the naming convention is entirely up to you.
+Esse comando invocará o script ``django-admin.py``, que irá configurar um novo projeto Django chamado `` tango_with_django_project`` para você. Geralmente, nós adicionamos ``_project`` ao fin do diretório do nosso projeto Django, por isso nós sabem exatamente o que eles contêm - mas a convenção de nomenclatura é inteiramente com você.
 
-You'll now notice within your workspace is a directory set to the name of your new project, ``tango_with_django_project``. Within this newly created directory, you should see two items:
+Agora você notará que dentro do seu diretório de trabalho está um diretório definido com o nome do seu novo projeto ``tango_with_django_project``. Dentro desse novo diretório criado, você deverá ver 2 itens:
 
-* another directory with the same name as your project, ``tango_with_django_project``; and
-* a Python script called ``manage.py``.
+* outro diretório com o mesmo nome que seu projeto ``tango_with_django``; e
+* um script Python chamado ``manage.py``.
 
-For the purposes of this tutorial, we call this nested directory the *project configuration directory*. Within this directory, you will find four Python scripts. We will discuss this scripts in detail later on, but for now you should see:
+Para os propósitos desse tutorial, nós chamaremos esse diretório aninhado de *diretório de configuração do projeto*. Dentro desse diretório, você encontrará 4 scripts Python. Nós discutiremos esses scripts em detalhes depois, mas por agora você deverá ver:
 
-* ``__init__.py``, a blank Python script whose presence indicates to the Python interpreter that the directory is a Python package;
-* ``settings.py``, the place to store all of your Django project's settings;
-* ``urls.py``, a Python script to store URL patterns for your project; and
-* ``wsgi.py``, a Python script used to help run your development server and deploy your project to a production environment.
+* ``__init__.py``, um script Python em branco, cuja presença indica para o interpretador Python que o diretório é um pacote Python;
+* ``settings.py``. o lugar para armazenar todas as suas configurações do seu projeto Django;
+* ``urls.py``,  um script Python para armazenar padrões URL para seu projeto; e
+* ``wsgi.py``, um script Python usado para ajudar a rodar seu servidor de desenvolvimento e deploy do seu projeto para um ambiente de produção.
 
-.. note:: The project configuration directory has been created with new Django projects since version 1.4. Having two directories with the same name may seem quite a bit odd, but the change was made to separate out project-related components from its individual applications.
+.. note:: O diretório de configuração do projeto foi criado com novos projetos Django desde a versão 1.4. Tendo 2 diretórios com o mesmo nome pode parece um pouco estranho, mas a mudança foi feita para separar componentes relacionados ao projeto de suas aplicações individuais.
 
-In the project directory, you will see there is a file called ``manage.py``. We will be calling this script time and time again as we develop our project, as it provides you with a series of commands you can run to maintain your Django project. For example, ``manage.py`` allows you to run the built-in Django development server to test your work and run database commands. You'll be using this script a lot throughout the development cycle.
+No diretório do projeto, você verá que existe um arquivo chamado ``manage.py``. Nós estaremos chamando esse script vez após vez enquanto desenvolvemos nosso projeto, pois fornece para você uma série de comandos que você pode rodar para manter seu projeto Django. Por exemplo, ``manage.py`` permite que você rode um sistema de desenvolvimento embutido no Django para testar seu trabalho, e rodar comandos de banco de dados. Você estará usando esse script muitas vezes durante o ciclo de desenvolvimento.
 
-.. note:: See the Django documentation for more details about the `Admin and Manage scripts <https://docs.djangoproject.com/en/1.7/ref/django-admin/#django-admin-py-and-manage-py>`_.
+.. note:: Veja a documentação Django para mais detalhes sobre os `Scripts Admin e Manage <https://docs.djangoproject.com/en/1.7/ref/django-admin/#django-admin-py-and-manage-py>`_.
 
-You can try using the ``manage.py`` script now, by issuing the following command.
+Você pode tentar usar o script ``manage.py`` agora, ao executar o seguinte comando:
 
 ``$ python manage.py runserver``
 
-Executing this command will instruct Django to initiate its lightweight development server. You should see the output in your terminal similar to the example shown below:
+Executando esse comando irá instruir o Django iniciar seu servidor de desenvolvimento. Você deverá ver a śaída no seu terminal parecida ao do exemplo mostrado abaixo:
 
-::
+.. code-block:: guess
 	
 	$ python manage.py runserver
 
@@ -74,9 +74,9 @@ Executing this command will instruct Django to initiate its lightweight developm
 	Starting development server at http://127.0.0.1:8000/
 	Quit the server with CONTROL-C.
 	
+O comando ``migrate`` olha nas configurações do INSTALLED_APPS e cria as tabelas necessárias no banco de dados de acordo com as configurações do banco que estão no seu arquivo ``tango_with_django_project/settings.py``, e as migrações de banco de dados das apps fornecidas. Você verá uma mensagem para cada migração aplicada. Se você está curioso, rode o comando no terminal para o seu banco de dados e digite \dt (para PostgreSQL), SHOW TABLES (para MySQL), ou .schema (para SQLite) para mostrar as tabelas criadas pelo Django.
 	
-	
-::
+.. code-block:: guess
 
 	$ python manage.py migrate
 	
@@ -87,60 +87,54 @@ Executing this command will instruct Django to initiate its lightweight developm
 	  Applying auth.0001_initial... OK
 	  Applying admin.0001_initial... OK
 	  Applying sessions.0001_initial... OK
-	
-	
-#TODO(leifos): add description of migrate command: from django tutorial: The migrate command looks at the INSTALLED_APPS setting and creates any necessary database tables according to the database settings in your mysite/settings.py file and the database migrations shipped with the app (we’ll cover those later). You’ll see a message for each migration it applies. If you’re interested, run the command-line client for your database and type \dt (PostgreSQL), SHOW TABLES; (MySQL), or .schema (SQLite) to display the tables Django created.
-	
-	
-	
 
-Now open up your favourite web browser and enter the URL http://127.0.0.1:8000/ [#f1]_. You should see a webpage similar to the one shown in Figure :num:`fig-django-dev-server-firstrun`. 
+
+Agora rode novamente o comando para iniciar o servidor de desenvolvimento e abra seu navegador favorito e entre com a URL http://127.0.0.1:8000/ [#f1]_. Você deverá ver uma página web parecida com essa mostrada na Figura :num:`fig-django-dev-server-firstrun`. 
 
 .. _fig-django-dev-server-firstrun:
 
 .. figure:: ../images/django-dev-server-firstrun.png
 	:figclass: align-center
 	
-	A screenshot of the initial Django page you will see when running the development server for the first time.
+	Uma captura de tela da página inicial do Django que você verá quando rodar o servidor de desenvolvimento pela primeira vez.
 
-You can stop the development server at anytime by pushing ``CTRL + C`` in your terminal window. If you wish to run the development server on a different port, or allow users from other machines to access it, you can do so by supplying optional arguments. Consider the following command:
+Você pode interromper o servidor de desenvolvimento em qualquer momento ao apertar ``CTRL + C`` no seu terminal. Se você desejar rodar o servidor em uma porta diferente, ou permitir usuários de outras máquinas acessá-lo, você pode fazer isso ao fornecer um argumentto opcional. Considere o seguinte comando:
 
 ``$ python manage.py runserver <your_machines_ip_address>:5555``
 
-Executing this command will force the development server to respond to incoming requests on TCP port 5555. You will need to replace ``<your_machines_ip_address>`` with your computer's IP address. 
+Executar este comando forçará o servidor de desenvolvimento responder a requisições na porta TCP 5555. Você precisará substituir ``<your_machines_ip_address>`` com o indereço IP do seu computador.
 
-When setting ports, it is unlikely that you will be able to use TCP port 80 as this is traditionally reserved for HTTP traffic. Also, any port below 1024 is considered to be `privileged <http://www.w3.org/Daemon/User/Installation/PrivilegedPorts.html>`_ by your operating system.
+Quando setar portas, é improável que você será capaz de usar a porta TCP 80, como essa é tradicionalmente reservada para trafico HTTP. Além disso, qualquer porta abaixo de 1024 é considerada serem `privilegiadas <http://www.w3.org/Daemon/User/Installation/PrivilegedPorts.html>`_ pelo seu sistema operacional.
 
-While you won't be using the lightweight development server to deploy your application, sometimes it is nice to be able to demo your application on a computer of a colleague. Running the server with your machine's IP address will enable others to enter in ``http://<your_machines_ip_address>:<port>/`` and view your web application. Of course, this will depend on how your network is configured. There may be proxy servers or firewalls in the way which would need to be configured before this would work. Check with the administrator of the network you are using if you can't view the development server remotely.
+Enquanto você não estiver usando o servidor de desenvolvimento para subir sua aplicação, algumas vezes é bom ser capaz de mostrar sua aplicação em um computador de um colega. Rodando o servidor com o endereço IP da sua máquina habilitará outros de entrarem em ``http://<your_machines_ip_address>:<port>/`` e ver sua aplicação web. Claro, isso dependerá de como sua rede está configurada. Pode haver servidores proxy ou firewalls no caminho que precisariam ser configurados antes disso funcionar. Cheque com o administrador da rede que você está usando se você não consegue ver o servidor de desenvolvimento remotamente.
 
-.. note:: The ``django-admin.py`` and ``manage.py`` scripts provides a lot of useful, time-saving functionality for you. ``django-admin.py`` allows you to start new projects and apps, along with other commands. Within your project directory, ``manage.py`` allows you to perform administrative tasks within the scope of your project only. Simply execute the relevant script name without any arguments to see what you can do with each. The `official Django documentation provides a detailed list and explanation of each possible command <https://docs.djangoproject.com/en/1.7/ref/django-admin/>`_ you can supply for both scripts.
+.. note:: Os scripts The ``django-admin.py`` e ``manage.py`` fornecem muitas utilidades, funcionalidades que economizam o tempo para você. ``django-admin.py`` permite que você inicie novos projetos e apps, junto com outros comandos. Dentro do diretório do seu projeto, ``manage.py`` permite que você execute tarefas administrativas dentro apenas do escopo do seu projeto. Basta executar o script pertinente sem qualquer argumento para uma o que você pode fazer com cada um. A `documentação oficial do Django fornece uma lista detalhada e a explicação de cada comando possível <https://docs.djangoproject.com/en/1.7/ref/django-admin/>`_ que você pode fornecer para ambos os scripts.
 
-If you are using version control, now may be a good time to commit the changes you have made to your workspace. Refer to the :ref:`crash course on GIT <git-crash-course>` if you can't remember the commands and steps involved in doing this.
+Se você está usando controle de versão, agora pode ser uma boa hora de commitar as mudanças que você fez no seu espaço de trabalho. Consulte o :ref:`Curso Intensivo sobre GIT <git-crash-course>` se você não conseguir lembrar os comandos e passos envolvidos em fazer isso.
 
-Creating a Django Application
------------------------------
-A Django project is a collection of *configurations* and *applications* that together make up a given web application or website. One of the intended outcomes of using this approach is to promote good software engineering practices. By developing a small series of applications, the idea is that you can theoretically drop an existing application into a different Django project and have it working with minimal effort. Why reinvent the wheel if it's already there? [#f2]_
+Criando uma aplicação Django
+----------------------------
+Um projeto Django é uma coleção de *configurações* e *aplicações* que juntos compõem uma determinada aplicação web ou website. Um dos resultados esperados do uso dessa abordagem é promover boas práticas de engenharia de software. Ao desenvolver uma série de aplicações pequenas, a ideia é que você possa teoricamente soltar uma aplicação já existente dentro de um projeto django diferente, e ter ele funcionando com um mínimo de esforço. Porque reinventar a roda se ela já existe? [#f2]_
 
-A Django application exists to perform a particular task. You need to create specific applications that are responsible for providing your site with particular kinds of functionality. For example, we could imagine that a project might consist of several applications including a polling app, a registration app, and a specific content related app. In another project, we may wish to re-use the polling and registration apps and use them with to dispatch different content. There are many Django applications you can `download <https://code.djangoproject.com/wiki/DjangoResources#Djangoapplicationcomponents>`_ and use in your projects. Since we are getting started, we'll kick off by walking through how to create your own application.
+Uma aplicação django existe para executar uma tarefa particular. Você precisa criar aplicações específicas que são responsáveis por fornecer seu site com tipos de funcinalidade particulares. Por exemplo, nós poderiamos imaginar que um projeto pode consistir de várias aplicações incluindo uma aplicação de enquete, uma aplicação de registro e uma aplicativo de conteúdo específico relacionado. Em outro projeto, nós podemos desejar reusar os aplicativos de registro e enquete e usá-los para despachar conteúdo diferente. Existem muitas aplicações Django que você pode `baixar <https://code.djangoproject.com/wiki/DjangoResources#Djangoapplicationcomponents>`_ e usar em seus projetos. Uma vez que estamos começando, nós daremos indo devagar, indo através de como criar sua própria aplicação.
 
-To start, create a new application called *Rango*. From within your Django project directory (e.g. ``<workspace>/tango_with_django_project``), run the following command.
+Para iniciar, crie uma nova aplicação chamada *Rango*. A partir do diretório onde está seu projeto Django (isto é, ``<workspace>/tango_with_django_project``), rode o seguinte comando:
 
-::
+.. code-block:: guess
 	
 	$ python manage.py startapp rango
 
-The ``startapp`` command creates a new directory within your project's root. Unsurprisingly, this directory is called ``rango`` - and contained within it are another five Python scripts:
+O comando ``startapp`` cria um novo diretório dentro da raíz do seu projeto. Não é novidade que, esse diretório é chamado ``rango`` - e dentro contêm outros 5 scripts Python:
 
-- another ``__init__.py``, serving the exact same purpose as discussed previously;
-- models.py, a place to store your application's data models - where you specify the entities and relationships between data;
-- tests.py, where you can store a series of functions to test your application's code; and
-- views.py, where you can store a series of functions that take a clients's requests and return responses.
-- admin.py, where you can register your models so that you can benefit from some Django machinery which creates an admin interface for you (see #TODO(leifos):add link to admin chapter)
+- outro ``__init__.py``, servindo para o mesmo proprósito que discutimos anteriormente;
+- models.py, um lugar para armazenar os modelos de dados da sua aplcação - onde você especifica as entidades e relacionamentos entre os dados;
+- tests.py, onde você pode armazenar uma série de funcões para testar o código da sua aplicação; e
+- views.py, onde você pode armazenar uma série de funções que pegam uma requisição (request) do cliente e retorna uma resposta (response).
+- admin.py, onde você pode registrar seus modelos para que você possa se beneficiar de algumas máquinarias do Django que criam uma interface admin para você.
 
+``views.py`` e ``models.py`` são 2 arquivos que você usará em qualquer aplicação, e forma parte do arquitetura principal do padrão de projeto empregado pelo Django, isto é, o padrão *Model-View-Template*. Você conferir a `documentação oficial do Django <https://docs.djangoproject.com/en/1.7/intro/overview/>`_ para ver como modelos, views e templates se relacionam em mais detalhes.
 
-``views.py`` and ``models.py`` are the two files you will use for any given application, and form part of the main architectural design pattern employed by Django, i.e. the *Model-View-Template* pattern. You can check out `the official Django documentation <https://docs.djangoproject.com/en/1.7/intro/overview/>`_ to see how models, views and templates relate to each other in more detail.
-
-Before you can get started with creating your own models and views, you must first tell your Django project about your new application's existence. To do this, you need to modify the ``settings.py`` file, contained within your project's configuration directory. Open the file and find the ``INSTALLED_APPS`` tuple. Add the ``rango`` application to the end of the tuple, which should then look like the following example.
+Antes que você possa começar a criar seus próprios modelos e views, você deve primeiro falar para o seu projeto Django sobre a existência de sua nova aplicação. Para fazer isso, você precisa modificar o arquivo ``settings.py``, que está dentro do diretório de configuração do seu projeto. Abra o arquivo e procura a tupla ``INSTALLED_APPS``. Adicione a aplicação ``rango`` ao final da tupla, que deverá então parecer com o seguinte exemplo:
 
 .. code-block:: python
 
@@ -154,15 +148,15 @@ Before you can get started with creating your own models and views, you must fir
 	    'rango',
 	)
 
-Verify that Django picked up your new application by running the development server again. If you can start the server without errors, your application was picked up and you will be ready to proceed to the next step.
+Verifique se o Django pegou sua nova aplicação ao rodar o servidor de desenvolvimento novamente. Se você puder iniciar o servidor sem erros, sua aplicação foi pega e você estará pronto para proceder para o próximo passo.
 
-Creating a View
----------------
-With our Rango application created, let's now create a simple view. For our first view, let's just send some simple text back to the client - we won't concern ourselves about using models or templates just yet.
+Criando uma View
+----------------
+Com nossa aplicação Rango criada, vamos agora criar uma simples view. Para nossa primeira view, vamos apenas enviar um simples texto de volta para o cliente - nós não iremos nos preocupar sobre usar modelos ou templates por enquanto.
 
-In your favourite IDE, open the file ``views.py``, located within your newly created ``rango`` application directory. Remove the comment ``# Create your views here.`` so that you now have a blank file.
+Na sua IDE favorita, abra o arquivo ``views.py``, localizada dentro do diretório da sua aplicação ``rango`` criada mais cedo. Remova o comentário ``# Create your views here.`` para que agora você tenha um arquivo em branco.
 
-You can now add in the following code.
+Você pode adicionar o seguinte código:
 
 .. code-block:: python
 
@@ -171,18 +165,19 @@ You can now add in the following code.
 	def index(request):
 	    return HttpResponse("Rango says hey there world!")
 
-Breaking down the three lines of code, we observe the following points about creating this simple view.
 
-* We first import the `HttpResponse <https://docs.djangoproject.com/en/1.7/ref/request-response/#django.http.HttpResponse>`_ object from the ``django.http`` module.
-* Each view exists within the ``views.py`` file as a series of individual functions. In this instance, we only created one view - called ``index``.
-* Each view takes in at least one argument - a `HttpRequest <https://docs.djangoproject.com/en/1.7/ref/request-response/#django.http.HttpRequest>`_ object, which also lives in the ``django.http`` module.  Convention dictates that this is named ``request``, but you can rename this to whatever you want if you so desire.
-* Each view must return a HttpResponse object. A simple HttpResponse object takes a string parameter representing the content of the page we wish to send to the client requesting the view.
+Quebrando as 3 linhas de código, nós observamos os seguintes pontos ao criar essa simples view.
 
-With the view created, you're only part of the way to allowing a user to access it. For a user to see your view, you must map a `Uniform Resources Locator (URL) <http://en.wikipedia.org/wiki/Uniform_resource_locator>`_ to the view.
+* Nós primeiro importamos o objeto `HttpResponse <https://docs.djangoproject.com/en/1.7/ref/request-response/#django.http.HttpResponse>`_ a partir do módulo ``django.http``.
+* Cada view existe dentro do arquivo ``views.py`` como uma série de funções individuais. Nessa instância, nós apenas criamos uma view - chamada ``index``.
+* Cada view toma pelo menos um argumento - um objeto `HttpRequest <https://docs.djangoproject.com/en/1.7/ref/request-response/#django.http.HttpRequest>`_, que também se encontra no módulo ``django.http``. Por convenção, determina-se que esse argumento seja nomeado como ``request``, mas você pode renomear para o que você desejar.
+* Cada view deve retornar um objeto HttpResponse. Um simples objeto HttpResponse recebe uma string como parâmetro, representando o conteúdo da página que nós desejamos enviar para o cliente requisitando aquela view.
 
-Mapping URLs
-------------
-Within the ``rango`` application directory, we now need to create a new file called ``urls.py``. The contents of the file will allow you to map URLs for your application (e.g. ``http://www.tangowithdjango.com/rango/``) to specific views. Check out the simple ``urls.py`` file below.
+Com a view criada, você está em uma parte do caminho para permitir um usuário de acessá-la. Para um usuário ver sua view, você deve mapear um `Localizador Uniforme de Recursos (URL) <http://pt.wikipedia.org/wiki/URL>`_ para a view.
+
+Mapeando URLs
+-------------
+Dentro do diretório da sua aplicação ``rango``, você precisa agora criar um novo arquivo chamado ``urls.py``. O conteúdo do arquivo permitirá você mapear URLs da sua aplicação (por exemplo, ``http://www.tangowithdjango.com/rango/``) para views específica para aquela URL. Confira o simples arquivo URL abaixo:
 
 .. code-block:: python
 
@@ -192,19 +187,19 @@ Within the ``rango`` application directory, we now need to create a new file cal
 	urlpatterns = patterns('',
 		url(r'^$', views.index, name='index'))
 
-This code imports the relevant Django machinery that we use to create URL mappings. Importing the ``views`` module from ``rango`` also provides us with access to our simple view implemented previously, allowing us to reference the view in the URL mapping we will create.
+Esse código importa o maquinário Django pertinente que nós usaremos para criar o mapeamento de URL. Importando o módulo ``views`` do ``rango`` também nos fornece acesso para a nossa simples view implementada anteriormente, permitindo-nos referenciar a view no mapeamento de URL que nós criaremos.
 
-To create our mappings, we use a `tuple <http://en.wikipedia.org/wiki/Tuple>`_. For Django to pick your mappings up, this tuple *must* be called ``urlpatterns``. The ``urlpatterns`` tuple contains a series of calls to the ``django.conf.urls.url()`` function, with each call handling a unique mapping. In the code example above, we only use ``url()`` once, so we have therefore defined only one URL mapping. The first parameter we provide to the ``django.conf.urls.url()`` function is the regular expression ``^$``, which matches to an empty string. Any URL supplied by the user that matches this pattern means that the view ``views.index()`` would be invoked by Django. The view would be passed a ``HttpRequest`` object as a parameter, containing information about the user's request to the server. We also make use of the optional parameter to the ``url()`` function, ``name``, using the string ``'index'`` as the associated value.
+Para criar nosso mapeamento, nós usamos uma `tupla <http://en.wikipedia.org/wiki/Tuple>`_. Para o Django pegar seus mapeamentos, essa tupla *deve* ser chamada ``urlpatterns``. A tupla ``urlpatterns`` contém uma série de chamadas para a função ``django.conf.urls.url()``, com cada chamada manipulando um único mapeamento. No código de exemplo acima, nós usamos apenas ``url()`` uma vez, por isso temos definido apenas um mapeamento de URL. O primeiro parâmetro que nós fornecemos para a função ``django.conf.urls.url()`` é a expressão regular ``r'^$'``, que combina com uma string vazia. Qualquer URL fornecida pelo usuário que combine com este padrão, significa que a view ``views.index`` deve ser invocada pelo Django. Para a view deve ser passado um objeto ``HttpRequest`` como parâmetro, contendo informações sobre a requisição do usuário para o servidor. Nós também fazemos uso de um parâmetro opcional para a função ``url()``, ``name``, usando a string ``index`` como o valor associado.
 
-.. note:: You might be thinking that matching a blank URL is pretty pointless - what use would it serve? When the URL pattern matching takes place, only a portion of the original URL string is considered. This is because our Django project will first process the original URL string (i.e. ``http://www.tangowithdjango.com/rango/``). Once this has been processed, it is removed, with the remained being passed for pattern matching. In this instance, there would be nothing left - so an empty string would match!
+.. note:: Você pode estar pensando que o combinar uma URL em branco não tem muito sentido - para que serviria? Quando o padrão de combinação acontece, apenas uma porção da string da URL original é considerada. Isso é porque nosso projeto Django irá primeiro processar a string original da URL (isto é, ``http://www.tangowithdjango.com/rango/``). Uma vez que isso foi processado, ela é removida, com o restante sendo passado para o padrão de combinação. Neste exemplo, não haveria nada - assim uma string vazia deveria combinar!
 
-.. note:: The ``name`` parameter is optional to the ``django.conf.urls.url()`` function. This is provided by Django to allow you to distinguish one mapping from another. It is entirely plausible that two separate URL mappings expressions could end calling the same view. ``name`` allows you to differentiate between them - something which is useful for *reverse URL matching.* Check out `the Official Django documentation on this topic <https://docs.djangoproject.com/en/1.7/topics/http/urls/#naming-url-patterns>`_ for more information.
+.. note:: O parâmetro ``name`` é opcional para a função ``django.conf.urls.url()``. Isso é fornecido pelo Django para permitir você a distinguir um mapeamento de outro. É inteiramente plausível que 2 expressões de mapeamentos separados de URL possam acabar chamando a mesma view. ``name`` permite você diferenciar entre elas - algo que é útil para *combinação reversa de URL*. Confira `a documentação oficial do Django neste tópico <https://docs.djangoproject.com/en/1.7/topics/http/urls/#naming-url-patterns>`_ para mais informações.
 
-You may have seen that within your project configuration directory a ``urls.py`` file already exists. Why make another? Technically, you can put *all* the URLs for your project's applications within this file. However, this is considered bad practice as it increases coupling on your individual applications. A separate ``urls.py`` file for each application allows you to set URLs for individual applications. With minimal coupling, you can then join them up to your project's master ``urls.py`` file later.
+Você pode ter visto que dentro do diretório de configuração do seu projeto, um arquivo ``urls.py`` já existe. Porque fazer outro? Tecnicamente, você pode colocar *todas* as URLs para as aplicações do seu projeto dentro deste arquivo. No entando, isso é considerado uma má prática, como isso aumenta o acoplamento nas suas aplicações individuais. Um arquivo ``urls.py`` separado para cada aplicação permite você setar URLs para aplicações individuais. Com acoplamento mínimo, você pode então juntar a eles no seu arquivo ``urls.py`` principal do projeto mais tarde.
 
-This means we need to configure the ``urls.py`` of our project ``tango_with_django_project`` and connect up our main project with our Rango application.
+Isso significa que nós precisamos configurar o ``urls.py`` do nosso projeto ``tango_with_django_project`` e conectar o nosso projeto principal com nossa aplicação Rango.
 
-How do we do this? It's quite simple. Open the project's ``urls.py`` file which is located inside your project configuration directory. As a relative path from your workspace directory, this would be the file ``<workspace>/tango_with_django_project/tango_with_django_project/urls.py``. Update the ``urlpatterns`` tuple as shown in the example below.
+Como nós fazemos isso? É muito simples. Abra o arquivo ``urls.py`` do projeto que está localizado dentro do diretório de configuração do projeto. Como um exemplo de caminho relativo do seu diretório de trabalho, este seria o arquivo ``<workspace>/tango_with_django_project/tango_with_django_project/urls.py``. Atualize a tupla ``urlpatterns`` como demonstrado no exemplo abaixo:
 
 .. code-block:: python
 	
@@ -218,66 +213,67 @@ How do we do this? It's quite simple. Open the project's ``urls.py`` file which 
 	    url(r'^rango/', include('rango.urls')), # ADD THIS NEW TUPLE!
 	)
 
-The added mapping looks for url strings that match the patterns ``^rango/``. When a match is made the remainder of the url string is then passed onto and handled by ``rango.urls`` (which we have already configured). This is done with the help of the ``include()`` function from within ``django.conf.urls``. Think of this as a chain that processors the URL string - as illustrated in Figure :num:`fig-url-chain`. In this chain, the domain is stripped out and the remainder of the url string (``rango/``) is passed on to tango_with_django project, where it finds a match and strips away ``rango/`` leaving and empty string to be passed on to the application rango. Rango now tries to match the empty string, which it does, and this then dispatches the ``index()`` view that we created.
+O mapeamento adicionado procura por strings de URL que combinem com o padrão ``^rango/$``. Quando uma combinação é feita o restante da string da URL é então passada e manipulada pelo ``rango.urls`` (que nós já temos configurado). Isso é feito com a ajuda da função ``include()`` do ``django.conf.urls``. Pense disso como uma cadeia que processa a string da URL = como ilustrado na Figura :num:`fig-url-chain`. Nessa cadeia, o domínio é retirado fora e o restante da string da URL (``rango/``) é passado para o tango_with_django_project, onde ele procura uma combinação e despe ``rango/`` deixando uma string vazia para ser passada para a aplicação rango. Rango agora tenta combinar a string vazia, que ele faz, e isso então despacha a view ``index()`` que nós criamos.
 
-Restart the Django development server and visit ``http://127.0.0.1:8000/rango``. If all went well, you should see the text ``Rango says hello world!``. It should look just like the screenshot shown in Figure :num:`fig-rango-hello-world`.
+Reinicie o servidor de desenvolvimento do Django e visite ``http://127.0.0.1:8000/rango``. Se tudo correu bem, você deverá ver o texto ``Rango says hello world!``. Deve parecer como a captura de tela demonstrada na Figura  :num:`fig-rango-hello-world`.
 
 .. _fig-url-chain:
 
 .. figure:: ../images/url-chain.svg
 	:figclass: align-center
 	
-	An illustration of a URL, showing how the different parts of the URL are the responsibility of different ``url.py`` files.
+	Uma ilustração de uma URL, mostrando como as diferentes parte da URL são a responsabilidade de arquivos ``urls.py`` diferentes.
 
 .. _fig-rango-hello-world:
 
 .. figure:: ../images/rango-hello-world.png
 	:figclass: align-center
 
-	A screenshot of Google Chrome displaying our first Django-powered webpage. Hello, Rango!
+	Uma captura de tela do Google Chrome mostrando nossa primeira página web feita com Django. Hello, Rango!
 
-Within each application, you will create a number of URL to view mappings. This initial mapping is quite simple. As we progress, we will create more sophisticated mappings that using allow the URLs to be parameterised.
+Dentro de cada aplicação, você criará um número de URL para visualizar os mapeamentos. Esse mapeamento inicial é muito simples. Conforme nós progredimos, nós criaremos mapeamentos mais sofisticados que permitem utilizar URLs serem parametrizadas.
 
-It's important to have a good understanding of how URLs are handled in Django. If you are still bit confused or would like to know more check out the `official Django documentation on URLs <https://docs.djangoproject.com/en/1.7/topics/http/urls/>`_ for further details and further examples.
+É importante ter um bom entendimento de como as URLs são manipuladas no Django. Se você está um pouco confuso ou gostaria de saber mais, confira `a documentação oficial do Django sobre URLs <https://docs.djangoproject.com/en/1.7/topics/http/urls/>`_ para mais detalhes e mais exemplos.
 
-.. note:: The URL patterns use `regular expressions <http://en.wikipedia.org/wiki/Regular_expression>`_ to perform the matching. It is worthwhile familiarising yourself on how to use regular expressions in Python. The official Python documentation contains a `useful guide on regular expressions <http://docs.python.org/2/howto/regex.html>`_ , while regexcheatsheet.com provides a `neat summary of regular expressions <http://regexcheatsheet.com/>`_.
+.. note:: O padrão de URL usa `expressões regulares <http://pt.wikipedia.org/wiki/Express%C3%A3o_regular>`_ para executar as combinações. Vale a pena se familiarizar sobre como usar expressões regulares em Python. A documentação oficial do Python contém um `guia útil sobre expressões regulares <http://docs.python.org/2/howto/regex.html>`_, enquanto regexcheatsheet.com fornece um `resumo limpo de expressões regulares <http://regexcheatsheet.com/>`_.
 
-Basic Workflows
----------------
-What you've just learnt in this chapter can be succinctly summarised into a list of actions. Here, we provide these lists for the two distinct tasks you have performed. You can use this section for a quick reference if you need to remind yourself about particular actions.
+Fluxos de trabalho Básixo
+-------------------------
+O que você acabou de aprender neste capítulo pode ser sucintamente resumido em uma lista de ações. Aqui, nós fornecemos essas listas para 2 tarefas distintas que você executou. Você pode usar essa seção para uma referência rápida se você precisar se lembrar sobre alguma coisa em particular.
 
-Creating a new Django Project
-.............................
-#. To create the project run, ``python django-admin.py startproject <name>``, where ``<name>`` is the name of the project you wish to create.
+Criando um novo projeto Django
+..............................
+#. Para criar o projeto, rode o comando ``python django-admin.py startproject <name>`` onde ``<name>`` é o nome do projeto que você deseja criar.
 
-Creating a new Django application
+Criando uma nova aplicação Django
 .................................
-#. To create a new application run, ``$ python manage.py startapp <appname>``, where ``<appname>`` is the name of the application you wish to create.
-#. Tell your Django project about the new application by adding it to the ``INSTALLED_APPS`` tuple in your project's ``settings.py`` file.
-#. In your project ``urls.py`` file, add a mapping to the application.
-#. In your application's directory, create a ``urls.py`` file to direct incoming URL strings to views.
-#. In your application's ``view.py``, create the required views ensuring that they return a ``HttpResponse`` object.
+#. Para criar uma nova aplicação, rode o comando ``$ python manage.py startapp <appname>``, onde ``<appname>``é o nome da aplicação que você deseja criar.
+#. Fale para o seu projeto Django sobre a nova aplicação ao adiciona-la a tupla ``INSTALLED_APPS`` no arquivo ``settings.py`` no seu projeto.
+#. No seu arquivo ``urls.py`` do projeto, adicione um mapeamento para a aplicação.
+#. No diretório da sua aplicação, crie um arquivo ``urls.py`` para direcionar a entrada de strings de URL para views.
+#. No arquivo ``views.py`` da sua aplicação, cria as views requeridas garantindo que elas retornem um objeto ``HttpResponse``.
 
-Exercises
----------
-Congratulations! You have got Rango up and running. This is a significant landmark in working with Django. Creating views and mapping URLs to views is the first step towards developing more complex and usable web applications. Now try the following exercises to reinforce what you've learnt.
+Exercícios
+----------
+Parabéns! Você tem o Rango instalado e funcionando. Este é um marco significante no trabalho com Django. Criando views e mapeando URLs para as views é o primeiro passo para desenvolver aplicações web mais complexas e usáveis. Agora tente fazer os exercícios seguintes para reforçar o que você aprendeu.
 
-* Revise the procedure and make sure you follow how the URLs are mapped to views.
-* Now create a new view called ``about`` which returns the following: ``Rango says here is the about page.``
-* Now map the this view to ``/rango/about/``. For this step, you'll only need to edit the ``urls.py`` of the rango application.
-* Revise the ``HttpResponse`` in the ``index`` view to include a link to the about page.
-* In the ``HttpResponse`` in the ``about`` view include a link back to the main page.
-* If you haven't done so already, it is a good point to go off an complete part one of the official `Django Tutorial <https://docs.djangoproject.com/en/1.7/intro/tutorial01/>`_. 
+* Revise o procedimento e certifique-se de seguir a forma como as URLs são mapeadas para views.
+* Agora crie uma nova view chamada ``about`` que retorna o seguinte: ``Rango says here is the about page.``
+* Agora mapear a esta view para essa URL ``/rango/about``. Para esse passo, você apenas irá precisar editar o ``urls.py``da aplicação rango.
+* Revise o ``HttpResponse`` na view ``index`` para incluir um link para a página about.
+* No ``HttpResponse`` na view ``about`` incluir um link para a página principal.
+* Se você ainda não tiver feito isso, é uma boa hora de sair e fazer por completo a parte 1 do `tutorial oficial do Django <https://docs.djangoproject.com/en/1.7/intro/tutorial01/>`_.
 
-Hints
-.....
-If you're struggling to get the exercises done, the following hints will hopefully provide you with some inspiration on how to progress.
+Sugestões
+.........
+Se você está tendo dificuldade para fazer os exercícios, esperamos que as seguintes dicas forneçam a você alguma inspiração sobre como continuar.
 
-* Your ``index`` view should be updated to include a link to the ``about`` view. Keep it simple for now - something like ``Rango says: Hello world! <br/> <a href='/rango/about'>About</a>`` will suffice. We'll be going back later to improve the presentation of these pages.
-* The regular expression to match ``about/`` is ``r'^about/'`` - this will be handy when thinking about your URL pattern.
-* The HTML to link back to the index page is ``<a href="/rango/">Index</a>``. The link uses the same structure as the link to the ``about`` page shown above.
+* Sua view ``index`` deveria ser atualizada para incluir um linko para a view ``about``. Mantenha isso simples por enquanto - algo como ``Rango says: Hello world! <br/> <a href='/rango/about'>About</a>`` será suficiente. Nós voltaremos mais tarde para melhorar a apresentação dessas páginas.
+* A expressão regular para combinar com ``about/`` é ``r'^about/'`` - isso será útil quando pensar sobre seu padrão URL.
+* O HTML para linkar de voltar para a página index é ``<a href="/rango/">Index</a>``. O link usa a mesma estrutura como o link para a página ``about`` mostrada acima.
+
 
 .. rubric:: Footnotes
-.. [#f1] This assumes that you are using the IP address 127.0.0.1 and port 8000 when running your Django development web server. If you do not explicitly provide a port to run the development server on, Django defaults to port 8000 for you.
+.. [#f1] Isso assume que você está usando o endereço IP 127.0.0.1 e a porta 8000 quando roda seu servidor web de desenvolvimento Django. Se você explicitamente não fornece uma pota para rodar o servidor de desenvolvimento, o Django por padrão usa a porta 8000 para você.
 
-.. [#f2] There are many applications available out there that you can use in your project. Take a look at `PyPI <https://pypi.python.org/pypi?%3Aaction=search&term=django&submit=search>`_ and `Django Packages <https://www.djangopackages.com/>`_ to search for reusable apps which you can drop into your projects.
+.. [#f2] Existem muitas aplicações disponíveis fora daqui que você pode usar no seu projeto. Dê uma olhada no site `PyPI <https://pypi.python.org/pypi?%3Aaction=search&term=django&submit=search>`_ e `Django Packages <https://www.djangopackages.com/>`_ para pesquisar por apps reusáveis que você pode colocar nos seus projetos.
