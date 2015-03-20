@@ -1,29 +1,30 @@
 .. _templates-label:
 
-Templates and Static Media
+Templates e Mídia Estática
 ==========================
-In this chapter, we'll be extending your knowledge of Django by introducing you to the template engine as well as how to serve *static media* within your web pages. 
+Neste capítulo, nós estaremos extendendo seu conhecimento de Django ao introduzir você para a engine de template, bem como a forma de servir *mídia estática* dentro da sua página web.
 
 .. _model-setup-templates-label:
 
-Using Templates
----------------
-Up to this point, you have plugged a few things together to create a Django-powered webpage. This is coupled a view, which is in turn coupled with a series of URL mappings. Here we will delve into how to combine templates into the mix.
+Usando Templates
+----------------
+Até este momento, você ligou algumas coisas juntas para criar uma página web em Django. Esta é uma view acoplada, que por sua vez está acoplada com uma série de mapeamento de URL. Aqui vamos aprofundar como combinar templates neste conjunto.
 
-Well-designed websites use a lot of repetition in their structure or layout. Whether you see a common header or footer on a website's pages, the `repetition of page layouts <http://www.techrepublic.com/blog/web-designer/effective-design-principles-for-web-designers-repetition/>`_ aids users with navigation, promotes organisation of the website and reinforces a sense of continuity. Django provides `templates  <https://docs.djangoproject.com/en/1.7/ref/templates/>`_ to make it easier for developers to achieve this design goal, as well as separating application logic from presentational concerns. In this chapter, you'll create a basic template which will be used to create a HTML page. This template will then be dispatched via a Django view. In Chapter :ref:`model-using-label`, we will take this a step further by using templates in conjunction with models to dispatch dynamically generated data.
+Sites bem projetados usam muito de repetição em sua estrutura ou layout. Se você ver um header ou footer comum em uma página de site, a `repetição de layouts de página <http://www.techrepublic.com/blog/web-designer/effective-design-principles-for-web-designers-repetition/>`_ ajuda os usuários com a navegação, promove organização do site e reforça um senso de continuidade. Django fornece `templates <https://docs.djangoproject.com/en/1.7/ref/templates/>`_ para tornar mais fácil para desenvolvedores alcançar este objetivo de design, bem como separar lógica da aplicação das preocupações de apresentação. Neste capítulo, você criará um template básico que será usado para criar uma página HTML. Este template será então despachado através de uma view Django. No capítulo :ref:`model-using-label`, vamos dar um passo adiante, ao usar templates em conjunto com models para despachar dados gerados dinamicamente.
 
-Configuring the Templates Directory
-...................................
-To get templates up and running, you will need to setup a directory in which template files are stored. 
+Configurando o Diretório de Templates
+.....................................
+Para obter templates instalados e rodando, você vai precisar configurar um diretório no qual os arquivos de template estará armazenado. 
 
-In your Django project's directory (e.g. ``<workspace>/tango_with_django_project/``), create a new directory called ``templates``. Within the new templates directory, create another directory called ``rango``. So the directory ``<workspace>/tango_with_django_project/templates/rango/`` will be the location in which we will be storing templates associated with our ``rango`` application. 
+No seu seu diretório do projeto Django (por exemplo, ``<workspace>/tango_with_django_project/``), crie um novo diretório chamado ``templates``. Dentro do novo diretório de templates, crie outro diretório chamado ``rango``. Assim o diretório ``<workspace>/tango_with_django_project/templates/rango/`` será o localização na qual nós estaremos armazenando templates associados com nossa aplicação ``rango``.
 
-To tell your Django project where the templates will be housed, open your project's ``settings.py`` file. Find the tuple ``TEMPLATE_DIRS`` and add in the path to your newly created ``templates`` directory, so it looks like the following example.
+Para falar ao seu projeto Django onde os templates estarão alojados, abra seu arquivo ``settings.py``. Adicione a tupla `TEMPLATE_DIRS`` no ``settings.py`` e adicione o caminho para seu diretório ``templates`` recém criado, de modo que ele pareça como o seguinte exemplo:
 
 .. code-block:: python
 	
-	
-	TEMPLATE_DIRS = ['<workspace>/tango_with_django_project/']
+	TEMPLATE_DIRS = ('<workspace>/tango_with_django_project/')
+
+Note que você é *obrigado a usar o caminho absoluto* para localizar o diretório ``templates``.
 
 Note that you are *required to use absolute paths* to locate the ``templates`` directory. If you are part of a team or working on different computers, this may become a problem in the future. You'll have different usernames, meaning different paths to your ``<workspace>`` directory. The *hard-coded* path you entered above would not be the same on different computers. Of course, you could add in the template directory for each different setup, but that would be a pretty nasty way to tackle the problem. So, what can we do?
 
