@@ -185,7 +185,7 @@ Now we need to map the ``add_category()`` view to a URL. In the template we have
 	    url(r'^$', views.index, name='index'),
 	    url(r'^about/$', views.about, name='about'),
 	    url(r'^add_category/$', views.add_category, name='add_category'), # NEW MAPPING!
-	    url(r'^category/(?P<category_name_url>\w+)$', views.category, name='category'),)
+	    url(r'^category/(?P<category_name_slug>[\w\-]+)/$', views.category, name='category'),)
 
 Ordering doesn't necessarily matter in this instance. However, take a look at the `official Django documentation on how Django process a request <https://docs.djangoproject.com/en/1.7/topics/http/urls/#how-django-processes-a-request>`_ for more information. Our new URL for adding a category is ``/rango/add_category/``.
 

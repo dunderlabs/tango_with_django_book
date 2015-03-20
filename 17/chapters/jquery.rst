@@ -30,7 +30,7 @@ Here we assume you have downloaded a version of the JQuery library, but you can 
 
 Make sure you have your static files set up (see Chapter :ref:`setup-label`)
 
-In the static folder create a *js* folder and plonk the JQuery javascript file (``jquery.js``) here along with an file called ``rango-jquery.js``, which will house our javascript code. In ``rango_jquery.js``, add the following javascript:
+In the static folder create a *js* folder and plonk the JQuery javascript file (``jquery.js``) here along with an file called ``rango-jquery.js``, which will house our javascript code. In ``rango-jquery.js``, add the following javascript:
 
 .. code-block:: javascript
 

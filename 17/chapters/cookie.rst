@@ -281,7 +281,7 @@ Exercises
 ---------
 Now you've read through this chapter and tried out the code, give these exercises a go.
 
-- Change your cookies from client side to server side to make your application more secure. Clear the browser's cache and cookies, then check to make sure you can't see the ``last_visit`` and ``visits`` variables in the browser. Note you will still see the ``sessionid`` cookie.
+- Check that your cookies are server side. Clear the browser's cache and cookies, then check to make sure you can't see the ``last_visit`` and ``visits`` variables in the browser. Note you will still see the ``sessionid`` cookie. Django uses this cookie to look up the session in the database where it stores all the server side cookies about that session.
 - Update the *About* page view and template telling the visitors how many times they have visited the site.
 
 Hint

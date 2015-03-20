@@ -248,7 +248,7 @@ Exercises
 *********
 If you haven't undertaken what we've been discussing in this chapter already, you should go through everything now to ensure your system and repository is ready to go.
 
-First, ensure that you have setup your environment correctly. Install all of the prerequisites, including Python 2.7.5 and Django 1.5.4. Django should be installed by Pip, the package manager.
+First, ensure that you have setup your environment correctly. Install all of the prerequisites, including Python 2.7.5 and Django 1.7. Django should be installed by Pip, the package manager.
 
 Once that is complete, create a new Git repository on Github for your project. To try out the commands, you can create a new file ``readme.md`` in the root of your workspace. The file `will be used by GitHub <https://help.github.com/articles/github-flavored-markdown>`_ to provide information on your project's GitHub homepage.
 

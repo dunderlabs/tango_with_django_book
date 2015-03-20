@@ -51,7 +51,7 @@ In ``rango/models.py``, we will define two classes - both of which must inherit 
 	class Category(models.Model):
 	    name = models.CharField(max_length=128, unique=True)
 
-	    def __unicode__(self):
+	    def __unicode__(self):  #For Python 2, use __str__ on Python 3
 	        return self.name
 	
 	class Page(models.Model):
@@ -60,7 +60,7 @@ In ``rango/models.py``, we will define two classes - both of which must inherit 
 	    url = models.URLField()
 	    views = models.IntegerField(default=0)
 	    
-	    def __unicode__(self):
+	    def __unicode__(self):	#For Python 2, use __str__ on Python 3
 	        return self.title
 
 When you define a model, you need to specify the list of attributes and their associated types along with any optional parameters. Django provides a number of built-in fields. Some of the most commonly used are listed below.
@@ -159,7 +159,7 @@ Now, to apply these migrations (which will essentially create the database table
 	  
 	  
 
-.. warning:: Whenever you add to existing models, *you will have to repeat this processrunning* ``python manage.py makemigrations <app_name>``, and then ``python manage.py migrate``
+.. warning:: Whenever you add to existing models, *you will have to repeat this process running* ``python manage.py makemigrations <app_name>``, and then ``python manage.py migrate``
 	
 You may have also noticed that our ``Category`` model is currently lacking some fields that we defined in Rango's requirements. We will add these in later to remind you of the updating process.
 
@@ -305,7 +305,10 @@ To create a population script for Rango's database, we start by creating a new P
 	            print "- {0} - {1}".format(str(c), str(p))
 	
 	def add_page(cat, title, url, views=0):
-	    p = Page.objects.get_or_create(category=cat, title=title, url=url, views=views)[0]
+	    p = Page.objects.get_or_create(category=cat, title=title)[0]
+		p.url=url
+		p.views=views
+		p.save()
 	    return p
 	
 	def add_cat(name):
@@ -372,7 +375,7 @@ The workflow for adding models can be broken down into five steps.
 
 #. First, create your new model(s) in your Django application's ``models.py`` file.
 #. Update ``admin.py`` to include and register your new model(s).
-#. Then perform the migration ``$ python manage.py sqlmigrate <app_name>``
+#. Then perform the migration ``$ python manage.py makemigrations``
 #. Apply the changes ``$ python manage.py migrate``. This will create the necessary infrastructure within the database for your new model(s).
 #. Create/Edit your population script for your new model(s).
 

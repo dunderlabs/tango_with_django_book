@@ -282,7 +282,7 @@ As you can see, we have added in a rather complex entry that will invoke ``view.
 	
 	.. code-block:: python
 		
-		url(r'^category/(?P<category_name_slug>\w+)/$', views.category, name='category')
+		url(r'^category/(?P<category_name_slug>[\w\-]+)/$', views.category, name='category')
 	
 	We can from here deduce that the characters (both alphanumeric and underscores) between ``category/`` and the trailing ``/`` at the end of a matching URL are to be passed to method ``views.category()`` as named parameter ``category_name_slug``. For example, the URL ``category/python-books/`` would yield a ``category_name_slug`` of ``python-books``.
 	

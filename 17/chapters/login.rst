@@ -355,8 +355,11 @@ In ``rango/views.py`` create a new function called ``user_login()`` and add the 
 	    if request.method == 'POST':
 	        # Gather the username and password provided by the user.
 	        # This information is obtained from the login form.
-	        username = request.POST['username']
-	        password = request.POST['password']
+			# We use request.POST.get('<variable>') as opposed to request.POST['<variable>'], 
+			# because the request.POST.get('<variable>') returns None, if the value does not exist, 
+			# while the request.POST['<variable>'] will raise key error exception
+	        username = request.POST.get('username')
+	        password = request.POST.get('password')
 	        
 	        # Use Django's machinery to attempt to see if the username/password
 	        # combination is valid - a User object is returned if it is.

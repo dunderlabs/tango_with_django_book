@@ -414,23 +414,27 @@ A simple alternative would be to use ``django-bootstrap-toolkit`` see https://gi
 In which case the ``category.html`` template would become:
 
 
-.. code-block::html
 
 	{% extends 'base.html' %}
-
+	
 	{% load bootstrap_toolkit %}
-
+	
 	{% block title %}Add Category{% endblock %}
-
-		{% block body_block %}
-	            <form id="category_form" method="post" action="{% url 'add_category' %}">
-					<h2 class="form-signin-heading">Add a Category</a></h2>
-		            {% csrf_token %}
-	                {{ form|as_bootstrap }}
-	                <br/>
-	             	<button class="btn btn-primary" type="submit" name="submit">Create Category</button>
-		        </form>
-		{% endblock %}
+		
+	{% block body_block %}
+		<form id="category_form" method="post" action="{% url 'add_category' %}">
+			<h2 class="form-signin-heading">Add a Category</a></h2>
+			
+			{% csrf_token %}
+			
+			{{ form|as_bootstrap }}
+			
+			<br/>
+			
+			<button class="btn btn-primary" type="submit" name="submit">Create Category</button>
+		</form>
+	{% endblock %}
+		
 	
 This solution is much cleaner, and automated. However, it does not render as nicely :-(. Probably requires some tweaking to improve how it renders.
 	

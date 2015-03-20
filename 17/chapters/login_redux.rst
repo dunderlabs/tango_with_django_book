@@ -115,7 +115,7 @@ In ``templates/registration`` create the file, ``login.html`` with the following
 .. code-block:: html
 
 
-	{% extends "base.html" %}
+	{% extends "rango/base.html" %}
 	
 	{% block body_block %}
 	<h1>Login</h1>
@@ -141,7 +141,7 @@ In ``templates/registration`` create the file, ``registration_form.html`` with t
 
 .. code-block:: html
 
-	{% extends "base.html" %}
+	{% extends "rango/base.html" %}
 
 
 	{% block body_block %}
@@ -163,7 +163,7 @@ In ``templates/registration`` create the file, ``registration_complete.html`` wi
 
 .. code-block:: html
 
-	{% extends "base.html" %}
+	{% extends "rango/base.html" %}
 
 
 	{% block body_block %}
@@ -179,7 +179,7 @@ In ``templates/registration`` create the file, ``logout.html`` with the followin
 
 .. code-block:: html
 
-	{% extends "base.html" %}
+	{% extends "rango/base.html" %}
 
 
 	{% block body_block %}
@@ -227,7 +227,7 @@ At the moment, when users register, it takes them to the registration complete p
 	
 	# Create a new class that redirects the user to the index page, if successful at logging
 	class MyRegistrationView(RegistrationView):
-	    def get_success_url(selfself,request, user):
+	    def get_success_url(self,request, user):
 	        return '/rango/'
 
 
@@ -248,7 +248,7 @@ At the moment, when users register, it takes them to the registration complete p
 
 Exercises
 ---------
-* Provide users with password reset functionality
+* Provide users with password change functionality
 
 
 	
