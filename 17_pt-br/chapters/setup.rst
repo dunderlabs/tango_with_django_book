@@ -259,7 +259,7 @@ Parabéns! Você tem o Rango instalado e funcionando. Este é um marco significa
 
 * Revise o procedimento e certifique-se de seguir a forma como as URLs são mapeadas para views.
 * Agora crie uma nova view chamada ``about`` que retorna o seguinte: ``Rango says here is the about page.``
-* Agora mapear a esta view para essa URL ``/rango/about``. Para esse passo, você apenas irá precisar editar o ``urls.py``da aplicação rango.
+* Agora mapear a esta view para essa URL ``/rango/about``. Para esse passo, você apenas irá precisar editar o ``urls.py`` da aplicação rango.
 * Revise o ``HttpResponse`` na view ``index`` para incluir um link para a página about.
 * No ``HttpResponse`` na view ``about`` incluir um link para a página principal.
 * Se você ainda não tiver feito isso, é uma boa hora de sair e fazer por completo a parte 1 do `tutorial oficial do Django <https://docs.djangoproject.com/en/1.7/intro/tutorial01/>`_.
@@ -268,7 +268,7 @@ Sugestões
 .........
 Se você está tendo dificuldade para fazer os exercícios, esperamos que as seguintes dicas forneçam a você alguma inspiração sobre como continuar.
 
-* Sua view ``index`` deveria ser atualizada para incluir um linko para a view ``about``. Mantenha isso simples por enquanto - algo como ``Rango says: Hello world! <br/> <a href='/rango/about'>About</a>`` será suficiente. Nós voltaremos mais tarde para melhorar a apresentação dessas páginas.
+* Sua view ``index`` deveria ser atualizada para incluir um link para a view ``about``. Mantenha isso simples por enquanto - algo como ``Rango says: Hello world! <br/> <a href='/rango/about'>About</a>`` será suficiente. Nós voltaremos mais tarde para melhorar a apresentação dessas páginas.
 * A expressão regular para combinar com ``about/`` é ``r'^about/'`` - isso será útil quando pensar sobre seu padrão URL.
 * O HTML para linkar de voltar para a página index é ``<a href="/rango/">Index</a>``. O link usa a mesma estrutura como o link para a página ``about`` mostrada acima.
 
