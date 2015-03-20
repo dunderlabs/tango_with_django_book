@@ -1,46 +1,46 @@
 .. _requirements-label:
 
-Getting Ready to Tango
-======================
-Let's get set up! To tango with Django, you'll need to ensure that you have everything you need installed on your computer and that you have a sound understanding of your development environment. This chapter walks you through what you need and what you need to know.
+Preparando-se para o Tango
+==========================
+Vamos começar a instalação! Para dançar com Django, você precisará garantir que você tem tudo que você precisa instalado no seu computador e que você tem um bom entendimento do seu ambiente de desenvolvimento. Este capítulo leva você através do que você precisa e o que tem que saber.
 
-For this tutorial, you'll require the following key pieces of software.
+Para este tutorial, você necessitará das seguintes peças-chave de software.
 
-* Python version 2.7.5+
-* Django version 1.7
+* Python versão 2.7.5+
+* Django versão 1.7
 
-As Django is a web application framework written in the Python programming language, you will be required to have a working knowledge of Python. If you haven't used Python before or you simply wish to brush up on your skills, then we highly recommend that you check out and work through one or more of the following guides.
+Como Django é um framework para aplicações web escrito na linguagem de programação Python, você vai ser obrigado a ter um conhecimento prático de Python. Se você não tiver usando Python antes ou você deseja simplesmente aperfeiçoar suas habilidades, então nós recomendamos fortemente que você confira e trabalhe em um ou mais dos seguintes guias.
 
-* **A quick tutorial** - Learn Python in 10 Minutes by Stavros, http://www.korokithakis.net/tutorials/python/.
-* **The Official Python Tutorial** at http://docs.python.org/2/tutorial/.
-* **A brilliant book**: Think Python: How to Think like a Computer Scientist by Allen B. Downey, available online at http://www.greenteapress.com/thinkpython/.
-* **An amazing online course**: Learn to Program, by Jennifer Campbell and Paul Gries at https://www.coursera.org/course/programming1.
+* **Um rápido tutorial** - Aprenda Python em 10 minutos, por Stavros, http://www.korokithakis.net/tutorials/.
+* **O Tutorial Oficial de Python** em http://docs.python.org/2/tutorial/.
+* **Um brilhante livro**: Pense Python: Como pensar como um Cientista da Computação, por Allen B. Downey, disponível online em http://www.greenteapress.com/thinkpython/.
+* **Um curso online incrível**: Aprenda a programar, por Jennifer Campbell e Paul Gries em https://www.coursera.org/course/programming1.
 
-Using the Terminal
-------------------
-In order to set up your environment learning how to use the *Command Line Interpreter (CLI)* provided by your Operating System is really important. Through the course of this tutorial, you will be interacting with the CLI routinely. If you are already familiar with using the command line interface you can skip directly to :ref:`Installing the Software <installing-software>` section.
+Usando o Terminal
+-----------------
+A fim de criar seu ambiente, aprender como usar o *Interpretador em Linha de Comando (CLI)* fornecido pelo seu sistema operacional é realmente importante. Ao longo do curso deste tutorial, você estará interagindo com o CLI rotineiramente. Se você já está familiarizado com o uso da interface da linha de comando, você pode pular diretamente para a seção :ref:`Instalando o Software <installing-software>`.
 
-UNIX-based operating systems all use a similar-looking `terminal <http://www.ee.surrey.ac.uk/Teaching/Unix/unixintro.html>`_. Descendants, derivatives and clones of UNIX include `Apple's OS X <http://en.wikipedia.org/wiki/OS_X>`_ and the `many available Linux distributions <http://en.wikipedia.org/wiki/List_of_Linux_distributions>`_ available today. All of these operating systems contain a core set of commands which help you navigate through your filesystem and launch programs, all without the need of any graphical interface. This section provides the key commands you should familiarise yourself with.
+Todos os Sistemas Operacionais baseados no UNIX usam um `terminal <http://www.ee.surrey.ac.uk/Teaching/Unix/unixintro.html>`_ de aparência semelhante. Descendentes, derivador e clones do UNIX incluindo o `Apple's OS X <http://en.wikipedia.org/wiki/OS_X>`_ e as `muitas distribuições Linux <pt.wikipedia.org/wiki/Lista_de_distribuições_de_Linux>`_ disponíveis atualmente. Todos esses sistemas operacionais contêm um conjunto básico de comandos que ajudam você a navegar através do seu sistemas de arquivos e rodar programas, tudo sem a necessidade de qualquer interface gráfica. Esta seção fornece os comandos que você deve se familiarizar.
 
-.. note:: This tutorial is focused towards users of UNIX-based or UNIX-derived operating systems. While Python and Django can run in a Windows-based environment, many of the commands that we use in this book are for  UNIX-based terminals. These commands can however be replicated in Windows by using the graphical user interface, `using the relevant command in a Windows Command Prompt <http://www.ai.uga.edu/mc/winforunix.html>`_, or using `Windows PowerShell <http://technet.microsoft.com/en-us/library/bb978526.aspx>`_ which provides an CLI like similar to a UNIX terminal.
+.. note:: Este tutorial é focado para usuários de sistemas operacionais baseados em UNIX ou dericados. Embora Python e Django possam rodar em um ambiente Windows, muitos dos comandos que nós usamos neste livro são paa terminais baseados em UNIX. Esses comandos podem, entretanto, serem repetidos no Windows usando a interface gráfica do usuário, `usando o comando relativo em um tela de comando Windows<http://www.ai.uga.edu/mc/winforunix.html>`_, ou usando `Windows PowerShell <http://technet.microsoft.com/en-us/library/bb978526.aspx>`_ que fornece um CLI similar ao terminal UNIX.
 
-Upon launching a new terminal instance, you'll typically be presented with something like:
+Após abrir uma nova instância do terminal, você será tipicamente apresentado com algo como:
 
 .. code-block:: guess
 	
 	sibu:~ leif$
 
-This is called the *prompt*, and indicates when the system is waiting to execute your every command. The prompt you see varies depending on the operating system you are using, but all look generally very similar. In the example above, there are three key pieces of information to observe:
+Isto é chamado de *prompt*, e indica quando o sistema está esperando para executar cada comando seu. O prompt que você vê varia dependendo do sistema operacional que você está usando, mas todos geralmente são muito parecidos. No exemplo acima, existem três peças chaves de informação para observar:
 
-* your username and computer name (username of ``leif`` and computer name of ``sibu``);
-* your *current working directory* (the tilde, or ``~``); and
-* the privilege of your user account (the dollar sign, or ``$``).
+* seu nome de usuário (username) e o nome do computador (username do ``leif`` e o nome do computador ``sibu``);
+* seu *diretório atual de trabalho* (o til, ou ``~``); e
+* o privilégio da sua conta de usuário (o sinal de dólar, ou ``$``).
 
-The dollar sign (``$``) typically indicates that the user is a standard user account. Conversely, a hash symbol (``#``) may be used to signify the user logged in has `root privileges <http://en.wikipedia.org/wiki/Superuser>`_. Whatever symbol is present is used to signify that the computer is awaiting your input. 
+O sinal de dólar (``$``) geralmente indica que o usuário é uma conta de usuário padrão. Por outro lado, um jogo da velha (``#``) pode ser usado para significar que o usuário logado tem `privilégios root <http://pt.wikipedia.org/wiki/Superusu%C3%A1rio>`_. Seja qual for o símbolo, é usado para significar que o computador está esperando sua entrada.
 
-Open up a terminal window and see what your prompt looks like.
+Abra uma janela do terminal e veja como seu prompt parece.
 
-When you are using the terminal, it is important to know where you are in the file system. To find out where you are, you can issue the command ``pwd``. This will display your present working directory. For example, check the example terminal interactions below.
+Quando você usar o terminal, é importante saber onde você está no sistema de arquivos. Para descobrir onde você está, você pode executar o comando ``pwd``. Isto mostraá seu atual diretório. Por exemplo, cheque a interação no terminal abaixo.
 
 .. code-block:: guess
 	
@@ -49,25 +49,25 @@ When you are using the terminal, it is important to know where you are in the fi
 	/Users/leif
 	sibu:~ leif$
 
-You can see that the present working directory in this example is: ``/Users/leif``.
+Você pode ver que o diretório atual neste exemplo é: ``Users/leif``.
 
-You'll also note that the prompt indicates that my present working directory is ~. This is because the tilde (``~``) represents your *home directory*. The base directory in any UNIX-based file system is the *root directory*. The path of the root directory is denoted by a single forward slash (``/``).
+Você também notará que o prompt indica que meu diretório atual é ~. Isto é porque o til (``~``) representa seu *diretócial inicial* (que chamaremos de home). O diretório base em qualquer sistema de arquivos baseados em UNIX é o *diretório raiz* (que chamaremos de root). O caminho do diretório raiz é denoado por uma simples barra (``/``).
 
-If you are not in your home directory you can change directory (``cd``) to your home directory by issuing the following command.
+Se você não está no seu diretório home você pode mudar o diretório (``cd``) para ele ao executar o seguinte comando.
 
 .. code-block:: guess
 	
 	$ cd ~
 
-Let's create a directory called ``code``. To do thus, use the make directory command (``mkdir``), as shown below.
+Vamos criar um diretório chamado ``code``. Para fazer isso, use o comando que cria diretórios (``mkdir``), como mostrado abaixo.
 
 .. code-block:: guess
 	
 	$ mkdir code
-	
-To move to the newly-created ``code`` directory, enter ``cd code``. If you now check your current working directory, you'll notice that you will be in ``~/code/``. This may also be reflected by your prompt. Note in the example below that the current working directory is printed after the ``sibu`` computer name.
 
-.. note:: Whenever we refer to ``<workspace>``, we'll be referring to your ``code`` directory.
+Para mover para entrar no diretório ``code`` recentemente criado, digite ``cd code``. Se você agora checar seu diretório de trabalho atual, você notará que você estará em ``~/code/``. Isto Isto pode também ser refletido pelo seu prompt. Note no exemplo abaixo que o diretório de trabalho atual está impresso depois do nome do computador ``sibu``.
+
+.. note:: Sempre que nos referirmos para ``<workspace>``, nós estaremos nos referindo para seu diretório ``code``.
 
 .. code-block:: guess
 	
@@ -77,9 +77,9 @@ To move to the newly-created ``code`` directory, enter ``cd code``. If you now c
 	sibu:code leif$ pwd
 	/Users/leif/code
 
-To list the files that are in a directory, you can issue the command ``ls``. You can also see hidden files or directories - if you have any - you can issue the command ``ls -a``, where ``a`` stands for *all.* If you ``cd`` back to your home directory (``cd ~``) and then issue ``ls``, you'll see that you have something called ``code`` in your home directory.
+Para listar os arquivos que estão no diretório, você pode executar o comando ``ls``. Você pode também ver arquivos ou diretórios ocultos - if você tiver algum - você pode executar o comando ``ls -a``, onde ``a`` significa *all*. Se você voltar para o diretório home (``cd ~``) e então executar ``ls``, você verá que tem algo chamado ``code`` no seu diretório home.
 
-To find out a bit more about what is in your directory, issue ``ls -l``. This will provide a more detailed *listing* of your files and whether it is a directory or not (denoted by a ``d`` at the start of the line).
+Para saber um pouco mais sobre o que está no seu diretório, execute um ``ls -l``. Isto fornecerá uma *listagem* mais detalhada dos seus arquivos e se é um diretório ou não (denotado por um ``d`` no começo da linha).
 
 .. code-block:: guess
 	
@@ -88,123 +88,125 @@ To find out a bit more about what is in your directory, issue ``ls -l``. This wi
 	
 	drwxr-xr-x   36 leif  staff    1224 23 Sep 10:42 code
 
-The output also contains information on the `permissions associated to the directory <http://www.elated.com/articles/understanding-permissions/>`_, who created it (``leif``), the group (``staff``), the size, the date/time the file was modified at, and, of course, the name.
+A saída também contêm informações sobre `permissões associadas ao diretório <http://www.infowester.com/linuxpermissoes.php>`_, quem criou (``leif``), o grupo (``staff``), o tamanho, a data/hora em que o arquivo foi modificado, e, claro, o nome.
 
-You may also find it useful to be able to edit files within your terminal. There are many editors which you can use - some of which may already be installed on your computer. The `nano <http://www.nano-editor.org/>`_ editor for example is a straightforward editor - unlike `vi <http://en.wikipedia.org/wiki/Vi>`_ which can take some time to learn. Below are a list of commonly-used UNIX commands that you will find useful.
+Você também pode achar útil ser capaz de editar arquivos dentro do seu terminal. Existem muitos editores que você pode usar - alguns dos quais pode já estar instalado no seu computador. O editor `nano <http://www.nano-editor.org/>`_ por exemplo, é um editor simples, ao contrário do `vi <http://pt.wikipedia.org/wiki/Vi>`_ que pode levar algum tempo para aprender. Abaixo está uma lista de comandos UNIX costumeiramente usados que você achará útil.
 
-Core Commands
-*************
-All UNIX-based operating systems come with a series of built-in commands - with most focusing exclusively on file management. The commands you will use most frequently are listed below, each with a short explanation on what they do and how to use them.
+Comandos Básicos
+****************
+Todos os sistemas operacionais baseados em UNIX vêm com uma série de comandos embutidos - com o foco maior exclusivamente para gerenciamento de arquivos. Os comandos que você usará mais frequentemente estão listados abaixo, cada um com uma pequena explicação sobre o que eles fazem e como usá-los.
 
-- ``pwd``: *Prints* your current *working directory* to the terminal. The full path of where you are presently is displayed.
-- ``ls``: Prints a list of files in the current working directory to the terminal. By default, you do not see the sizes of files - this can be achieved by appending ``-lh`` to ``ls``, giving the command ``ls -lh``.
-- ``cd``: In conjunction with a path, allows you to *change* your current working *directory*. For example, the command ``cd /home/leif/`` changes the current working directory to ``/home/leif/``. You can also move up a directory level without having to provide the `absolute path <http://www.uvsc.edu/disted/decourses/dgm/2120/IN/steinja/lessons/06/06_04.html>`_ by using two dots, e.g. ``cd ..``.
-- ``cp``: Copies files and/or directories. You must provide the *source* and the *target*. For example, to make a copy of the file ``input.py`` in the same directory, you could issue the command ``cp input.py input_backup.py``.
-- ``mv``: Moves files/directories. Like ``cp``, you must provide the *source* and *target*. This command is also used to rename files. For example, to rename ``numbers.txt`` to ``letters.txt``, issue the command ``mv numbers.txt letters.txt``. To move a file to a different directory, you would supply either an absolute or relative path as part of the target - like ``mv numbers.txt /home/david/numbers.txt``.
-- ``mkdir``: Creates a directory in your current working directory. You need to supply a name for the new directory after the ``mkdir`` command. For example, if your current working directory was ``/home/david/`` and you ran ``mkdir music``, you would then have a directory ``/home/david/music/``. You will need to then ``cd`` into the newly created directory to access it.
-- ``rm``: Shorthand for *remove*, this command removes or deletes files from your filesystem. You must supply the filename(s) you wish to remove. Upon issuing a ``rm`` command, you will be prompted if you wish to delete the file(s) selected. You can also remove directories `using the recursive switch <http://www.computerhope.com/issues/ch000798.htm>`_. Be careful with this command - recovering deleted files is very difficult, if not impossible!
-- ``rmdir``: An alternative command to remove directories from your filesystem. Provide a directory that you wish to remove. Again, be careful: you will not be prompted to confirm your intentions.
-- ``sudo``: A program which allows you to run commands with the security privileges of another user. Typically, the program is used to run other programs as ``root`` - the `superuser <http://en.wikipedia.org/wiki/Superuser>`_ of any UNIX-based or UNIX-derived operating system.
+- ``pwd``: *Imprime* na tela do seu terminal seu diretório de trabalho atual. O caminho completo de onde você está é mostrado.
+- ``ls``: Mostra no terminal uma lista dos arquivos no seu diretório atual. Por padrão, você não pode ver os tamanhos dos arqvuiso - isto pode ser conseguido ao adicionar ``-lh`` ao ``ls``, dando o comando ``ls -lh``.
+- ``cd``: Em conjunto com um caminho, permite você *mudar* seu *diretório* de trabalho. Por exemplo, o comando ``cd /home/leif`` muda o diretório de trabalho atual para ``/home/leif/``. Você pode também subir um nível de diretório sem ter que fornecer o `caminho absoluto <http://www.uvsc.edu/disted/decourses/dgm/2120/IN/steinja/lessons/06/06_04.html>`_ ao usar dois pontos, por exemplo, ``cd ..``.
+- ``cp``: copia arquivos e/ou diretório. Você precisa fornecer o *original* e o *destino*. Por exemplo, para fazer uma cópia de um arquivo ``input.py`` no mesmo diretório, você executaria o comando ``cp input.py input_backup.py``.
 
-.. note:: This is only a brief list of commands. Check out ubuntu's documentation on `Using the Terminal <https://help.ubuntu.com/community/UsingTheTerminal>`_  for a more detailed overview, or the `Cheat Sheet 
- <http://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/>`_ by FOSSwire for a quick reference guide.
+- ``mv``: Move arquivos ou diretórios. Você precisa fornecer o *original* e o *destino*. Este comando é também usado para renomear arquivos. Por exemplo, para renomear ``numbers.txt`` para ``letters.txt``, execute o comando ``mv numbers.txt letters.txt``. Para mover um arquivo para um diretório diferente, você iria fornecer ou um caminho absoluto ou relativo como parte do destino - algo como isto ``mv numbers.txt /home/david/numbers.txt``.
+
+- ``mkdir``: Cria um diretório no seu diretório atual. Você precisa fornece um nome para o novo diretório depois do comando ``mkdir``. Por exemplo, se o seu diretório atual era ``/home/david/`` e você executou ``mkdir music``, você deverá então ter um diretório ``/home/david/music``. Você precisará, em seguida, executar um ``cd`` para entrar no diretório recentemente criado.
+
+- ``rm``: Abreviação para *remoção*, este comando remove ou deleta arquivos do seu sistema de arquivos. Você precisa fornecer o(s) nome(s) do(s) arquivo(s) que você deseja remover. Após executar um comando ``rm``, você será perguntado se você deseja deletar os arquivos selecionados. Você também pode remover diretórios `usando a opção recursiva <http://www.computerhope.com/issues/ch000798.htm>`_, Seja cuidadoso com este comando - recuperação de arquivos deletados é muito difícil, se não impossível!
+
+- ``rmdir``: Um comando alternativo para remover diretórios do seu sistema de arquivos. Forneça um diretório que você deseja remover. Novamente, seja cuidadoso: você não será perguntado para confirmar suas intenções ao apagar.
+
+- ``sudo``: Um programa que permite que você rode comando com os privilégios de segurança de outro usuário. Geralmente, o programa é usado para rodar outros programas como ``root`` - o `super usuário <http://pt.wikipedia.org/wiki/Superusuário>`_ de qualquer sistema operacional baseado ou derivado do UNIX.
+
+.. note:: Isto é apenas um resumo da lista de comandos. Confira a documentação do ubuntu em `Usando o terminal <https://help.ubuntu.com/community/UsingTheTerminal>`_ para uma visão mais detalhada, ou o `Cheat Sheet <http://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/>`_ feito por FOSSwire para ser um rápido guia de referências.
 
 .. _installing-software:
 
-Installing the Software
+Instalando os Softwares
 -----------------------
-Now that you have a decent understanding of how to interact with the terminal, you can begin to install the software required for this tutorial.
+Agora que você tem um bom conhecimento de como interagir com o terminal, você pode começar a instalar os softwares requeridos para este tutorial.
 
-Installing Python
-*****************
-So, how do you go about installing Python 2.7.5 on your computer? You may already have Python installed on your computer - and if you are using a Linux distribution or OS X, you will definitely have it installed. Some of your operating system's functionality `is implemented in Python <http://en.wikipedia.org/wiki/Yellowdog_Updater,_Modified>`_, hence the need for an interpreter!
+Instalando Python
+-----------------
+Então, como é que você vai instalar o Python 2.7.5 no seu computador? Você pode já ter Python instalado no seu computador - e se você estiver usando uma distribuição Linux ou OS X, você definitivamente já o tem instalado. Algumas das funcionalidades desses sistemas operacionais `estão implementadas em Python <http://en.wikipedia.org/wiki/Yellowdog_Updater,_Modified>`_, daí a necessidade de um interpretador.
 
-Unfortunately, nearly all modern operating systems utilise a version of Python that is older than what we require for this tutorial. There's many different ways in which you can install Python, and many of them are sadly rather tricky to accomplish. We demonstrate the most commonly used approaches, and provide links to additional reading for more information.
+Infelizmente, quase todos os sistemas operacionais modernos utilizam uma versão do Python que mais antiga do que a que nós estamos requerendo para este tutorial. Existem muitas maneiras diferentes nas quais você pode instalar Python, e muitas delas são, infelizmente, bastante complicadas de realizar. Nós demonstraremos a abordagem mais comumente usada, e fornecer links adicionais de leitura para mais informações.
 
-.. warning:: This section will detail how to run Python 2.7.5 *alongside* your current Python installation. It is regarded as poor practice to remove your operating system's default Python installation and replace it with a newer version. Doing so could render aspects of your operating system's functionality broken!
+.. warning:: Esta seção detalhará como rodar Python 2.7.5 *ao lado* da sua atual instalação do Python. É considerada como má prática remover do seu sistema operacional a instalação Padrão do Python e substitui-la por uma nova versão. Fazer isso pode quebrar as funcionalidades do seu sistema operacional!
 
 Apple OS X
 ..........
-The most simple way to get Python 2.7.5 installed on your Mac is to download and run the simple installer provided on the official Python website. You can download the installer by visiting the webpage at http://www.python.org/getit/releases/2.7.5/.
+A maneira mais simples de ter Python 2.7.5 instalado no seu Mac é baixando e rodando o simples instalador fornecido no site oficial Python. Você pode baixar o instalador ao visitar a página em http://www.python.org/getit/releases/2.7.5/.
 
-.. warning:: Ensure that you download the ``.dmg`` file that is relevant to your particular OS X installation!
+.. warning:: Garanta que você baixou o arquivo ``.dmg`` que é relevante para sua versão do OS X!
 
-#. Once you have downloaded the ``.dmg`` file, double-click it in the Finder.
-#. The file mounts as a separate disk and a new Finder window is presented to you.
-#. Double-click the file ``Python.mpkg``. This will start the Python installer.
-#. Continue through the various screens to the point where you are ready to install the software. You may have to provide your password to confirm that you wish to install the software.
-#. Upon completion, close the installer and eject the Python disk. You can now delete the downloaded ``.dmg`` file.
+#. Depois que você baixou o arquivo ``.dmg``, dê um clique duplo no `Finder <http://pt.wikipedia.org/wiki/Finder>`_.
+#. O arquivo monta como um disco separado e uma nova janela do Finder é aprensetada para você.
+#. Duplo clique no arquivo ``Python.mpkg``. Isto iniciará o instalador Python.
+#. Continue através das diversas tela até o ponto onde você já está pronto para instalar o software. Você pode ter que fornecer sua senha para confirmar que você deseja instalar.
+#. Uma vez completada, feche o instalador e ejete o disco Python. Você pode agora deleter o arquivo ``.dmg`` baixado.
 
-You should now have an updated version of Python installed, ready for Django! Easy, huh?
+Você deve ter agora uma versão atualizada do Python instalada, pronta para o Django! Fácil, né?
 
-Linux Distributions
+Distribuições Linux
 ...................
-Unfortunately, there are many different ways in which you can download, install and run an updated version of Python on your Linux distribution. To make matters worse, methodologies vary from distribution to distribution. For example, the instructions for installing Python on `Fedora <http://fedoraproject.org/>`_ may differ from those to install it on an `Ubuntu <http://www.ubuntu.com/>`_ installation.
+Infelizmente, existem muitas maneiras diferentes em que você pode baixar, instalar e rodar uma versão atualizada do Python na sua distribuição Linux. Para piorar a situação, metodologias variam de distribuições para distribuições. Por exemplo, as instruções para instalar Python no `Fedora <http://fedoraproject.org/>`_ pode diferenciar daquelas para instalar no `Ubuntu <http://www.ubuntu.com/>`_.
 
-However, not all hope is lost. An awesome tool (or a *Python environment manager*) called `pythonbrew <https://github.com/utahta/pythonbrew>`_ can help us address this difficulty. It provides an easy way to install and manage different versions of Python, meaning you can leave your operating system's default Python installation alone. Hurrah!
+Entretanto, nem toda esperança está perdida. Uma ferramenta incrível (ou um *Gerenciador de ambiente Python*) chamado `pythonbrew <https://github.com/utahta/pythonbrew>`_ pode nos ajudar a resolver este problema. Ela fornece uma maneira fácil para instalar e gerenciar diferentes versões do Python, o que significa que você pode deixar a instalação padrão do Python no seu sistema operacional sozinha. Irrá!
 
-Taken from the instructions provided from `the pythonbrew GitHub page <https://github.com/utahta/pythonbrew>`_ and `this Stack Overflow question and answer page <http://stackoverflow.com/questions/5233536/python-2-7-on-ubuntu>`_, the following steps will install Python 2.7.5 on your Linux distribution.
+Retirando as instruções fornecidas `da página do pythonbrew no Github <https://github.com/utahta/pythonbrew>`_ e `desta thread na página do Stack Overflow <http://stackoverflow.com/questions/5233536/python-2-7-on-ubuntu>`_, os seguintes passos irão instalar o Python 2.7.5 na sua distribuição Linux.
 
-#. Open a new terminal instance.
-#. Run the command ``curl -kL http://xrl.us/pythonbrewinstall | bash``. This will download the installer and run it within your terminal for you. This installs pythonbrew into the directory ``~/.pythonbrew``. Remember, the tilde (``~``) represents your home directory!
-#. You then need to edit the file ``~/.bashrc``. In a text editor (such as ``gedit``, ``nano``, ``vi`` or ``emacs``), add the following to a new line at the end of ``~/.bashrc``: ``[[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc``
-#. Once you have saved the updated ``~/.bashrc`` file, close your terminal and open a new one. This allows the changes you make to take effect.
-#. Run the command ``pythonbrew install 2.7.5`` to install Python 2.7.5.
-#. You then have to *switch* Python 2.7.5 to the *active* Python installation. Do this by running the command ``pythonbrew switch 2.7.5``.
-#. Python 2.7.5 should now be installed and ready to go.
+#. Abra uma nova instância do Terminal
+#. Execute o comando ``curl -kL http://xrl.us/pythonbrewinstall | bash``. Isto irá baixar o instalador e executar executá-lo dentro do seu terminal para você. Isto instala o pythonbrew dentro do seguinte diretório ``~/.pythonbrew``. Lembre, o til (``~``) representa o seu diretório home!
+#. Você precisa então editar o arquivo ``~/.bashrc``. Em um editor de texto (como o ``gedit``, ``nano``, ``vi`` ou ``emacs``), e adicione o seguinte em uma nova linha no final do arquivo ``~/.bashrc``: ``[[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc``
+#. Uma vez que você salvou as alterações no arquivo ``~/.bashrc``, feche seu terminal e abra um novo. Isto permitirar que as alterações sejam então aplicadas.
+#. Execute o comando ``pythonbrew install 2.7.5`` para instalar o Python 2.7.5.
+#. Você precisa então *mudar* para o Python 2.7.5 para *ativar* a nova instalação. Faça isto executando o comando ``pythonbrew switch 2.7.5``.
+#. Python 2.7.5 deverá agora estar instalado e pronto para uso.
 
-.. note:: Directories and files beginning with a period or dot can be considered the equivalent of *hidden files* in Windows. `Dot files <http://en.wikipedia.org/wiki/Dot-file>`_ are not normally visible to directory-browsing tools, and are commonly used for configuration files. You can use the ``ls`` command to view hidden files by adding the ``-a`` switch to the end of the command, giving the command ``ls -a``.
+.. note:: Diretórios e arquivos que começam com um ponto podem ser considerados equivalentes aos *arquivos ocultos* do Windows.`Arquivos com ponto <http://en.wikipedia.org/wiki/Dot-file>`_ normalmente não são visíveis no visualizador de diretórios, e são comumente usados para configurações de arquivos. Você pode usar o comando ``ls`` para visualizar arquivos ocultos ao adicionar o ``-a`` no final do comando, ficando da seguinte forma ``ls -a``.
 
 .. _requirements-install-python-windows:
 
 Windows
 .......
-By default, Microsoft Windows comes with no installations of Python. This means that you do not have to worry about leaving existing versions be; installing from scratch should work just fine. You can download a 64-bit or 32-bit version of Python from `the official Python website <http://www.python.org/download/>`_. If you aren't sure which one to download, you can determine if your computer is 32-bit or 64-bit by looking at the instructions provided `on the Microsoft website <http://windows.microsoft.com/en-gb/windows7/32-bit-and-64-bit-windows-frequently-asked-questions>`_.
+Por padrão, o Microsoft Windows vem sem nenhuma instalação do Python. Isto significa que você não tem que se preocupar em deixar versões diferentes juntas; instalando do início deve funcionar bem. Você pode baixar uma versão 64-bit ou 32-bit do Python a partir do `site oficial Python <http://www.python.org/download/>`_. Se você não está certo sobre qual baixar, você pode descobrir se o seu computador é 32-bit ou 64-bit ao olhar nas instruções fornecidas `no site da Microsoft <http://windows.microsoft.com/en-gb/windows7/32-bit-and-64-bit-windows-frequently-asked-questions>`_.
 
-#. When the installer is downloaded, open the file from the location to which you downloaded it.
-#. Follow the on-screen prompts to install Python.
-#. Close the installer once completed, and delete the downloaded file.
+#. Quano o instalador estiver baixado, abra o arquivo no local onde baixou.
+#. Siga os passos na tela para instalar o Python.
+# Feche o instalador assim que completar a instalação, e delete os arquivos baixados.
 
-Once the installer is complete, you should have a working version of Python ready to go. By default, Python 2.7.5 is installed to the folder ``C:\Python27``. We recommend that you leave the path as it is.
 
-Upon the completion of the installation, open a Command Prompt and enter the command ``python``. If you see the Python prompt, installation was successful. However, in certain circumstances, the installer may not set your Windows installation's ``PATH`` environment variable correctly. This will result in the ``python`` command not being found. Under Windows 7, you can rectify this by performing the following:
+Assim que o instalador terminou, você deve ter uma versão do Python pronta para uso. Por padrão, Python 2.7.5 está instalado na pasta ``C:\Python27``. Nós recomendamos que você deixe esse caminho como está.
 
-#. Click the *Start* button, right click *My Computer* and select *Properties*.
-#. Click the *Advanced* tab.
-#. Click the *Environment Variables* button.
-#. In the *System variables* list, find the variable called *Path*, click it, then click the *Edit* button.
-#. At the end of the line, enter ``;C:\python27;C:\python27\scripts``. Don't forget the semicolon - and certainly *do not* add a space.
-#. Click OK to save your changes in each window.
-#. Close any Command Prompt instances, open a new instance, and try run the ``python`` command again.
+Após a conclusão da instalação, abra um prompt de comando e execute o comando ``python``. Se você ver o prompt do Python, a instalação foi um sucesso. Entretanto, em algumas circunstâncias, o instalador pode não setar suas variáveis de ambiente do Windows no ``PATH`` corretamente. Isto resultará no comando ``python`` não ter sido encontrado. No Windows 7, você pode corrigir isto fazendo o seguinte:
 
-This should get your Python installation fully working. Windows XP, `has slightly different instructions <http://www.computerhope.com/issues/ch000549.htm>`_, and `so do Windows 8 installationsthis <http://stackoverflow.com/a/14224786>`_.
+#. Clique no *iniciar*, então com o botão direito clique em *Meu Computador* e selecione *Propriedades*.
+#. Clique em *Avançado*.
+#. Clique no botão *Variáveis de Ambiente*.
+#. Na lista *Variáveis do Sistema*, procura a variável chamada *Path*, clique nela, e então clique no botão *Editar*.
+#. No fim da linha, coloque ``;C:\python27;C:\python27\scripts``. Não esqueça do ponto e vírgula -  e certamente *não* adicione um espaço.
+#. Cliquem em OK em cada janela para salvar suas mudanças.
+#. Fecha qualquer janela do prompt de comandos aberta, e abra uma nova instância, e tenta agora rodar o comando ``python`` novamente.
 
-Setting Up the ``PYTHONPATH``
+Isto deve fazer a sua instalação do Python funcionar. No Windows XP, `tem instruções ligeiramente diferentes <http://www.computerhope.com/issues/ch000549.htm>`_, e `com o Windows 8 fazer desta forma <http://stackoverflow.com/a/14224786>`_.
+
+Configurando o ``PYTHONPATH``
 *****************************
-With Python now installed, we now need to check that the installation was successful. To do this, we need to check that the ``PYTHONPATH``
-`environment variable <http://en.wikipedia.org/wiki/Environment_variable>`_ is setup correctly. ``PYTHONPATH`` provides the Python interpreter with the location of additional Python `packages and modules <http://stackoverflow.com/questions/7948494/whats-the-difference-between-a-python-module-and-a-python-package>`_ which add extra functionality to the base Python installation. Without a correctly set ``PYTHONPATH``, we'll be unable to install and use Django!
+Agora com Python instalado, nós precisamos verificar se a instalação foi bem sucedida. Para fazer isto, nós precisamos checar se a `variável de ambiente <http://pt.wikipedia.org/wiki/Vari%C3%A1vel_de_ambiente>`_ ``PYTHONPATH`` está configurada corretamente. ``PYTHONPATH`` fornece o interpretador Python com a localização dos `pacotes e módulos <http://stackoverflow.com/questions/7948494/whats-the-difference-between-a-python-module-and-a-python-package>`_ adicionais do Python que adicionam funcionalidades extras para a instalação base do Python. Sem a correta configuração do ``PYTHONPATH``, nós não seremos capazes de instalar e usar o Django!
 
-First, let's verify that our ``PYTHONPATH`` variable exists. Depending on the installation technique that you chose, this may or may not have been done for you. To do this on your UNIX-based operating system, issue the following command in a terminal.
+Primeiro, vamos verificar se nossa variável ``PYTHONPATH`` existe. Dependendo da técnica de instalação que você escolheu, isto pode ou não ter sido feito pra você. Para fazer isto no seu sistema operacional baseado no UNIX, execute o seguinte comando no terminal.
 
 .. code-block:: guess
-	
+
 	$ echo $PYTHONPATH
 
-On a Windows-based machine, open a Command Prompt and issue the following.
+Em uma máquina Windows, abra o prompt de comando e execute o seguinte.
 
-.. code-block:: guess
-	
 	$ echo %PYTHONPATH%
 
-If all works, you should then see output that looks something similar to the example below. On a Windows-based machine, you will obviously see a Windows path, most likely originating from the C drive.
+Se tudo funcionar, você deve então ver uma saída que parece com o exemplo abaixo. Em uma máquina Windows, você verá obviamente um caminho Windows, provavelmente proveniente da unidade C.
 
 .. code-block:: guess
 	
 	/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages:
 
-This is the path to your Python installation's ``site-packages`` directory, where additional Python packages and modules are stored. If you see a path, you can continue to the next part of this tutorial. If you however do not see anything, you'll need to do a little bit of detective work to find out the path. On a Windows installation, this should be a trivial exercise: ``site-packages`` is located within the ``lib`` folder of your Python installation directory. For example, if you installed Python to ``C:\Python27``, ``site-packages`` will be at ``C:\Python27\Lib\site-packages\``.
+Este é o caminho para o seu diretório ``site-packages`` da sua instalação Python, onde pacotes e módulos Python adicionais estão armazenados. Se você vê um caminho, você pode continuar para a próxima parte deste tutorial. Se, no entanto, você não vê nada, você precisará fazer um pequeno trabalho de detetive para descobrir o caminho. Em uma instalação Windows, isto deve ser um exercício trivial: ``site-packages`` está localizado dentro da pasta ``lib`` do diretório da sua instalação Python. Por exemplo, se você instalou Python em ``C:\Python27``, ``site-packages`` estará em ``C:\Python27\Lib\site-packages\``.
 
-UNIX-based operating systems however require a little bit of detective work to discover the path of your ``site-packages`` installation. To do this, launch the Python interpreter. The following terminal session demonstrates the commands you should issue.
+No entanto, sistemas operacionais baseados em UNIX requerem um pequeno trabalho de detetive para descobrir o caminho do seu ``site-packages`` na sua instalação. Para fazer isso, abra seu interpretador Python. A seguinte sessão no terminal demonstra os comandos que você deve executar.
 
 .. code-block:: python
 	
@@ -221,183 +223,170 @@ UNIX-based operating systems however require a little bit of detective work to d
 	
 	>>> quit()
 
-Calling ``site.getsitepackages()`` returns a list of paths that point to additional Python package and module stores. The first typically returns the path to your ``site-packages`` directory - changing the list index position may be required depending on your installation. If you receive an error stating that ``getsitepackages()`` is not present within the ``site`` module, verify you're running the correct version of Python. Version 2.7.5 should include this function. Previous versions of the language do not include this function.
+Chamando ``site.getsitepackages()`` teremos como retorno uma lista de caminhos que apontam para o pacote Python adicional e os módulos armazenados. O primeiro normalmente retorna o caminho para o seu diretório ``site-packages`` - pode ser necessário mudar a posição do índice da lista depedendo da sua instalação. Se você receber uma mensagem de erro indicando que ``site-packages()`` não está presente dentro do módulo ``site``, verifique se você está rodando a versão correta do Python. A versão 2.7.5 deve incluir esta função. Versões anteriores da linguagem não incluem esta função.
 
-The string which is shown as a result of executing ``print site.getsitepackages()[0]`` is the path to your installation's ``site-packages`` directory. Taking the path, we now need to add it to your configuration. On a UNIX-based or UNIX-derived operating system, edit your ``.bashrc`` file once more, adding the following to the bottom of the file.
-
+A string que é mostrada como um resultado da execução do ``print site.getsitepackages()[0]`` é o caminho para o diretório ``site-packages`` da sua instalação. Tendo o caminho, nós agora precisamos adicioná-lo na sua configuração. Em um sistema operacional baseado ou derivado do UNIX, edit seu arquivo ``.bashrc`` mais uma vez, adicionando o seguinte ao final do arquivo.
 
 .. code-block:: guess
 	
 	export PYTHONPATH=$PYTHONPATH:<PATH_TO_SITE-PACKAGES>
 
-Replace ``<PATH_TO_SITE-PACKAGES>`` with the path to your ``site-packages`` directory. Save the file, and quit and reopen any instances of your terminal.
+Substitua ``<PATH_TO_SITE-PACKAGES>`` com o caminho so seu diretório ``site-packages`` que você conseguiu anteriormente com a função ``site.getsitepackages()``. Salve o arquivo, e feche e abra uma nova instância do seu terminal.
 
-On a Windows-based computer, you must follow the instructions shown in Section :num:`requirements-install-python-windows` to bring up the environment variables settings dialog. Add a ``PYTHONPATH`` variable with the value being set to your ``site-packages`` folder, which is typically ``C:\Python27\Lib\site-packages\``.
+Em um computador com Windows, você tem que seguir as instruções mostradas na Seção :num:`requirements-install-python-windows` para abrir a janela de configuração de variáveis de ambiente. Adicione uma variável ``PYTHONPATH`` com o valor a ser definido para a sua pasta ``site-packages``, que geralmente está em ``C:\Python27\Lib\site-packages\``.
 
-Using Setuptools and Pip
-************************
-Installing and setting up your development environment is a really important part of any project. While it is possible to install Python Packages such as Django separately, this can lead to numerous problems and hassles later on. For example, how would you share your setup with another developer? How would you set up the same environment on your new machine? How would you upgrade to the latest version of the package? Using a package manager removes much of the hassle involved in setting up and configuring your environment. It will also ensure that the package you install is the correct for the version of Python you are using, along with installing any other packages that are dependent upon the one you want to install.
+Usando Setuptools e Pip
+***********************
+Instalar e configurar seu ambiente de desenvolvimento é uma parte realmente importante de qualquer projeto. Embora seja possível instalar pacotes Python como o Django separadamente, isso pode levar a numerosos problemas e dificuldades mais tarde. Por exemplo, como você compartilharia sua configuração com outro desenvolvedor? Como você configuraria o mesmo ambiente em uma máquina nova? Como você atualizaria para a última versão do pacote? Usando um gerenciador de pacotes remove muitos dos problemas envolvidos em instalar e configurar seu ambiente. Ele também garantirá que os pacotes que você instala é correto para a versão do Python que você está utilizando, juntamente com a instalação de qualquer outro pacote que seja dependência de algum pacote que você queira instalar.
 
-In this book, we will be using *Pip*. Pip is a user-friendly wrapper over the *Setuptools* Python package manager. Because Pip depends on Setuptools, we are required to ensure that both are installed on your computer.
+Neste livro, nós estaremos usando o *Pip*. Pip é um gerenciador de pacotes amigável envolta do *Setuptools*. Por causa do Pip depender do Setuptools, somos obrigados a garantir que ambos estão instalados no seu computador.
 
-To start, we should download Setuptools from the `official Python package website <https://pypi.python.org/pypi/setuptools/1.1.6>`_. You can download the package in a compressed ``.tar.gz`` file. Using your favourite file extracting program, extract the files. They should all appear in a directory called ``setuptools-1.1.6`` - where ``1.1.6`` represents the Setuptools version number. From a terminal instance, you can then change into the directory and execute the script ``ez_setup.py`` as shown below.
+Para começar, nós devemos baixar o Setuptools do `site oficial de pacotes Python <https://pypi.python.org/pypi/setuptools/1.1.6>`_. Você pode baixar o pacote em um arquivo compactado ``tar.gz``. Usando seu programa favorito para extrair, extraia os arquivos. Todos eles devem aparecer em um diretório chamado ``setuptools-1.1.6`` - onde ``1.1.6`` representa o número da versão do Setuptools. A partir do terminal, você pode então entrar no diretório e executar o script ``ez_setup.py`` como mostrado abaixo.
 
 .. code-block:: guess
 	
 	$ cd setuptools-1.1.6
 	$ sudo python ez_setup.py
 
-In the example above, we also use ``sudo`` to allow the changes to become system-wide. The second command should install Setuptools for you. To verify that the installation was successful, you should be able to see output similar to that shown below.
+No exemplo acima, nós também usamos ``sudo`` para permitir que as mudanças sejam feitas em todo o sistema. O segundo comando deve instalar o Setuptools para você. Para verificar se a instalação foi um sucesso, você deve ser capaz de ver uma saída parecida com a mostrada abaixo.
 
 .. code-block:: guess
 	
 	Finished processing dependencies for setuptools==1.1.6
 
-Of course, ``1.1.6`` is substituted with the version of Setuptools you are installing. If this line can be seen, you can move onto installing Pip. This is a trivial process, and can be completed with one simple command. From your terminal instance, enter the following.
+Claro que, ``1.1.6`` é substituido com a versão do Setuptools que você está instalando. Se esta linha aparecer, você pode então instalar o pip. Esse é um processo trivial, e pode ser completado com um simples comando. A partir do terminal, entre com o seguinte comando.
 
 .. code-block:: guess
 	
 	$ sudo easy_install pip
 
-This command should download and install Pip, again with system-wide access. You should see the following output, verifying Pip has been successfully installed.
+Este comando deve baixar e instalar o Pip, novamente com acesso ao todo o sistema. Você deve ver a seguinte saída, verificando que o Pip foi instalado com sucesso.
 
 .. code-block:: guess
 	
 	Finished processing dependencies for pip
 
-Upon seeing this output, you should be able to launch Pip from your terminal. To do so, just type ``pip``. Instead of an unrecognised command error, you should be presented with a list of commands and switches that Pip accepts. If you see this, you're ready to move on!
+Após ver esta saída, você deve ser capaz de iniciar o Pip no seu terminal. Para fazer isso, apenas digite ``pip``. Ao invés de um erro de comando desconhecido, você deve ser apresentado ao uma lista de comandos e chaves que o Pip aceita. Se você ver isso, você está pronto para seguir em frente!
 
-.. note:: With Windows-based computers, follow the same basic process. You won't need to enter the ``sudo`` command, however.
+.. note:: Em computadores com Windows, siga os mesmos processos básicos. Entretanto, você não precisa entrar com o comando ``sudo``.
 
-Installing Django
+Instalando Django
 *****************
-Once the Python package manager Pip is successfully installed on your computer, installing Django is easy. Open a Command Prompt or terminal window, and issue the following command.
+Uma vez que o gerenciador de pacotes Pip está instalado com sucesso no seu computador, instalar Django é fácil. Abra uma janela do terminal, e execute o seguinte comando.
 
 .. code-block:: guess
 	
 	$ pip install -U django==1.7
 
-If you are using a UNIX-based operating system and receive complaints about insufficient permissions, you will need to run the command with elevated privileges using the ``sudo`` command. If this is the case, you must then run the following command instead.
+Se você está usando um sistema operacional baseado em UNIX e receber alertas sobre permissões insuficientes, você precisará rodar o comando com privilégios elevados usando o comando ``sudo``. Se for este o caso, você deve então rodar o seguinte comando no lugar.
 
 .. code-block:: guess
 	
 	$ sudo pip install -U django==1.7
 
-The package manager will download Django and install it in the correct location for you. Upon completion, Django should be successfully installed. Note, if you didn't include the ``==1.7``, then a different version of Django may be installed.
+O gerenciador de pacotes irá baixar o Django e instalar no lugar correto para você. Após a conclusão, Django deverá estar instalado com sucesso. Note, se você não incluir o ``==1.7``, então uma versão diferente do Djando pode ser instalada.
 
-Installing the Python Imaging Library
-*************************************
-During the course of building Rango, we will be uploading and handling images. This means we will need support from the `Pillow (Python Imaging Library) <https://pillow.readthedocs.org/en/latest/>`_. To install this package issue the following command.
+instalando o Python Imaging Library
+***********************************
+Durante o curso de construção do Rango, nós estaremos fazendo upload e manipulando imagens. Isto significa que nós precisaremos do apoio do `Pillow (Python Imaging Library) <https://pillow.readthedocs.org/en/latest/>`_. Para instalar este pacote, execute o seguinte comando.
 
 .. code-block:: guess
 	
 	$ pip install pillow
 
-Again, use ``sudo`` if required. 
+Novamente, use ``sudo`` se for preciso.
 
-
-Installing Other Python Packages
+Instalando outros pacotes Python
 ********************************
-It is worth noting that additional Python packages can be easily downloaded using the same manner. `The Python Package Index <https://pypi.python.org/pypi>`_ provides a listing of all the packages available through Pip.
+Vale a pena norta que pacotes Python adicionais podem ser facilmente baixados usando a mesma maneira. O `O índice de pacotes Python <https://pypi.python.org/pypi>`_ fornecem uma lista de todos os pacotes Python disponíveis pelo pip.
 
-To get a list of the packages installed, you can run the following command.
+Para obter uma lista dos pacotes instalados, você pode rodar o seguinte comando.
 
 .. code-block:: guess
 	
 	$ pip list
 
-Sharing your Package List
-*************************
-You can also get a list of the packages installed in a format that can be shared with other developers. To do this issue the following command.
+Compartilhando sua lista de pacotes
+***********************************
+Você também pode pegar uma lista de pacotes instalados em um formato que pode ser compartilhado com outros desenvolvedores. Para fazer isso, execute o seguinte comando.
 
 .. code-block:: guess
 	
 	$ pip freeze > requirements.txt
 
-If you examine ``requirements.txt`` using either the command ``more``, ``less`` or ``cat``, you will see the same information but in a slightly different format. The ``requirements.txt`` can then use to install the same setup by issuing the following command. This is incredibly useful for setting up your environment on another computer, for example.
+Se você examinar o ``requirements.txt`` usando o comando ``more``, ``less`` ou ``cat``, você verá a mesma informação mas em um formato ligeiramente diferente. Isso é incrivelmente útil para configurar seu ambiente ou outro computador, por exemplo.
 
-::
+.. code-block:: guess
 	
 	$ pip install -r requirements.txt
 
-Integrated Development Environment
-----------------------------------
-While not absolutely necessary, a good Python-based integrated development environment (IDE) can be very helpful to you during the development process. Several exist, with perhaps JetBrains' `*PyCharm* <http://www.jetbrains.com/pycharm/>`_ and *PyDev* (a plugin of the `Eclipse IDE <http://www.eclipse.org/downloads/>`_) standing out as popular choices. The `Python Wiki <http://wiki.python.org/moin/IntegratedDevelopmentEnvironments>`_ provides an up-to-date list of Python IDEs.
+Ambiente de desenvolvimento Integrado (IDE)
+-------------------------------------
+Embora não seja absolutamente necessário, um bom ambiente de desenvolvimento integrado (chamaremos de IDE) em Python pode ser muito útil durante seu processo de desenvolvimento. Existem vários, como o JetBrains da `PyCharm <http://www.jetbrains.com/pycharm/>`_ e o *PyDev* (um plugin da IDE `Eclipse <http://www.eclipse.org/downloads/>`_) destacam-se como os mais populares na escolha. A `Python Wiki <http://wiki.python.org.br//IdesPython>`_ fornece uma lista atualizada das IDEs Python.
 
-Research which one is right for you, and be aware that some may require you to purchase a licence. Ideally, you'll want to select an IDE that supports integration with Django. PyCharm and PyDev both support Django integration out of the box - though you will have to point the IDE to the version of Python that you are using.
+Pesquise qual dessas é melhor para você, e esteha ciente que alguns podem requerer que você compre uma licença. De preferẽncia, você irá querer selecionar uma IDE que suporte integração com Django. Tanto PyCharm quanto PyDev surportam integração com Django por padrão - embora você terá que apontar para a IDE para a versão do Python que você está usando.
 
+Ambientes Virtuais
+******************
+Nós estamos com quase tudo pronto para começar! No entanto, antes de nós continuarmos, é importante ressaltar que enquanto esta configuração está boa para iniciar, existem algumas desvantagens. E se você tiver outra aplicação Python que precise de uma versão diferente para rodar? Ou você queira trocar para uma nova versão do Django, mas quer continuar mantendo seu projeto Django 1.7?
 
+A solução para isso é usar `ambientes virtuais <http://www.arruda.blog.br/programacao/python/usando-virtualenvwrapper/>`_. Ambiente virtuais permitem que diferentes instalações do Python e seus pacotes relevantes existam em harmonia. Esta é geralmente a abordagem aceita para configurar uma instalação Python hoje em dia.
 
-Virtual Environments
-********************
-We're almost all set to go! However, before we continue, it's worth pointing out that while this setup is fine to begin with, there are some drawbacks. What if you had another Python application that requires a different version to run? Or you wanted to switch to the new version of Django, but still wanted to maintain your Django 1.7 project?
+Eles são fáceis de instalar, uma vez que você tenha pip instalado, e saiba o comando certo. Você precisa instalar um par de pacotes adicionais.
 
-The solution to this is to use `virtual environments <http://simononsoftware.com/virtualenv-tutorial/>`_. Virtual environments allow multiple installations of Python and their relevant packages to exist in harmony. This is the generally accepted approach to configuring a Python setup nowadays.  
-
-
-They are pretty easy to setup, once you have pip installed, and you know the right commands. You need to install a couple of additional packages.
-
-::
+.. code-block:: guess
 	
 	$ pip install virtualenv
 	$ pip install virtualenvwrapper
 	
+O primeiro pacote fornece a infraestrutura para criar um ambiente virtual. Veja `uma introduçãoao Pip e Virtualenv para iniciantes Python <http://dabapps.com/blog/introduction-to-pip-and-virtualenv-python/>`_ por Jamie Matthews, para mais detalhes sobre o uso de virtualenv. No entanto, usando apenas o *virtualenv* é bastante complicado. O segundo pacote fornece um container (wrapper) para as funcionalidades no virtualenv, tornando a vida bem mais fácil.
 
-The first package provides you with the infrastructure to create a virtual environment.  See `a non-magical introduction to Pip and Virtualenv for Python Beginners <http://dabapps.com/blog/introduction-to-pip-and-virtualenv-python/>`_ by Jamie Matthews for details about using virtualenv. However, using just *virtualenv* alone is rather complex. The second package provides a wrapper to the functionality in the virtualenv package and makes life a lot easier. 
+Se você está usando algum sistema baseado no UNIX, para usar este wrapper você precisa chamar o seguinte script shell na sua linha de comando:
 
-
-If you are using a linux/unix based OS, then to use the wrapper you need to call the following shell script from your command line:
-::
+.. code-block:: guess
 
 	$ source virtualenvwrapper.sh
 
-It is a good idea to add this to your bash/profile script. So you dont have to run it each and every time you want to use virtualenvironments.
+É uma boa ideia adicionar isso ao seu script bash do perfil. Então você não terá que rodar isso cada vez que você quiser usar os ambientes virtuais.
 
-However, if you are using windows, then install the `virtualenvwrapper-win <https://pypi.python.org/pypi/virtualenvwrapper-win>`_ package:
+No entanto, se você está usando Windows, então instale o pacote `virtualenvwrapper-win <https://pypi.python.org/pypi/virtualenvwrapper-win>`_:
 
-
-::
+.. code-block:: guess
 
 	$ pip install virtualenvwrapper-win
 	
 
-	
-Now you should be all set to create a virtual environment:
+Agora você deve estar com tudo pronto para criar um ambiente virtual:
 
-::
+.. code-block:: guess
 
 	$ mkvirtualenv rango
 
-You can list the virtual environments created with ``lsvirtualenv'', and you can activate a virtual environment as follows:
+Você pode listar os ambientes virtuais criados com ``lsvirtualenv``, e você pode ativar um ambiente virtual da seguinte forma:
 
-::
+.. code-block:: guess
 
 	$ workon rango
 	(rango)$
-	
-Your prompt with change and the current virtual environment will be displayed, i.e. rango. Now within this environment you will be able to install all the packages you like, without interferring with your standard or other environements. Try ``pip list'' to see you dont have Django or Pillow installed in your virtual environment. You can now install them with pip so that they exist in your virtual environment.
 
-Later on when we go to deploy the application, we will go through a similar process see Chapter :ref:`Deploying your Application<virtual-environment>` and set up a virtual environment on PythonAnywhere.
+Seu prompt irá mudar mostrando o ambiente virtual atual, como no exemplo anterior, rango. Agora dentro deste ambiente você será capaz de instalar todos os pacotes que você quiser, sem interferir com seu ambiente padrão ou qualquer outro criado. Tente ``pip list`` para ver que você não tem Django ou o Pillow instalado no seu ambiente virtual. Você pode agora instalá-los com o pip, e então eles só existirão no seu ambiente virtual.
 
-Code Repository
-***************
-We should also point out that when you develop code, you should always house your code within a version-controlled repository such as `SVN <http://subversion.tigris.org/>`_ or `GIT <http://git-scm.com/>`_. We won't be going through this right now so that we can get stuck into developing an application in Django. We have however provided a :ref:`crash course on GIT <git-crash-course>`. We highly recommend that you set up a GIT repository for your own projects. Doing so could save you from disaster.
+Mais tarde, quando nós formos fazer deploy da aplicação, nós iremos passar por um processo similar. Veja o Capítulo :ref:`Fazendo Deploy da sua aplicação<virtual-environment>` e configure um ambiente virtual no PythonAnywhere.
 
+Repositório de Códigos
+**********************
+Devemos também ressaltar que quando você está desenvolvendo, você deve sempre abrigar seu código dentro de um repositório controlador de versão, tal como o `SVN <http://subversion.tigris.org/>`_ ou o `GIT <http://git-scm.com/>`_. Nós não passaremos por esse assunto agora, para que possamos estar focados em desenvolver a aplicação em Django. No entanto, nós fornecemos um :ref:`Curso Intensivo sobre GIT <git-crash-course>`. Nós recomendamos fortemente que você configure um repositório GIT para seus próprios projetos. Fazendo isso você pode acabar se salvando de umd desastre.
 
+Exercícios
+----------
+Para ficar confortável com seu ambiente, tente realizar os seguintes exercícios.
 
-
-Exercises
----------
-To get comfortable with your environment, try out the following exercises.
-
-* Install Python 2.7.5+ and Pip.
-* Play around with your CLI and create a directory called ``code``, which we use to create our projects in.
-* Install the Django and Pillow packages.
-* Setup your Virtual Environment
-* Setup your account on GitHub
-* Download and setup a Integrated Development Environemnt (like PyCharm)
-* We have made the code for the book and application that you build available on GitHub, see `Tango With Django Book <https://github.com/leifos/tango_with_django_book>`_  and  `Rango Application <https://github.com/leifos/tango_with_django>`_ .
-	* If you spot any errors or problem with the book, you can make a change request! 
-	* If you have any problems with the exercises, you can check out the repository and see how we completed them.
-
-
+* Instalar Python 2.7.5+ e Pip.
+* Brinque com seu terminal/linha de comando (CLI) e crie um diretório chamado ``code``, que nós usaremos para criar nosso projeto nele.
+* Instalar os pacotes do Django e Pillow.
+* Configurar seu ambiente virtual
+* Configurar sua conta no GitHub
+* Baixar e configurar um Ambiente de Desenvolvimento Integrado (IDE) (como o PyCharm)
+* Nós fizemos o código para o livro e a aplicação que você irá construir e disponibilizamos no GitHub, para ver acesse `Tango With Django Book <https://github.com/leifos/tango_with_django_book>`_ e `Rango Application <https://github.com/leifos/tango_with_django>`_ .
+	* Se você notar qualquer erro ou problemas com o livro, você pode fazer uma mudança e submetê-la!
+	* Se você tiver qualquer problema com os exercícios, você pode checar o repositório e ver como nós completamos eles.
