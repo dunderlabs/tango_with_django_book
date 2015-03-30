@@ -22,139 +22,135 @@ Para falar ao seu projeto Django onde os templates estarão alojados, abra seu a
 
 .. code-block:: python
 	
-	TEMPLATE_DIRS = ('<workspace>/tango_with_django_project/')
+	TEMPLATE_DIRS = ('<workspace>/tango_with_django_project/',)
 
-Note que você é *obrigado a usar o caminho absoluto* para localizar o diretório ``templates``.
-
-Note that you are *required to use absolute paths* to locate the ``templates`` directory. If you are part of a team or working on different computers, this may become a problem in the future. You'll have different usernames, meaning different paths to your ``<workspace>`` directory. The *hard-coded* path you entered above would not be the same on different computers. Of course, you could add in the template directory for each different setup, but that would be a pretty nasty way to tackle the problem. So, what can we do?
+Note que você é *obrigado a usar o caminho absoluto* para localizar o diretório ``templates``. Se você faz parte de um time ou trabalha em diferentes computadores, isso pode ser tornar um problema no futuro. Você terá diferentes usernames, o que significa diferente caminhos para o seu diretório ``<workspace>``. O *caminho embutido* (ou caminho codificado) que você entrou acima não seria o mesmo em diferentes computadores. Claro, você pode adicionar no diretório de template para cada configuração diferente, mas isso seria uma maneira bastante desagradável para resolver o problema. Então, o que podemos fazer?
 
 .. warning::
-	The road to hell is paved with hard-coded paths. 
- 	`Hard-coding <http://en.wikipedia.org/wiki/Hard_coding>`_ paths is considered to be a `software engineering anti-pattern <http://sourcemaking.com/antipatterns>`_, and will make your project less `portable <http://en.wikipedia.org/wiki/Software_portability>`_.
+	A estrada para o inferno está cheia de caminhos embutidos.
+	Caminho embutido ou `"Hard-coding <http://en.wikipedia.org/wiki/Hard_coding>`_ path" é considerado ser um `anti-padrão de engenharia de software <http://pt.wikipedia.org/wiki/Antipadrões_de_projeto_de_software>`_, e tornará o seu projeto menos `portável <http://pt.wikipedia.org/wiki/Portabilidade_(informática)>`_.
 
-Dynamic Paths
-.............
-The solution to the problem of hard-coding paths is to make use of built-in Python functions to work out the path of our ``templates`` directory automatically for us. This way, an absolute path can be obtained regardless of where you place your Django project's code on your filesystem. This in turn means that your project's code becomes more *portable.* 
 
-In Django 1.7 the ``settings.py`` file, now contains a variable called, ``BASE_DIR``. This stores the path to  the directory in which your project's ``settings.py`` module will be contained. This is obtained by using the special Python ``__file__`` attribute, which is `set to the absolute path of your settings module <http://stackoverflow.com/a/9271479>`_.  The ``__file__`` gives theabsolute path to the settings file, then the call to ``os.path.dirname()`` provides the reference to the absolute path of the directory. Calling ``os.path.dirname()`` again, removes another layer, so that ``BASE_DIR`` contains, ``<workspace>/tango_with_django_project/``. You can see this process in action, if you are curious, by adding the following lines:
+Caminhos Dinâmicos
+..................
+A solução para o problema do caminho embutido é fazer uso de funções built-in Python para calcular o caminho do nosso diretório ``templates`` automaticamente para nós. Desse jeito, um caminho absoluto pode ser obtido independente de onde você colocou seu código do projeto Django no seu sistema de arquivos. Isto, por sua vez, significa que o código do seu projeto se torna mais *portável*. À custa de um pouco mais de complexidade do seu projeto Django agora, você pode tornar sua vida muito mais fácil depois. *No pain, no gain!*
+
+No Django 1.7 o arquivo ``settings.py`` agora contém uma variável chamada ``BASE_DIR``. Esta armazena o caminho para o diretório no qual o módulo ``settings.py`` do seu projeto estará contido. Isso é obtido ao usar o atributo Python especial ``__file__``, qual está `definido para o caminho absoluto do seu módulo de configuração <http://stackoverflow.com/a/9271479>`_. O ``__file__`` dá o caminho absoluto para o arquivo settings, então a chamada para  chamar ``os.path.dirname()`` fornece a referência ao caminho absoluto do diretório. Chamar ``os.path.dirname()`` novamente remove outra camada, de modo que ``BASE_DIR`` contenha ``<workspace>/tango_with_django_project``. Você pode ver esse processo em ação, se você estiver curioso, ao adicionar as seguintes linhas:
 
 .. code-block:: python
 	
 	print __file__
 	print os.path.dirname(__file__)
 	print os.path.dirname(os.path.dirname(__file__))
-	
 
 
-Let's make use of it now. Create a new variable in ``settings.py`` called ``TEMPLATE_PATH`` and store the path to the ``templates`` directory you created earlier. Using the ``os.path.join()`` function, your code should look like the following example.
+Vamos usar isso agora. Crie uma nova variável em ``settings.py`` chamada ``TEMPLATE_PATH`` e armazene o caminho para o diretório ``templates`` que você criou anteriormente. Usando a função ``os.path.join()``, seu código deve parecer como o seguinte exemplo:
 
 .. code-block:: python
 	
 	TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
 
-Here we make use of the ``os.path.join()`` to mash together the ``BASE_DIR`` variable and ``'templates'``, which would for example yield ``<workspace>/tango_with_django_project/templates/``. We can then replace the hard-coded path we put in the ``TEMPLATE_DIRS`` with ``TEMPLATE_PATH``, just like in the example below.
+Aqui nós fazemos uso da função ``os.path.join()`` para juntar a variável ``PROJECT_PATH`` e a string ``'templates'``, que geraria, por exemplo ``<workspace>/tango_with_django_project/templates/``. Nós podemos então subistituir o caminho embutido que nós colocamos na tupla ``TEMPLATE_DIRS`` anteriormente com ``TEMPLATE_PATH``, assim como no exemplo abaixo:
 
 .. code-block:: python
 	
-	TEMPLATE_DIRS = [
-	    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-	    # Always use forward slashes, even on Windows.
-	    # Don't forget to use absolute paths, not relative paths.
-	    TEMPLATE_PATH,
-	]
+	TEMPLATE_DIRS = (
+		# Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+		# Always use forward slashes, even on Windows.
+		# Don't forget to use absolute paths, not relative paths.
+		TEMPLATE_PATH,
+	)
 
-We can keep the ``TEMPLATE_PATH`` variable at the top of our ``settings.py`` module to make it easy to access should it ever need to be changed. This is why we created an additional variable to store the template path.
+Nós podemos manter a variável ``TEMPLATE_PATH`` no topo do nosso módulo ``settings.py`` para torná-lo de fácil acesso, e ele não deve jamais ser alterado. É por isso que nós criamos uma variável adicional para armazenar o caminho do template.
 
-.. warning:: When joining or concatenating system paths together, using ``os.path.join()`` is the preferred approach. Using this function ensures that the correct slashes are used depending on your operating system. On a POSIX-compatible operating system, forward slashes would be used to separate directories, whereas a Windows operating system would use backward slashes. If you manually append slashes to paths, you may end up with path errors when attempting to run your code on a different operating system.
-
-
+.. warning:: 
+	Ao juntar ou concaternar caminhos de sistema, usar ``os.path.join()`` é a abordagem preferida. Usar esta função garante que a barra correta seja usada dependendo do seu sistema operacional. Em um sistema operacional compatível com POSIX, barras normal seriam usadas para separar diretórios, enquanto que um sistema operacional Windows usaria barra invertida. Se você manualmente adicionar barras aos caminhos, você pode acabar com erros de caminho ao tentar rodar seu código em um sistema operacional diferente.
 
 
 .. _adding-a-template-label:
 
-Adding a Template
-.................
-With your template directory and path set up, create a file called ``index.html`` and place it in the ``templates/rango/`` directory. Within this new file, add the following HTML code:
+Adicionando um Template
+.......................
+Com seu diretório de template e caminho configurado, crie um arquivo chamado ``index.html`` e coloque-o no diretório ``templates/rango/``. Dentro deste novo arquivo, adicione o seguinte código HTML:
 
 .. code-block:: html
 	
 	<!DOCTYPE html>
 	<html>
 	
-	    <head>
-	        <title>Rango</title>
-	    </head>
-	    
-	    <body>
-	        <h1>Rango says...</h1>
-	        hello world! <strong>{{ boldmessage }}</strong><br />
-	        <a href="/rango/about/">About</a><br />
-	    </body>
+		<head>
+			<title>Rango</title>
+		</head>
+		
+		<body>
+			<h1>Rango says...</h1>
+			hello world! <strong>{{ boldmessage }}</strong><br />
+			<a href="/rango/about/">About</a><br />
+		</body>
 	
 	</html>
 
-From this HTML code, it should be clear that a simple HTML page is going to be generated that greets a user with a *hello world* message. You might also notice some non-HTML in the form of ``{{ boldmessage }}``. This is a *Django template variable*, and we will be able to set a value for this variable to be displayed within the rendered output. We'll get to that in a moment.
+A partir deste código HTML, deve ficar claro que uma simples página HTML vai ser gerada para cumprimentar um usuário com uma mensagem *hello world*. Você pode também notar algum não-HTML na forma de ``{{ boldmessage }}``. Isso é uma *variável de template do Django*, e nós seremos capazes de setar um valor para esta variável para ser mostrada dentro da saída renderizada. Nós vamos chegar nessa parte daqui a pouco.
 
-To use this template, we need to re-configure the ``index()`` view that we created earlier. Instead of dispatching a simple message, we will change it to dispatch our template.
+Para usar este template, nós precisamos reconfigurar a view ``index()`` que nós criamos anteriormente. Ao invés de despachar uma simples mensagem, nós mudaremos isso para despachar nosso template.
 
-In ``rango/views.py``, make sure the following import statement is at the top of the file.
+Em ``rango/views.py``, assegure a seguinte declaração de import no topo do arquivo:
 
 .. code-block:: python
 	
 	from django.shortcuts import render
 
-You can then update the ``index()`` view function as follows. Check out the inline commentary to see what each line does.
+Você pode então atualizar a função ``index()`` como se segue. Confira o comentário na linha para ver o que cada linha faz.
 
 .. code-block:: python
 	
 	def index(request):
-	     
-	    # Construct a dictionary to pass to the template engine as its context.
-	    # Note the key boldmessage is the same as {{ boldmessage }} in the template!
-	    context_dict = {'boldmessage': "I am bold font from the context"}
-	    
-	    # Return a rendered response to send to the client.
-	    # We make use of the shortcut function to make our lives easier.
-	    # Note that the first parameter is the template we wish to use.
 		
-	    return render(request, 'rango/index.html', context_dict)
+		# Construir um dicionário para passar para o motor do template
+		# como seu contexto.
+		# Note que a chave boldmessage é a mesma {{ boldmessage }} no template!
+		context_dict = {'boldmessage': 'Eu sou a fonte em negrito do contexto.'}
+		
+		# Retorna uma resposta (response) renderizada para enviar ao cliente.
+		# Nós usamos a função atalho para tornar nosso trabalho mais fácil.
+		# Note que o primeiro parâmetro é o template que desejamos usar.
+		return render(request, 'rango/index.html', context_dict)
 
+Primeiro nós criamos um dicionário de pares chave-valor que nós queremos usar dentro do template, então nós chamamos a função auxiliar ``render()``. Essa função recebe como entrada o ``request`` do usuário, o nome do arquivo de template, e o dicionário de contexto. A função ``render()`` pegará esses dados e juntará com o template para produzir uma página HTML completa. Isso é então retornado e despachado ao browser do usuário.
 
-First we construct a dictionary of key-values pairs that we want to use within the template, then we call the ``render()`` helper function. This function takes as input the user's ``request``, the template file name, and the context dictionary. The ``render()`` function will take this data and mash it together with the template to produce a complete HTML page. This is then returned and dispatched to the user's web browser.
+Quando um arquivo de template é carregado com o sistema de template do Django, um *contexto de template* é criado. Em termos simples, um contexto de template é essencialmente um dicionário Pyton que mapeia nomes de variáveis do template com variáveis Python. No template que nós criamos anteriormente, nós incluímos uma variável de template chamada ``boldmessage``. Em nossa view de exemplo ``index(request)``, a string ``'Eu sou a fonte em negrito do contexto.'`` é mapeada para a variável de template ``boldmessage``. A string ``'Eu sou a fonte em negrito do contexto.'`` portanto substitui qualquer instância de ``{{ boldmessage }}`` dentro do template.
 
-When a template file is loaded with the Django templating system, a *template context* is created. In simple terms, a template context is essentially a Python dictionary that maps template variable names with Python variables. In the template we created earlier, we included a template variable name called ``boldmessage``. In our ``index(request)`` view example, the string ``I am bold font from the context`` is mapped to template variable ``boldmessage``. The string ``I am bold font from the context`` therefore replaces any instance of ``{{ boldmessage }}`` within the template.
+Agora que você atualizou a view para empregar o uso do seu template, rode o servidor de desenvolvimento Django, e visite http://127.0.0.1:8000/rango/. Você deve ver seu template renderizado em toda sua glória, assim como no exemplo mostrado na Figura :num:`fig-rango-hello-world-template`.
 
-Now that you have updated the view to employ the use of your template, run the Django development server and visit http://127.0.0.1:8000/rango/. You should see your template rendered in all its glory, just like the example shown in Figure :num:`fig-rango-hello-world-template`. 
+Se você não não vê, leia a mensagem de erro apresentada para ver qual é o problema, e então verifique novamente todas as alterações que você fez. Assegure que todas as mudanças necessárias foram feitas. Um dos problemas mais comuns que as pessoas tem com templates, é que o caminho está setado incorretamente em ``settings.py``. Algumas vezes vale a pena adicionar um ``print`` no ``settings.py`` para reportar o ``BASE_DIR`` e ``TEMPLATE_PATH``.
 
-If you don't, read the error message presented to see what the problem is, and then double check all the changes that you have made. Ensure that all the changes required have been made. One of the most common issues people have with templates is that the path is set incorrectly in ``settings.py``. Sometimes it's worth adding a ``print`` statement to ``settings.py`` to report the ``BASE_DIR`` and ``TEMPLATE_PATH``.
-
-This example demonstrates how to use templates within your views. However, we have only touched upon some of the functionality provided by Django regarding templates. We will use templates in more sophisticated ways as we progress through this tutorial. In the meantime, you can find out more about `templates from the official Django documentation <https://docs.djangoproject.com/en/1.7/ref/templates/>`_.
+Este exemplo demonstra como usar template dentro de suas views. No entanto, nós temos apenas tocado bem por cima de algumas das funcionalidades fornecidas pelo Django em relação a templates. Nós usaremos templates em maneiras mais sofisticadas conforme progredimos neste tutorial. No meio tempo, você pode descobrir mais sobre `templates na documentação oficial do Django <https://docs.djangoproject.com/en/1.7/ref/templates/>`_.
 
 .. _fig-rango-hello-world-template:
 
 .. figure:: ../images/rango-hello-world-template.png
 	:figclass: align-center
 
-	A screenshot of Google Chrome rendering the template used with this tutorial.
+	Uma screenshot do Google Chrome renderizando o template feito neste tutorial.
 
-Serving Static Media
---------------------
-Admittedly, the *Rango* website is pretty plain as we have not included any styling or imagery.  `Cascading Style Sheets (CSS) <http://en.wikipedia.org/wiki/Cascading_Style_Sheets>`_, `JavaScript <https://en.wikipedia.org/wiki/JavaScript>`_ and images are essentially *static media* files which we can include in our webpages to add style and introduce dynamic behaviour. These files are served in a slightly different way from webpages. This is because they aren't generated on the fly like our HTML pages. This section shows you how to setup your Django project to serve static media to the client. We'll also modify our template to include some example static media.
+Servindo Mídia Estática
+-----------------------
+Reconhecidamente, o site *Rango* está muito simples, já que não incluímos qualquer estilo ou imagens. `Folhas de Estilo (CSS) <http://pt.wikipedia.org/wiki/Cascading_Style_Sheets>`_, `JavaScript <http://pt.wikipedia.org/wiki/JavaScript>`_ e imagens são essencialmente arquivos de *mídia estática* que nós podemos incluir em nossas páginas web para adicionar estilo, e introduzir um comportamento dinâmico. Esses arquivos são servidos em uma maneira ligeiramente diferente de páginas web. Isso porque eles não são gerados na hora como nossas páginas HTML. Essa seção mostra para você como configurar seu projeto Django para servir mídia estática para o cliente. Nós também iremos modificar nosso template para incluir alguns exemplos de mídia estática.
 
-Configuring the Static Media Directory
-......................................
-To get static media up and running, you will need to set up a directory in which static media files are stored. In your project directory (e.g. ``<workspace>/tango_with_django_project/``), create a new directory called ``static`` and a new directory called ``images`` inside ``static``
+Configurando o Diretório de Mídia Estática
+..........................................
+Para ter mídia estática em funcionamento, você precisará configurar um diretório no qual os arquivos de mídia estática são armazenados. No seu diretório do projeto (por exemplo, ``<workspace>/tango_with_django_project/``), crie um novo diretório chamado ``static`` e dentro dele, um novo diretório chamado ``images``.
 
-Now place an image within the ``static/images`` directory. As shown in Figure :num:`fig-rango-picture`, we chose a picture of the chameleon, `Rango <http://www.imdb.com/title/tt1192628/>`_ - a fitting mascot, if ever there was one.
+Agora coloque uma imagem dentro do diretório ``static/images``. Como mostrado na Figura :num:`fig-rango-picture`, nós escolhemos uma imagem do camaleão, `Rango <http://www.imdb.com/title/tt1192628/>`_, um mascote apropriado, se alguma vez houve um.
 
 .. _fig-rango-picture:
 
 .. figure:: ../images/rango-picture.png
 	:figclass: align-center
 
-	Rango the chameleon within our static media directory.
+	Rango, o camaleão dentro do nosso diretório de mídia estática.
 
-With our ``static`` directory created, we need to tell Django about it, just like we did with our ``templates`` directory earlier. In ``settings.py`` file, we need to update two variables:  ``STATIC_URL`` and the ``STATICFILES_DIRS`` tuple. First, create a variable to store the path to the static directory (``STATIC_PATH``) as follows.
+Com nosso diretório ``static`` criado, nós precisamos falar ao Django sobre ele, assim como fizemos com nosso diretório de templates anterior. No arquivo ``settings.py``, vamos precisar atualizar duas variáveis: ``STATIC_URL`` e a tupla ``STATICFILES_DIRS``. Primeiro, crie uma variável para armazenar o caminho para o diretório (``STATIC_PATH``) como se segue:
 
 .. code-block:: python
 	
@@ -166,25 +162,25 @@ With our ``static`` directory created, we need to tell Django about it, just lik
 	    STATIC_PATH,
 	)
 
-You've typed in some code, but what does it represent? The first variable ``STATIC_URL`` defines the base URL with which your Django applications will find static media files when the server is running. For example, when running the Django development server with ``STATIC_URL`` set to ``/static/`` like in the code example above, static media will be available at ``http://127.0.0.1:8000/static/``.  The `official documentation on serving up static media <https://docs.djangoproject.com/en/1.7/ref/settings/#std:setting-STATIC_URL>`_ warns that it is vitally  important to make sure that those slashes are there. Not configuring this problem can lead to a world of pain.
+Você digitou algum código, mas o que ele representa? A primeira variável ``STATIC_URL`` define a URL base com a qual sua aplicação Django vai procurar arquivos de mídia estática quando o servidor está rodando. Por exemplo, ao rodar o servidor de desenvolvimento Django com ``STATIC_URL`` definida para ``/static/`` como no código de exemplo acima, mídia estática estará disponível em ``http://127.0.0.1:8000/static/``. A `documentação oficial sobre servir mídia estática <https://docs.djangoproject.com/en/1.7/ref/settings/#std:setting-STATIC_URL>`_ adverte que é de vital importância se certificar que essas barras estejam lá. Ao não configurar isso, este problema pode levar para um mundo de dor.
 
-While ``STATIC_URL`` defines the URL to access media via the web server, ``STATICFILES_DIRS`` allows you to specify the location of the newly created ``static`` directory on your local disk. Just like the ``TEMPLATE_DIRS`` tuple, ``STATICFILES_DIRS`` requires an absolute path to the ``static`` directory. Here, we re-used the ``BASE_DIR`` defined in Section :ref:`model-setup-templates-label` to create the ``STATIC_PATH``.
+Embora ``STATIC_URL`` defina a URL para acessar a mídia através do servidor web, ``STATICFILES_DIRS`` permite você especificar a localização do diretório recém criado ``static`` no seu disco local. Assim como a tupla ``TEMPLATE_DIRS``, ``STATICFILES_DIRS`` requer um caminho absoluto para o diretório ``static``. Aqui, nós reusamos o ``BASE_DIR`` definido na Seção :ref:`model-setup-templates-label` para criar o ``STATIC_PATH``.
 
-With those two settings updated, run your Django project's development server once more. If we want to view our image of Rango,  visit the URL ``http://127.0.0.1:8000/static/images/rango.jpg``. If it doesn't appear, you will want to check to see if everything has been correctly spelt and that you saved your ``settings.py`` file, and restart the development server. If it does appear, try putting in additional file types into the ``static`` directory and request them via your browser.
+Com essas duas 2 variáveis atualizadas, rode seu servidor de desenvolvimento do Django mais uma vez. Se nós quisermos ver nossa imagem do Rango, visite a URL ``http://127.0.0.1:8000/static/images/rango.jpg``. Se ela não aparecer, você irá checar se tudo foi corretamente escrito e que você salvou seu arquivo ``settings.py``, então reinicie o servidor de desenvolvimento. Se ela aparecer, tente colocar um tipo de arquivo adicional dentro do diretório ``static`` e requisite-o através do seu browser.
 
-.. caution:: While using the Django development server to serve your static media files is fine for a development environment, it's highly unsuitable for a production - or *live* - environment. The `official Django documentation on Deployment <https://docs.djangoproject.com/en/1.7/howto/static-files/deployment/>`_ provides further information about deploying static files in a production environment.
+.. cation:: Embora seja bom usar o servidor de desenvolvimento Django para servir seus arquivos de mídia estática para um ambiente de desenvolvimento, é altamente inadequado para um ambiente de produção - ou *ao vivo*. A `documentação oficial do Django sobre Deploy <https://docs.djangoproject.com/en/1.7/howto/static-files/deployment/>`_ fornece mais informações sobre fazer deploy de arquivos estáticos em um ambiente de produção.
 
-Static Media Files and Templates
---------------------------------
-Now that you have your Django project set up to handle static media, you can now access such media within your templates.
+Arquivos de Mídia Estática e Templates
+--------------------------------------
+Agora que você tem seu projeto Django configurado para manipular mídia estática, você pode agora acessar tais mídias dentro dos seus templates.
 
-To demonstrate how to include static media, open up ``index.html`` located in the ``<workspace>/templates/rango/`` directory. Modify the HTML source code as follows. The two lines that we add are shown with a HTML comment next to them for easy identification.
+Para demonstrar como incluir mídia estática, abra o ``index.html`` localizado no diretório ``<workspace>/templates/rango/``. Modifique o código fonte como o exemplo mostra. As duas linhas que nós adicionamos são mostradas com um comentário em HTML logo após, para fácil identificação.
 
 .. code-block:: html
 
 	<!DOCTYPE html>
 	
-	{% load staticfiles %} <!-- New line -->
+	{% load staticfiles %} <!-- Nova Linha -->
 	
 	<html>
 	
@@ -196,29 +192,29 @@ To demonstrate how to include static media, open up ``index.html`` located in th
 	        <h1>Rango says...</h1>
 	        hello world! <strong>{{ boldmessage }}</strong><br />
 	        <a href="/rango/about/">About</a><br />
-	        <img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" /> <!-- New line -->
+	        <img src="{% static "images/rango.jpg" %}" alt="Figura do Rango" /> <!-- Nova Linha -->
 	    </body>
 	
 	</html>
 
-First, we need to inform Django's template system that we will be using static media with the ``{% load static %}`` tag. This allows us to call the ``static`` template tag as done in ``{% static "rango.jpg" %}``. As you can see, Django template tags are denoted by curly brackets ``{ }``. In this example, the ``static`` tag will combine the ``STATIC_URL`` with ``"rango.jpg"`` so that the rendered HTML looks like the following.
+Primeiro, nós precisamos informar ao sistema de templates do Django com a tag ``{% load static %}`` que nós estaremos usando mídia estática. Isso nos permite chamar a tag de template ``static`` como feito em ``{% static "rango.jpg" %}``. Como você pode ver, tags de template DJango são indicadas por chaves ``{ }``. Neste exemplo, a tag ``static`` combinará o ``STATIC_URL`` com ``"rango.jpg"`` de modo que o HTML renderizado pareça como o seguinte exemplo:
 
 .. code-block:: html
 
-	<img src="/static/images/rango.jpg" alt="Picture of Rango" /> <!-- New line -->
+	<img src="/static/images/rango.jpg" alt="Picture of Rango" /> <!-- Nova Linha -->
 
-If for some reason the image cannot be loaded, it is always nice to specify an alternative text tagline. This is what the ``alt`` attribute provides - the text here is used in the event the image fails to load.
+Se por alguma razão a imagem não pode ser carregada, é sempre bom especificar uma tagline de texto alternativo. Isso é o que o atributo ``alt`` fornece - o texto aqui é usado no evento que a imagem falha para carregar.
 
-With these minor changes in place, kick off the Django development server once more and visit ``http://127.0.0.1:8000/rango``. Hopefully, you will see web page something like the one shown in Figure :num:`fig-rango-site-with-pic`.
+Com essas pequenas mudanças, inicie o servidor de desenvolvimento do Django mais uma vez e visite ``http://127.0.0.1:8000/rango``. Com sorte, você verá uma página web com algo como mostrado na Figura :num:`fig-rango-site-with-pic`.
 
 .. _fig-rango-site-with-pic:
 
 .. figure:: ../images/rango-site-with-pic.png
 	:figclass: align-center
 
-	Our first Rango template, complete with a picture of Rango the chameleon.
+	Nosso primeiro template Rango, completo com uma imagem do Rango, o camaleão.
 
-The ``{% static %}`` function call should be used whenever you wish to reference static media within a template. The code example below demonstrates how you could include JavaScript, CSS and images into your templates - all with the correct HTML markup.
+A chamada da função ``{% static %}`` deve ser usada sempre que você desejar referenciar mídia estática dentro de um template. O exemplo de código abaixo demonstra como você poderia incluir JavaScript, CSS e imagens no seu template - todos com a marcação HTML correta.
 
 .. code-block:: html
 	
@@ -241,16 +237,15 @@ The ``{% static %}`` function call should be used whenever you wish to reference
 	
 	</html>
 
-Static files you reference will obviously need to be present within your ``static`` directory. If the file is not there or you have referenced it incorrectly, the console output provide by Django's lightweight development server will flag up any errors. Try referencing a non-existent file and see what happens.
+Arquivos estáticos que você referenciar precisarão, obviamente, estar presentes dentro do seu diretório ``static``. Se o arquivo não está lá ou você o referenciou incorretamente, a saída do console fornecido pelo servidor do Django irá sinalizar quaisquer erros. Tente referenciar um arquivo não existente, e veja o que acontece.
 
-For further information about including static media you can read through the official `Django documentation on working with static files in templates <https://docs.djangoproject.com/en/1.7/howto/static-files/#staticfiles-in-templates>`_.
+Para mais informações sobre incluir mídia estática, você pode ler na `documentação oficial do Django sobre trabalhar com arquivos estáticos em templates <https://docs.djangoproject.com/en/1.7/howto/static-files/#staticfiles-in-templates>`_.
 
-.. caution:: Care should be taken in your templates to ensure that any `document type declaration <http://en.wikipedia.org/wiki/Document_Type_Declaration>`_ (e.g. ``<!DOCTYPE html>``) you use in your webpages appears in the rendered output on the *first line*. This is why we put the Django template command ``{% load static %}`` on a line underneath the document type declaration, rather than at the very top. It is a requirement of HTML/XHTML variations that the document type declaration be declared on the very first line. Django commands placed before will obviously be removed in the final rendered output, but they may leave behind residual whitespace which means your output `will fail validation <http://www.w3schools.com/web/web_validate.ASP>`_ on `the W3C markup validation service <http://validator.w3.org/>`_.
+.. caution:: Deve ser tomado cuidado nos seus templates para garantir que qualquer `declaração do tipo de documento <http://pt.wikipedia.org/wiki/Doctype>`_ (por exemplo, ``<!DOCTYPE html>``) que você usa nas suas páginas web apareça na saída renderizada na *primeira linha*. É por isso que nós colocamos o comando de template ``{% load static %}`` na linha abaixo da declaração do tipo de documento, em vez de no topo. É um requisito de variações HTML/XHTML que a declaração do tipo de documento seja declarado na exata primeira linha. Comandos Django colocados antes irão obviamente ser removidos na saída final renderizada, mas eles podem deixar para trás espaços em branco residuais que significa que sua saída `falhará na validação <http://tableless.com.br/validar-e-importante/>`_ no `serviço de validação do W3C <http://validator.w3.org>`_.
 
-#TODO(leifos): Note that this not the best practice when you go to deployment, and that they should see: https://docs.djangoproject.com/en/1.7/howto/static-files/deployment/ and that the following solution works when ``DEBUG=True``
+#Nota do Autor: Perceba que esta não é a melhor prática quando você vai fazer deploy, e que deve-se ver: https://docs.djangoproject.com/en/1.7/howto/static-files/deployment/ e que a seguinte solução funciona quando o ``DEBUG=True``.
 
-#TODO(leifos): the DEBUG variable in settings.py, lets you control the output when an error occurs, and is used for debugging. When the application is deployed it is not secure to leave DEBUG equal to True. When you set DEBUG to be False, then you will need to set the ALLOWED_HOSTS variable in settings.py, when running on your local machine this would be ``127.0.0.1``. You will also need to update the project urls.py file:
-
+#Nota do Autor: A variável DEBUG no settings.py, permite você controlar a saída quando acontecer um erro, e é usado para depuração (debugging). Quando a aplicação é implantada (deploy), não é seguro deixar ``DEBUG``igual a ``True``. Quando você definir ``DEBUG`` ``False``, então você precisará definir a variável ``ALLOWED_HOSTS`` no settings.py, ao rodar na sua máquina local este seria ``127.0.0.1``. Você precisará também atualizar o arquivo urls.py do projeto:
 
 .. code-block:: python
 
@@ -263,14 +258,11 @@ For further information about including static media you can read through the of
 		urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
-#TODO(leifos): Maybe we should describe all this in the deployment chapter... probably makes the most sense
+O Servidor de Mídia Estática
+----------------------------
+Agora que você pode despachar arquivos estáticos, vamos analisar o upload de mídia. Muitos sites web fornecem para seus usuários a habilidade de fazer isso - por exemplo, upload de uma imagem de perfil. Essa seção mostra pra você como adicionar um simples servidor de mídia de desenvolvimento para o seu projeto Django. O servidor de mídia de desenvolvimento pode ser usando em conjunto com o formulário de upload de arquivos que nós iremos abordar no Capítulo :ref:`login-label`.
 
-
-The Static Media Server
------------------------
-Now that you can dispatch static files, let's look at uploading media. Many websites provide their users with the ability to do this - for example, to upload a profile image. This section shows you how to add a simple development media server to your Django project. The development media server can be used in conjunction with file uploading forms which we will touch upon in Chapter :ref:`login-label`.
-
-So, how do we go about setting up a development media server? The first step is to create another new directory called ``media`` within our Django project's root (e.g. ``<workspace>/tango_with_django_project/``). The new ``media`` directory should now be sitting alongside your ``templates`` and ``static`` directories. After you create the directory, you must then modify your Django project's ``urls.py`` file, located in the project configuration directory (e.g. ``<workspace>/tango_with_django_project/tango_with_django_project/``). Add the following code to the ``urls.py`` file.
+Então, como vamos fazer sobre a configuração de um servidor de mídia de desenvolvimento? O primeiro passo é criar um outro diretório chamado ``media`` dentro da raiz do nosso projeto Django (por exemplo, ``<workspace>/tango_with_django_project/``). O novo diretório ``media`` deve agora estar ao lado dos diretórios ``templates`` e ``static``. Depois que você criar o diretório, você deve então modificar seu arquivo ``urls.py`` do projeto Django, localizado no diretório de configuração do projeto (por exemplo, ``<workspace>/tango_with_django_project/tango_with_django_project/``). Adicione o seguinte código ao arquivo ``urls.py``.
 
 .. code-block:: python
 	
@@ -281,54 +273,51 @@ So, how do we go about setting up a development media server? The first step is 
 	if settings.DEBUG:
 	    urlpatterns += patterns(
 	        'django.views.static',
-	        (r'media/(?P<path>.*)',
+	        (r'^media/(?P<path>.*)',
 	        'serve',
 	        {'document_root': settings.MEDIA_ROOT}), )
 
-The ``settings`` module from ``django.conf`` allows us access to the variables defined within our project's ``settings.py`` file. The conditional statement then checks if the Django project is being run in `DEBUG <https://docs.djangoproject.com/en/1.7/ref/settings/#debug>`_ mode. If the project's ``DEBUG`` setting is set to ``True``, then an additional URL matching pattern is appended to the ``urlpatterns`` tuple. The pattern states that for any file requested with a URL starting with ``media/``, the request will be passed to the ``django.views.static`` view. This view handles the dispatching of uploaded media files for you.
 
-With your ``urls.py`` file updated, we now need to modify our project's ``settings.py`` file. We now need to set the values of two variables. In your file, add ``MEDIA_URL`` and ``MEDIA_ROOT``, setting them to the values as shown below.
+O módulo ``settings`` do ``django.conf`` nos permite acessar as variáveis definidas dentro do arquivo ``settings.py`` do nosso projeto. A declaração condicional então checa se o projeto Django está sendo rodado em modo `DEBUG <https://docs.djangoproject.com/en/1.7/ref/settings/#debug>`_. Se a configuração ``DEBUG`` do projeto está setado como ``True``, então uma combinação de padrão URL adicional é acrescentado para a tupla ``urlpatterns``. O padrão estabelece que para qualquer arquivo requisitado com uma URL iniciando com ``media/``, a requisição será passada para a view ``django.views.static``. Essa view manipula o envio de arquivos de mídia enviados por você.
 
-
-
+Com o seu arquivo ``urls.py`` atualizado, agora nós precisamos modificar nosso arquivo ``settings.py`` do nosso projeto. Precisaremos definir o valor de duas variáveis. No seu arquivo, adicione ``MEDIA_URL`` e ``MEDIA_ROOT``, e configure-os para os valores mostrados abaixo:
 
 .. code-block:: python
 	
 	MEDIA_URL = '/media/'
 	MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # Absolute path to the media directory
 
-The first variable ``MEDIA_URL`` defines the base URL from which all media files will be accessible on your development server. Setting the ``MEDIA_URL`` for example to ``/media/`` will mean that user uploaded files will be available from the URL ``http://127.0.0.1:8000/media/``. ``MEDIA_ROOT`` is used to tell Django where uploaded files should be stored on your local disk. In the example above, we set this variable to the result of joining our ``PROJECT_PATH`` variable defined in Section :ref:`model-setup-templates-label` with ``/media/``. This gives an absolute path of ``<workspace>/tango_with_django_project/media/``.
+A primeira variável ``MEDIA_URL`` define a URL base a partir da qual todos os arquivos de mídia estarão acessíveis no seu servidor de desenvolvimento. Configurar ``MEDIA_URL``, por exemplo, para ``/media/`` significará que arquivos enviados pelo usuário estarão disponíveis a partir da URL ``http://127.0.0.1:8000/media/``. ``MEDIA_ROOT`` é usada para falar ao Django onde arquivos enviados devem ser armazenados no seu disco local. No exemplo acima, nós setamos essa variável ao resultado de juntar nossa variável ``PROJECT_PATH`` definida na seção :ref:`model-setup-templates-label` com ``/media/``. Isso resulta em um caminho absoluto para ``<workspace>/tango_with_django_project/media/``.
 
-.. caution:: As previously mentioned, the development media server supplied with Django is very useful for debugging purposes. However, it should **not** be used in a production environment. The official `Django documentation on static files <https://docs.djangoproject.com/en/1.7/ref/contrib/staticfiles/#static-file-development-view>`_ warns that such an approach is *"grossly inefficient and insecure"*. If you do come to deploying your Django project, read the documentation to see an alternative solution for file uploading that can handle a high volume of requests in a much more secure manner.
+.. caution:: Como mencionado anteriormente, o servidor de mídia de desenvolvimento fornecido com o Django é muito útil para propósitos de depuração. No entanto, ele **não** deve ser usado em um ambiente de produção. A documentação `Oficial do Django sobre arquivos estáticos <https://docs.djangoproject.com/en/1.7/ref/contrib/staticfiles/#static-file-development-view>`_ avisa que tal abordagem é *"extremamente ineficiente e insegura"*. Se você for fazer o deploy do seu projeto Django, leia a documentação para ver uma solução alternativa para envio de arquivos que possa manipular um volume alto de requisições, de uma maneira muito mais segura.
 
-You can test this setup works by placing an image file in your newly created ``media`` directory. Drop the file in, start the Django development server, and request the image in your browser. For example, if you added the file ``rango.jpg`` to ``media``, the URL you should enter would look like ``http://127.0.0.1:8000/media/rango.jpg``. The image should show in your browser. If it doesn't, you'll need to go back and check your setup.
+Você pode testar que esta configuração funciona ao colocar um arquivo de imagem no diretório ``media`` que você criou. Coloque o arquivo lá, inicie o servidor de desenvolvimento do Django, e requisite a imagem no seu browser. Por exemplo, se você adicionou o arquivo ``rango.jpg`` em ``media``, a URL que você deve entrar deve ser algo como ``http://127.0.0.1:8000/media/rango.jpg``. A imagem deve aparecer em seu browser. Se não aparecer, você precisará voltar e chegar sua configuração.
 
-#TODO(leifos): check that this still works (certainly you can access the images.. need to check the uploading)
 
-Basic Workflow
---------------
-With the chapter complete, you should now know how to setup and create templates, use templates within your views, setup and use Django to send static media files, include images within your templates *and* setup Django's static media server to allow for file uploads. We've actually covered quite a lot!
+Fluxo de Trabalho Básico
+------------------------
+Com o capítulo completo, você deve agora saber como configurar e criar templates, usar templates dentro de suas views, configurar e usar Django com arquivos de mídia estática, incluir imagens dentro de seus templates *e* configurar o servidor de mídia estática do Django para permitir envio de arquivos. Na verdade, nós abordamos muita coisa!
 
-Creating a template and integrating it within a Django view is a key concept for you to understand. It takes several steps, but becomes second nature to you after a few attempts.
+Criar um template e integrá-lo dentro de uma view Django é um conceito chave para você entender. São necessários vários passos, mas se torna natural para você depois de algumas tentativas.
 
-#. First, create the template you wish to use and save it within the ``templates`` directory you specified in your project's ``settings.py`` file. You may wish to use Django template variables (e.g. ``{{ variable_name }}``) within your template. You'll be able to replace these with whatever you like within the corresponding view.
-#. Find or create a new view within an application's ``views.py`` file.
-#. Add your view-specific logic (if you have any) to the view. For example, this may involve extracting data from a database.
-#. Within the view, construct a dictionary object which you can pass to the template engine as part of the template's *context*.
-#. Make use of the  ``render()`` helper function to generate the rendered response. Ensure you reference the request, then the template file, followed by the context dictionary!
-#. If you haven't already done so, map the view to a URL by modifying your project's ``urls.py`` file - and the application-specific ``urls.py`` file if you have one.
+#. Primeiro, crie o template que você deseja usar e salve-o dentro do diretório ``templates`` que você especificou no arquivo ``settings.py`` do seu projeto. Você pode querer usar variáveis de template do Django (por exemplo, ``{{ nome_variavel }}``) dentro do seu template. Você será capaz de substituir essas variáveis com qualquer coisa que você queira dentro da sua view correspondente.
+#. Encontre ou crie uma nova view dentro de um arquivo ``views.py`` da aplicação.
+#. Adicione sua lógica específica da view (se você tem alguma) para a view. Por exemplo, isto pode envolver extrair dados de um banco de dados.
+#. Dentro da view, construa um objeto dicionário no qual você possa passar para a engine de template como parte do *contexto* do template.
+#. Faça iso da função auxiliar ``render()`` para gerar uma resposta (response) renderizada. Garanta que você referencia a requisição (request), e então o arquivo de template, seguido pelo dicionário de contexto!
+#. Se você não tiver feito isso, mapeie a view para a URL ao modificar o arquivo ``urls.py`` do seu projeto -  e o arquivo ``urls.py`` específico da aplicação, se você tiver uma.
 
-The steps involved for getting a static media file onto one of your pages is another important process you should be familiar with. Check out the steps below on how to do this.
+Os passos envolvidos para ter um arquivo de mídia estática em uma de suas páginas é outro processo importanto que você deve estar familiarizado. Confira os passos abaixo sobre como fazer isso.
 
-#. Take the static media file you wish to use and place it within your project's ``static`` directory. This is the directory you specify in your project's ``STATICFILES_DIRS`` tuple within ``settings.py``.
-#. Add a reference to the static media file to a template. For example, an image would be inserted into an HTML page through the use of the ``<img />`` tag. 
-#. Remember to use the ``{% load staticfiles %}`` and ``{% static "filename" %}`` commands within the template to access the static files.
+#. Pegue o arquivo de mídia estática que você deseja usar e coloque-o dentro do diretório ``static`` do seu projeto. Este é o diretório que você especifica na sua tupla ``STATICFILES_DIRS`` dentro do ``settings.py`` do seu projeto.
+#. Adicione uma referencia para o arquivo de mídia estática em um template. Por exemplo, uma imagem seria inserida dentro de uma página HTML através do uso da tag ``<img />``.
+#. Lembre de usar os comandos ``{% load staticfiles %}`` e ``{% static "filename" %}`` dentro do template para acessar os arquivos estáticos.
 
-The next chapter will look at databases. We'll see how to make use of Django's excellent database layer to make your life easier and SQL free!
+No próximo capítulos iremos abordar sobre banco de dados. Nós veremos como usar uma excelente camada de banco de dados do Django para tornar sua fica mais fácil!
 
-Exercises
----------
-Give the following exercises a go to reinforce what you've learnt from this chapter.
+Exercícios
+----------
+Faça os seguintes exercícios para reforçar o que você acabou de aprender neste capítulo.
 
-* Convert the about page to use a template too from a template called ``about.html``.
-* Within the ``about.html`` template, add a picture stored within your project's static media.
+* Converta a página about para usar também usar um template chamado ``about.html``.
+* Dentro do template ``about.html``, adicione uma imagem armazenada de suas mídias estáticas do projeto.

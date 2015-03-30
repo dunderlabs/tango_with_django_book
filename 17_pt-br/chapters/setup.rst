@@ -237,7 +237,7 @@ Dentro de cada aplicação, você criará um número de URL para visualizar os m
 
 .. note:: O padrão de URL usa `expressões regulares <http://pt.wikipedia.org/wiki/Express%C3%A3o_regular>`_ para executar as combinações. Vale a pena se familiarizar sobre como usar expressões regulares em Python. A documentação oficial do Python contém um `guia útil sobre expressões regulares <http://docs.python.org/2/howto/regex.html>`_, enquanto regexcheatsheet.com fornece um `resumo limpo de expressões regulares <http://regexcheatsheet.com/>`_.
 
-Fluxos de trabalho Básixo
+Fluxos de trabalho Básico
 -------------------------
 O que você acabou de aprender neste capítulo pode ser sucintamente resumido em uma lista de ações. Aqui, nós fornecemos essas listas para 2 tarefas distintas que você executou. Você pode usar essa seção para uma referência rápida se você precisar se lembrar sobre alguma coisa em particular.
 
