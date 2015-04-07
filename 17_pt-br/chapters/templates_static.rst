@@ -118,7 +118,7 @@ Você pode então atualizar a função ``index()`` como se segue. Confira o come
 
 Primeiro nós criamos um dicionário de pares chave-valor que nós queremos usar dentro do template, então nós chamamos a função auxiliar ``render()``. Essa função recebe como entrada o ``request`` do usuário, o nome do arquivo de template, e o dicionário de contexto. A função ``render()`` pegará esses dados e juntará com o template para produzir uma página HTML completa. Isso é então retornado e despachado ao browser do usuário.
 
-Quando um arquivo de template é carregado com o sistema de template do Django, um *contexto de template* é criado. Em termos simples, um contexto de template é essencialmente um dicionário Pyton que mapeia nomes de variáveis do template com variáveis Python. No template que nós criamos anteriormente, nós incluímos uma variável de template chamada ``boldmessage``. Em nossa view de exemplo ``index(request)``, a string ``'Eu sou a fonte em negrito do contexto.'`` é mapeada para a variável de template ``boldmessage``. A string ``'Eu sou a fonte em negrito do contexto.'`` portanto substitui qualquer instância de ``{{ boldmessage }}`` dentro do template.
+Quando um arquivo de template é carregado com o sistema de template do Django, um *contexto de template* é criado. Em termos simples, um contexto de template é essencialmente um dicionário Python que mapeia nomes de variáveis do template com variáveis Python. No template que nós criamos anteriormente, nós incluímos uma variável de template chamada ``boldmessage``. Em nossa view de exemplo ``index(request)``, a string ``'Eu sou a fonte em negrito do contexto.'`` é mapeada para a variável de template ``boldmessage``. A string ``'Eu sou a fonte em negrito do contexto.'`` portanto substitui qualquer instância de ``{{ boldmessage }}`` dentro do template.
 
 Agora que você atualizou a view para empregar o uso do seu template, rode o servidor de desenvolvimento Django, e visite http://127.0.0.1:8000/rango/. Você deve ver seu template renderizado em toda sua glória, assim como no exemplo mostrado na Figura :num:`fig-rango-hello-world-template`.
 
@@ -168,7 +168,7 @@ Embora ``STATIC_URL`` defina a URL para acessar a mídia através do servidor we
 
 Com essas duas 2 variáveis atualizadas, rode seu servidor de desenvolvimento do Django mais uma vez. Se nós quisermos ver nossa imagem do Rango, visite a URL ``http://127.0.0.1:8000/static/images/rango.jpg``. Se ela não aparecer, você irá checar se tudo foi corretamente escrito e que você salvou seu arquivo ``settings.py``, então reinicie o servidor de desenvolvimento. Se ela aparecer, tente colocar um tipo de arquivo adicional dentro do diretório ``static`` e requisite-o através do seu browser.
 
-.. cation:: Embora seja bom usar o servidor de desenvolvimento Django para servir seus arquivos de mídia estática para um ambiente de desenvolvimento, é altamente inadequado para um ambiente de produção - ou *ao vivo*. A `documentação oficial do Django sobre Deploy <https://docs.djangoproject.com/en/1.7/howto/static-files/deployment/>`_ fornece mais informações sobre fazer deploy de arquivos estáticos em um ambiente de produção.
+.. caution:: Embora seja bom usar o servidor de desenvolvimento Django para servir seus arquivos de mídia estática para um ambiente de desenvolvimento, é altamente inadequado para um ambiente de produção - ou *ao vivo*. A `documentação oficial do Django sobre Deploy <https://docs.djangoproject.com/en/1.7/howto/static-files/deployment/>`_ fornece mais informações sobre fazer deploy de arquivos estáticos em um ambiente de produção.
 
 Arquivos de Mídia Estática e Templates
 --------------------------------------
@@ -245,7 +245,7 @@ Para mais informações sobre incluir mídia estática, você pode ler na `docum
 
 #Nota do Autor: Perceba que esta não é a melhor prática quando você vai fazer deploy, e que deve-se ver: https://docs.djangoproject.com/en/1.7/howto/static-files/deployment/ e que a seguinte solução funciona quando o ``DEBUG=True``.
 
-#Nota do Autor: A variável DEBUG no settings.py, permite você controlar a saída quando acontecer um erro, e é usado para depuração (debugging). Quando a aplicação é implantada (deploy), não é seguro deixar ``DEBUG``igual a ``True``. Quando você definir ``DEBUG`` ``False``, então você precisará definir a variável ``ALLOWED_HOSTS`` no settings.py, ao rodar na sua máquina local este seria ``127.0.0.1``. Você precisará também atualizar o arquivo urls.py do projeto:
+#Nota do Autor: A variável DEBUG no settings.py, permite você controlar a saída quando acontecer um erro, e é usado para depuração (debugging). Quando a aplicação é implantada (deploy), não é seguro deixar ``DEBUG`` igual a ``True``. Quando você definir ``DEBUG`` ``False``, então você precisará definir a variável ``ALLOWED_HOSTS`` no settings.py, ao rodar na sua máquina local este seria ``127.0.0.1``. Você precisará também atualizar o arquivo urls.py do projeto:
 
 .. code-block:: python
 
@@ -304,10 +304,10 @@ Criar um template e integrá-lo dentro de uma view Django é um conceito chave p
 #. Encontre ou crie uma nova view dentro de um arquivo ``views.py`` da aplicação.
 #. Adicione sua lógica específica da view (se você tem alguma) para a view. Por exemplo, isto pode envolver extrair dados de um banco de dados.
 #. Dentro da view, construa um objeto dicionário no qual você possa passar para a engine de template como parte do *contexto* do template.
-#. Faça iso da função auxiliar ``render()`` para gerar uma resposta (response) renderizada. Garanta que você referencia a requisição (request), e então o arquivo de template, seguido pelo dicionário de contexto!
+#. Faça uso da função auxiliar ``render()`` para gerar uma resposta (response) renderizada. Garanta que você referencia a requisição (request), e então o arquivo de template, seguido pelo dicionário de contexto!
 #. Se você não tiver feito isso, mapeie a view para a URL ao modificar o arquivo ``urls.py`` do seu projeto -  e o arquivo ``urls.py`` específico da aplicação, se você tiver uma.
 
-Os passos envolvidos para ter um arquivo de mídia estática em uma de suas páginas é outro processo importanto que você deve estar familiarizado. Confira os passos abaixo sobre como fazer isso.
+Os passos envolvidos para ter um arquivo de mídia estática em uma de suas páginas é outro processo importante que você deve estar familiarizado. Confira os passos abaixo sobre como fazer isso.
 
 #. Pegue o arquivo de mídia estática que você deseja usar e coloque-o dentro do diretório ``static`` do seu projeto. Este é o diretório que você especifica na sua tupla ``STATICFILES_DIRS`` dentro do ``settings.py`` do seu projeto.
 #. Adicione uma referencia para o arquivo de mídia estática em um template. Por exemplo, uma imagem seria inserida dentro de uma página HTML através do uso da tag ``<img />``.
