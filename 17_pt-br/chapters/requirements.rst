@@ -22,7 +22,7 @@ A fim de criar seu ambiente, aprender como usar o *Interpretador em Linha de Com
 
 Todos os Sistemas Operacionais baseados no UNIX usam um `terminal <http://www.ee.surrey.ac.uk/Teaching/Unix/unixintro.html>`_ de aparência semelhante. Descendentes, derivador e clones do UNIX incluindo o `Apple's OS X <http://en.wikipedia.org/wiki/OS_X>`_ e as `muitas distribuições Linux <pt.wikipedia.org/wiki/Lista_de_distribuições_de_Linux>`_ disponíveis atualmente. Todos esses sistemas operacionais contêm um conjunto básico de comandos que ajudam você a navegar através do seu sistemas de arquivos e rodar programas, tudo sem a necessidade de qualquer interface gráfica. Esta seção fornece os comandos que você deve se familiarizar.
 
-.. note:: Este tutorial é focado para usuários de sistemas operacionais baseados em UNIX ou dericados. Embora Python e Django possam rodar em um ambiente Windows, muitos dos comandos que nós usamos neste livro são paa terminais baseados em UNIX. Esses comandos podem, entretanto, serem repetidos no Windows usando a interface gráfica do usuário, `usando o comando relativo em um tela de comando Windows<http://www.ai.uga.edu/mc/winforunix.html>`_, ou usando `Windows PowerShell <http://technet.microsoft.com/en-us/library/bb978526.aspx>`_ que fornece um CLI similar ao terminal UNIX.
+.. note:: Este tutorial é focado para usuários de sistemas operacionais baseados em UNIX ou dericados. Embora Python e Django possam rodar em um ambiente Windows, muitos dos comandos que nós usamos neste livro são paa terminais baseados em UNIX. Esses comandos podem, entretanto, serem repetidos no Windows usando a interface gráfica do usuário, `usando o comando relativo em um tela de comando Windows <http://www.ai.uga.edu/mc/winforunix.html>`_, ou usando `Windows PowerShell <http://technet.microsoft.com/en-us/library/bb978526.aspx>`_ que fornece um CLI similar ao terminal UNIX.
 
 Após abrir uma nova instância do terminal, você será tipicamente apresentado com algo como:
 
@@ -120,7 +120,7 @@ Instalando os Softwares
 Agora que você tem um bom conhecimento de como interagir com o terminal, você pode começar a instalar os softwares requeridos para este tutorial.
 
 Instalando Python
------------------
+*****************
 Então, como é que você vai instalar o Python 2.7.5 no seu computador? Você pode já ter Python instalado no seu computador - e se você estiver usando uma distribuição Linux ou OS X, você definitivamente já o tem instalado. Algumas das funcionalidades desses sistemas operacionais `estão implementadas em Python <http://en.wikipedia.org/wiki/Yellowdog_Updater,_Modified>`_, daí a necessidade de um interpretador.
 
 Infelizmente, quase todos os sistemas operacionais modernos utilizam uma versão do Python que mais antiga do que a que nós estamos requerendo para este tutorial. Existem muitas maneiras diferentes nas quais você pode instalar Python, e muitas delas são, infelizmente, bastante complicadas de realizar. Nós demonstraremos a abordagem mais comumente usada, e fornecer links adicionais de leitura para mais informações.
@@ -143,6 +143,7 @@ Você deve ter agora uma versão atualizada do Python instalada, pronta para o D
 
 Distribuições Linux
 ...................
+
 Infelizmente, existem muitas maneiras diferentes em que você pode baixar, instalar e rodar uma versão atualizada do Python na sua distribuição Linux. Para piorar a situação, metodologias variam de distribuições para distribuições. Por exemplo, as instruções para instalar Python no `Fedora <http://fedoraproject.org/>`_ pode diferenciar daquelas para instalar no `Ubuntu <http://www.ubuntu.com/>`_.
 
 Entretanto, nem toda esperança está perdida. Uma ferramenta incrível (ou um *Gerenciador de ambiente Python*) chamado `pythonbrew <https://github.com/utahta/pythonbrew>`_ pode nos ajudar a resolver este problema. Ela fornece uma maneira fácil para instalar e gerenciar diferentes versões do Python, o que significa que você pode deixar a instalação padrão do Python no seu sistema operacional sozinha. Irrá!
@@ -165,10 +166,9 @@ Windows
 .......
 Por padrão, o Microsoft Windows vem sem nenhuma instalação do Python. Isto significa que você não tem que se preocupar em deixar versões diferentes juntas; instalando do início deve funcionar bem. Você pode baixar uma versão 64-bit ou 32-bit do Python a partir do `site oficial Python <http://www.python.org/download/>`_. Se você não está certo sobre qual baixar, você pode descobrir se o seu computador é 32-bit ou 64-bit ao olhar nas instruções fornecidas `no site da Microsoft <http://windows.microsoft.com/en-gb/windows7/32-bit-and-64-bit-windows-frequently-asked-questions>`_.
 
-#. Quano o instalador estiver baixado, abra o arquivo no local onde baixou.
+#. Quando o instalador estiver baixado, abra o arquivo no local onde baixou.
 #. Siga os passos na tela para instalar o Python.
-# Feche o instalador assim que completar a instalação, e delete os arquivos baixados.
-
+#. Feche o instalador assim que completar a instalação, e delete os arquivos baixados.
 
 Assim que o instalador terminou, você deve ter uma versão do Python pronta para uso. Por padrão, Python 2.7.5 está instalado na pasta ``C:\Python27``. Nós recomendamos que você deixe esse caminho como está.
 
@@ -321,7 +321,7 @@ Se você examinar o ``requirements.txt`` usando o comando ``more``, ``less`` ou 
 	$ pip install -r requirements.txt
 
 Ambiente de desenvolvimento Integrado (IDE)
--------------------------------------
+-------------------------------------------
 Embora não seja absolutamente necessário, um bom ambiente de desenvolvimento integrado (chamaremos de IDE) em Python pode ser muito útil durante seu processo de desenvolvimento. Existem vários, como o JetBrains da `PyCharm <http://www.jetbrains.com/pycharm/>`_ e o *PyDev* (um plugin da IDE `Eclipse <http://www.eclipse.org/downloads/>`_) destacam-se como os mais populares na escolha. A `Python Wiki <http://wiki.python.org.br//IdesPython>`_ fornece uma lista atualizada das IDEs Python.
 
 Pesquise qual dessas é melhor para você, e esteha ciente que alguns podem requerer que você compre uma licença. De preferẽncia, você irá querer selecionar uma IDE que suporte integração com Django. Tanto PyCharm quanto PyDev surportam integração com Django por padrão - embora você terá que apontar para a IDE para a versão do Python que você está usando.

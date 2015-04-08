@@ -354,6 +354,7 @@ Com um novo projeto Django, você deve primeiro falar ao Django sobre o banco de
 Adicionando um Model
 ....................
 O fluxo para adicionar models pode ser quebrado em 5 passos, mostrados abaixo:
+
 #. Primeiro, crie seu novo model no arquivo ``models.py`` na sua aplicação Django.
 #. Atualize o ``admin.py`` para incluir e registrar seu novo model.
 #. Então execute a migração ``$ python manage.py sqlmigrate <app_name>``
