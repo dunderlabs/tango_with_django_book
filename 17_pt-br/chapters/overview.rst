@@ -149,7 +149,7 @@ A partir da especificação, nós já identificamos duas páginas que nossa apli
 À medida que progredimos no livro, iremos detalhar como contruir essas páginas usando o framework Django, e usar seu padrão Model-View-Template. Entretanto, agora que nós temos o conteúdo essencial do mapeamento das URLs e que as páginas vão parecer, nós precisamos definir o modelo de dados que abrigará os dados para nossa aplicação web.
 
 `Diagrama Entidade Relacionamento <pt.wikipedia.org/wiki/Modelo_de_entidade_e_relacionamento>`_
---------------------------------
+-----------------------------------------------------------------------------------------------
 Dada a especificação, deve ficar claro que temos no mínimo duas entidades: uma *categoria* e uma *página*. Deve também ficar claro que uma *categoria* pode abrigar muitas *páginas*. Nós podemos formular o seguinte diagrama ER para descrever este modelo de dados simples.
 
 .. _fig-rango-erd:

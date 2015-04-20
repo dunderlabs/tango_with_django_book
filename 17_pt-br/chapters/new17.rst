@@ -3,7 +3,7 @@
 
 
 Novidades em TwD 1.7
-==============
+====================
 
 .. warning:: Aviso: Por favor, note que esta versão do livro ainda está em fase de construção. Embora ele funcione bem, alguns links e imagens precisam ser atualizados. Por favor, reporte qualquer erro, problemas, etc, ou envie solicitações de mudanças via GitHub: https://github.com/indacode/tango_with_django_book/tree/master/17_pt-br
 

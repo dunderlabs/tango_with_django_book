@@ -164,7 +164,6 @@ By default, Microsoft Windows comes with no installations of Python. This means 
 #. When the installer is downloaded, open the file from the location to which you downloaded it.
 #. Follow the on-screen prompts to install Python.
 #. Close the installer once completed, and delete the downloaded file.
-
 Once the installer is complete, you should have a working version of Python ready to go. By default, Python 2.7.5 is installed to the folder ``C:\Python27``. We recommend that you leave the path as it is.
 
 Upon the completion of the installation, open a Command Prompt and enter the command ``python``. If you see the Python prompt, installation was successful. However, in certain circumstances, the installer may not set your Windows installation's ``PATH`` environment variable correctly. This will result in the ``python`` command not being found. Under Windows 7, you can rectify this by performing the following:
