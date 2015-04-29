@@ -1,18 +1,18 @@
-Working with Templates
-======================
-So far we've created several Django HTML templates for different pages in the application. You've probably already noticed that there is a lot of repeated HTML code in these templates.
+Trabalhando com Templates
+=========================
+Até agora, nós criamos alguns templates Django para diferentes páginas da aplicação. Você provavelmente já notou que há muito código HTML repetido nesses templates.
 
-While most sites will have lots of repeated structure (i.e. headers, sidebars, footers, etc) repeating the HTML in each template is a not good way to handle this. So instead of doing the same cut and paste hack job, we can minimize the amount of repetition in our code base by employing *template inheritance* provided by Django's Template Language.
+Embora a maioria dos sites vão ter muitas estruturas repetidas, (isto é, headers, sidebars, footers e etc), repetir o HTML em cada template não é uma boa maneira de lidar com isso. Então, ao invés de fazer o mesmo trabalho de copiar e colar o mesmo código, podemos minimizar a quantidade de repetição no nosso código base ao usar *herança de template*, fornecido pela Linguagem de Template do Django.
 
-The basic approach to using inheritance in templates is as follows.
+A abordagem básica para usar herança em templates está descrita a seguir:
 
-#. Identify the re-occurring parts of each page that are repeated across your application (i.e. header bar, sidebar, footer, content pane)
-#. In a *base template*, provide the skeleton structure of a standard page along with any common content (i.e. the copyright notice that goes in the footer, the logo and title that appears in the section), and then define a number of *blocks* which are subject to change depending on which page the user is viewing.
-#. Create specific templates - all of which inherit from the base template - and specify the contents of each block.
+#. Identifique as partes repetidas de cada página da sua aplicação (ou seja, header, sidebar, footer, content)
+#. Em um *template base*, forneça o esqueleto da estrutura de uma página padrão junto com qualquer conteúdo em comum (que pode ser as mensagens que vão no footer, a logo e título que aparecem em alguma seção), e então defina um número de *blocos* que estão sujeitos a mudança dependendo de qual página o usuário está visualizando.
+#. Crie templates específicos - todos os quais estarão herdando do template base - e especifique o conteúdo de cada bloco.
 
-Reoccurring HTML and The Base Template
---------------------------------------
-Given the templates that we have created so far it should be pretty obvious that we have been repeating a fair bit of HTML code. Below we have abstracted away any page specific details to show the skeleton structure that we have been repeating within each template.
+HTML Repetido e o Template Base
+-------------------------------
+Dado os templates que nós criamos até agora, deve estar bem óbvio que temos repetido um monte de código HTML. Abaixo abstraímos quaisquer detalhes específicos da página para mostrar a estrutura esqueleto que temos repetido em cada template:
 
 .. code-block:: html
 	
@@ -28,19 +28,19 @@ Given the templates that we have created so far it should be pretty obvious that
 	    </body>
 	</html>
 
-Let's make this our base template, for the time being, and save it as ``base.html`` in the ``templates`` directory (e.g. ``templates/base.html``). 
+Vamos fazer dele nosso template base, por enquanto, e salve-o como ``base.html`` no diretório ``templates`` (por exemplo, ``templates/base.html``).
 
-.. note:: You should always aim to extract as much reoccurring content for your base templates. While it may be a bit more of a challenge for you to do initially, the time you will save in maintenance of your templates in the future far outweighs the initial overhead. Think about it: would you rather maintain one copy of your markup or multiple copies?
+.. note:: Você deve sempre visar extrair o máximo de conteúdo recorrente para seu template base. Embora possa ser um desafio você fazer isso inicialmente, o tempo que você vai salvar em manutenção do seu template no futuro supera de longe esse desafio inicial. Pense sobre isso: você prefere manter uma cópia do seu markup ou múltiplas cópias?
 
-.. warning:: Remember that your page ``<!DOCTYPE html>`` declaration absolutely must be placed on the first line for your page! Not doing so will mean your markup will not comply with the W3C HTML5 guidelines.
+.. warning:: Lembre-se que a declaração ``<!DOCTYPE html>`` da página **deve** ser colocado na primeira linha da sua página! Não fazer isso significará que seu markup não vai obedecer a guideline HTML5 da W3C.
 
 Template Blocks
 ---------------
-Now that we've identified our base template, we can prepare it for our inheriting templates. To do this, we need to include a Template Tag to indicate what can be overridden in the base template - this is done through the use of *blocks*.
+Agora que nós já identificamos nosso template base, podemos prepará-lo para nossa herança de templates. Para fazer isso, precisamos incluir uma tag de template para indicar o que pode ser sobrescrito no template base - e isso é feito através do uso de *blocks*.
 
-Add a ``body_block`` to the base template as follows:
+Adicione um ``body_block`` ao template base, assim como mostrado abaixo:
 
-.. code-block:: html
+.. code-block:: django
 	
 	<!DOCTYPE html>
 	
@@ -55,22 +55,22 @@ Add a ``body_block`` to the base template as follows:
 	    </body>
 	</html>
 
-Recall that standard Django template commands are denoted by ``{%`` and ``%}`` tags. To start a block, the command is ``block <NAME>``, where ``<NAME>`` is the name of the block you wish to create. You must also ensure that you close the block with the ``endblock`` command, again enclosed within Django template tags.
+Lembre-se que os comandos de template do Django se dão por tags que iniciam com ``{%`` e fecham com ``%}``. Para iniciar um bloco, o comando é ``block <NOME>``, onde ``<NOME>`` é o nome do bloco que você quer criar. Você deve também garantir que fechou o bloco com o comando ``endblock``, que também fica dentro de tags de template do Django.
 
-You can also specify 'default content' for your blocks, for example:
+Você pode também especificar um 'conteúdo padrão' para seus block. Por exemplo:
 
-.. code-block:: html
+.. code-block:: django
 	
 	{% block body_block %}This is body_block's default content.{% endblock %}
 
 
-When we create templates for each page we will inherit from ``base.html`` and override the contents of the ``body_block``. However, you can place as many blocks in your templates as you so desire. For example, you could create a block for the page title, a footer, a sidebar, etc. Blocks are a really powerful feature of Django's template system to learn more about them check out the `official Django documentation on templates <https://docs.djangoproject.com/en/1.7/topics/templates/#id1>`_.
+Quando formos criar templates para cada página, herdaremos a partir de ``base.html`` e sobrescrevemos o conteúdo de ``body_block``. No entanto, você pode colocar no seu template tantos blocos quanto você achar necessário. Por exemplo, você poderia criar um bloco para o título da página, footer, sidebar e etc. Blocos realmente são uma funcionalidade poderosa do sistema de templates do Django. Para aprender mais sobre eles, dê uma olhada na `documentação oficial do Django sobre templates <https://docs.djangoproject.com/en/1.7/topics/templates/#id1>`_.
 
-Abstracting Further
-...................
-Now that you have an understanding of Django blocks, let's take the opportunity to abstract our base template a little bit further. Reopen the ``base.html`` template and modify it to look like the following.
+Mais Abstração
+..............
+Agora que você entende blocos de template do Django, vamos ter a oportunidade de abstrair um pouco mais nosso template base. Abra novamente o template ``base.html`` e modifique-o para que ele pareça como no exemplo abaixo:
 
-.. code-block:: html
+.. code-block:: django
 	
 	<!DOCTYPE html>
 	
@@ -84,18 +84,18 @@ Now that you have an understanding of Django blocks, let's take the opportunity 
 	            {% block body_block %}{% endblock %}
 	        </div>
 	        
-	        <hr />
+	        <hr/>
 	        
 	        <div>
 	            <ul>
-	            {% if user.is_authenticated %}
-	                <li><a href="/rango/restricted/">Restricted Page</a></li>
-	                <li><a href="/rango/logout/">Logout</a></li>
-	                <li><a href="/rango/add_category/">Add a New Category</a></li>
-	            {% else %}
-	                <li><a href="/rango/register/">Register Here</a></li>
-	                <li><a href="/rango/login/">Login</a></li>
-	            {% endif %}
+	                {% if user.is_authenticated %}
+	                    <li><a href="/rango/restricted/">Restricted Page</a></li>
+	                    <li><a href="/rango/logout/">Logout</a></li>
+	                    <li><a href="/rango/add_category/">Add a New Category</a></li>
+	                {% else %}
+	                    <li><a href="/rango/register/">Register Here</a></li>
+	                    <li><a href="/rango/login/">Login</a></li>
+	                {% endif %}
 	                
 	                <li><a href="/rango/about/">About</a></li>
 	            </ul>
@@ -103,29 +103,29 @@ Now that you have an understanding of Django blocks, let's take the opportunity 
 	    </body>
 	</html>
 
-We have introduced two new features into the template.
+Introduzimos duas novas funcionalidades no template.
 
-* The first is a new Django template block, ``title``. This will allow us to specify a custom page title for each page inheriting from our base template. If an inheriting page does not make use of this feature, the title is defaulted to ``Rango - How to Tango with Django!``
-* We also bring across the list of links from our current ``index.html`` template and place them into a HTML ``<div>`` tag underneath our ``body_block`` block. This will ensure the links are present across all pages inheriting from the base template. The links are preceded by a *horizontal rule* (``<hr />``) which provides a visual separation between the ``body_block`` content and the links. 
+* A primeira é um novo bloco de template, ``title``. Isso vai nos permitir especificar um título de página customizado para cada página que herdar de nosso template base. Se uma página que herdar não fizer uso desse recurso, o título padrão que será mostrado é ``Rango - How to Tango with Django!``.
+* Também trouxemos toda a lista de links do nosso template ``index.html``, e colocamos eles numa tag ``<div>``, logo abaixo do nosso ``body_block``. Isso vai garantir que os links estarão presentes em todas as páginas que herdarem do nosso template base. Os links são precedidos por uma *linha horizontal* (``<hr />``) que fornece um visual de separação entre o conteúdo do ``body_block`` e os links
 
-Also note that we enclose the ``body_block`` within a HTML ``<div>`` tag - we'll be explaining the meaning of the ``<div>`` tag in Chapter :ref:`css-course-label`. Our links are also converted to an unordered HTML list through use of the ``<ul>`` and ``<li>`` tags.
+Também note que nós envolvemos o ``body_block`` dentro de uma tag ``<div>`` - vamos explicar o significado da tag ``<div>`` no Capítulo :ref:`css-course-label`. Nossos links são também convertidos para uma lista HTML não ordenada, através do uso das tags ``<ul>`` e ``<li>``.
 
 
-Template Inheritance
---------------------
-Now that we've created a base template with a block, we can now update the templates we have created to inherit from the base template. For example, let's refactor the template ``rango/category.html``.
+Herança de Template
+-------------------
+Agora que criamos o template base com um bloco, podemos agora atualizar os templates que criamos para herdar do nosso template base. Por exemplo, vamos refatorar o template ``rango/category.html``.
 
-To do this, first remove all the repeated HTML code leaving only the HTML and Template Tags/Commands specific to the page. Then at the beginning of the template add the following line of code:
+Para fazer isso, primeiro remova todo o código HTML repetido deixando apenas o HTML e as tags/comandos de template. Então no início do template, adicione a seguinte linha de código:
 
-.. code-block:: html
+.. code-block:: django
 	
 	{% extends 'base.html' %}
 
-The ``extends`` command takes one parameter, the template which is to be extended/inherited from (i.e. ``rango/base.html``). We can then modify the ``category.html`` template so it looks like the following complete example.
+.. note:: O parâmetro que você fornece para o comando ``extends`` deve ser relativo ao seu diretório ``templates`` do projeto. Por exemplo, todos os templates que nós usamos para o Rango deve extender de ``rango/base.html``, não ``base.html``.
 
-.. note:: The parameter you supply to the ``extends`` command should be relative from your project's ``templates`` directory. For example, all templates we use for Rango should extend from ``rango/base.html``, not ``base.html``.
+O comando ``extends`` recebe um parâmetro, o template que será extendido/herdado (isto é, ``rango/base.html``). Podemos então modificar o template ``category.html`` de modo que ele pareça como o seguinte:
 
-.. code-block:: html
+.. code-block:: django
 	
 	{% extends 'base.html' %}
 	
@@ -136,75 +136,73 @@ The ``extends`` command takes one parameter, the template which is to be extende
 	{% block body_block %}
 	    <h1>{{ category_name }}</h1>
 	    {% if category %}
-	    	{% if pages %}
-	    	<ul>
-	        	{% for page in pages %}
-	        	<li><a href="{{ page.url }}">{{ page.title }}</a></li>
-	        	{% endfor %}
-	    		</ul>
-	    	{% else %}
+	        {% if pages %}
+	            <ul>
+	                {% for page in pages %}
+	                    <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+	                {% endfor %}
+	            </ul>
+	        {% else %}
 	        	<strong>No pages currently in category.</strong>
-	    		{% endif %}
+	        {% endif %}
 	    
-	    	{% if user.is_authenticated %}
-	       		<a href="/rango/category/{{category.slug}}/add_page/">Add a Page</a>
-			{% endif %}
-		{% else %}
-			 The specified category {{ category_name }} does not exist!
+	        {% if user.is_authenticated %}
+	       	    <a href="/rango/category/{{category.slug}}/add_page/">Add a Page</a>
+	        {% endif %}
+	    {% else %}
+	        The specified category {{ category_name }} does not exist!
 	    {% endif %}
 		
 	{% endblock %}
 
-Now that we inherit from ``base.html``, all that exists within the ``category.html`` template is the ``extends`` command, the ``title`` block and the ``body_block`` block. You don't need a well-formatted HTML document because ``base.html`` provides all the groundwork for you. All you're doing is plugging in additional content to the base template to create the complete HTML document which is sent to the client's browser.
+Agora que herdamos de ``base.html``, tudo que existe no template ``category.html`` é o comando ``extends``, o bloco ``title`` e o bloco ``body_block``. Você não precisa de um documento HTML bem formatado, porque ``base.html`` fornece toda a base para você. Tudo que você precisa fazer é plugar o conteúdo adicional ao template base herdado para criar um documento HTML completo, que é enviado ao browser do cliente.
 
-.. note:: 
+.. note::
+	Templates são muito poderosos, e você pode criar suas próprias tags de template. Aqui nós mostramos como podemos minimizar a repetição da estrutura HTML em nossos templates.
 
- 	Templates are very powerful and you can even create your own template tags. Here we have shown how we can minimise the repetition of structure HTML in our templates.
+	No entanto, templates podem também ser usados para minimizar código de dentro das suas views da aplicação. Por exemplo, se você quer incluir o mesmo conteúdo do banco de dados em cada página da sua aplicação, você poderia construir um template que chama uma view específica para manipular a parte repetida de sua página web. Isso então evita que você tenha que chamar as funções de ORM do Django que reúne os dados necessários para o template em cada view que o renderiza.
 
-	However, templates can also be used to minimise code within your application's views. For example, if you wanted to include the same database-driven content on each page of your application, you could construct a template that calls a specific view to handle the repeating portion of your webpages. This then saves you from having to call the Django ORM functions which gather the required data for the template in every view that renders it.
-	
-	To learn more about the extensive functionality offered by Django's template language, check out the official `Django documentation on templates <https://docs.djangoproject.com/en/1.7/topics/templates/>`_. 
-	
-	
-	
-Referring to URLs in Templates
-------------------------------
-So far we have been directly coding the URL of the page/view we want to show within the template, i.e. ``<a href="/rango/about/"> About  </a>``. However, the preferred way is to use the template tag ``url`` to look up the url in the ``urls.py`` files. To do this we can change the way we reference the URL as follows:
+	Para aprender mais sobre as funcionalidades oferecidas pela linguagem de templates do Django, confira a `documentação oficial sobre templates <https://docs.djangoproject.com/en/1.7/topics/templates/>`_.
 
-.. code-block:: html
+
+Usando URLs nos templates
+-------------------------
+Até agora codificamos a URL da página/view que queremos mostrar no template de forma direta, ou seja, ``<a href="/rango/about/">About</a>``, por exemplo. No entanto, a melhor maneira é usar a tag de template ``url`` para analisar a url nos arquivos ``urls.py``. Para fazer isso, podemos mudar a maneira que referenciamos as URLs da seguinte maneira:
+
+.. code-block:: django
 
 	<li><a href="{% url 'about' %}">About</a></li>
-	
-The Django template engine will look up the ``urls.py`` files for a url with the ``name='about'`` (and then reverse match the actual url). This means if we change the url mappings in ``urls.py`` then we do not have to go through all the templates and update them. If we had not given our urlpattern a name, we could directly reference it as follows:
 
-.. code-block:: html
+O motor de template do Django vai analisar os arquivos ``urls.py`` por uma URL com o ``name='about'`` (e então fazer uma combinação reversa para a URL real). Isso significa que se nós mudarmos o mapeamento de URL no ``urls.py``, não vamos precisar atualizar os links em todos os nossos templates. Se não tivéssemos dado um name ao nosso urlpattern, poderíamos ainda referenciar diretamente como mostra-se a seguir:
+
+.. code-block:: django
 
 	<li><a href="{% url 'rango.views.about' %}">About</a></li>
-	
-Here we need to specify the application, and the view about.
 
-You can now update the base template with the ``url`` template tag so that links in base template are rendered using the following code:
+Aqui precisamos especificar a aplicação, e a view about.
 
-.. code-block:: html
+Você pode também atualizar o template base com a tag de template ``url`` de modo que os links no template base sejam renderizados usando o seguinte código:
+
+.. code-block:: django
 	
 	
 	<div>
-		<ul>
-	    {% if user.is_authenticated %}
-	    	<li><a href="{% url 'restricted' %}">Restricted Page</a></li>
-	        <li><a href="{% url 'logout' %}">Logout</a></li>
-	        <li><a href="{% url 'add_category' %}">Add a New Category</a></li>
-	    {% else %}
-	    	<li><a href="{% url 'register' %}">Register Here</a></li>
-	        <li><a href="{% url 'login' %}">Login</a></li>
-	    {% endif %}
+	    <ul>
+	        {% if user.is_authenticated %}
+	            <li><a href="{% url 'restricted' %}">Restricted Page</a></li>
+	            <li><a href="{% url 'user_logout' %}">Logout</a></li>
+	            <li><a href="{% url 'add_category' %}">Add a New Category</a></li>
+	        {% else %}
+	            <li><a href="{% url 'register' %}">Register Here</a></li>
+	            <li><a href="{% url 'user_login' %}">Login</a></li>
+	        {% endif %}
 
-	    <li><a href="{% url 'about' %}">About</a></li>
+	        <li><a href="{% url 'about' %}">About</a></li>
 	    </ul>
 	</div>
 
 
-In your ``index.html`` template you will notice that you have a parameterized url pattern, i.e. the ``category`` url/view takes the ``category.slug`` as a parameter. To handle this you can pass the url template tag the name of the url/view and the slug, i.e. {% url 'category'  category.slug %} within the template, as follows:
+No seu template ``index.html`` você vai notar que você tem uma URL parametrizada, ou seja, a url/view ``category`` recebe o ``category.slug`` como um parâmetro. Para lidar com isso, você pode passar para a tag de template url o nome da url/view e o slug, isto é, ``{% url 'category'  category.slug %}`` no template, assim como no exemplo abaixo:
 
 .. code-block:: html
 
@@ -213,43 +211,40 @@ In your ``index.html`` template you will notice that you have a parameterized ur
 	    <li><a href="{% url 'category'  category.slug %}">{{ category.name }}</a></li>
 	{% endfor %}
 
-
-#TODO(leifos): The official tutorial provides an overview of how to use the url template tag, http://django.readthedocs.org/en/latest/intro/tutorial03.html and the answer at stackoverflow was helpful too: http://stackoverflow.com/questions/4599423/using-url-in-django-templates
-
-#TODO(leifos): Also point out how the urls can be placed in a namespace and referenced accordingly, see http://django.readthedocs.org/en/latest/intro/tutorial03.html 
+.. note::
+	Nota do Autor: O tutorial oficial fornece uma visão geral de como usar a tag URL do template, http://django.readthedocs.org/en/latest/intro/tutorial03.html, e esta resposta no stackoverflow também é de grande ajuda: http://stackoverflow.com/questions/4599423/using-url-in-django-templates.
 
 
-Exercises
----------
-Now that you've worked through this chapter, we've got several exercises for you to work through. After completing them, you'll be a Django templating pro.
+Exercícios
+----------
+Agora que você trabalhou todo este capítulo, temos alguns exercícios para você exercitar. Depois de completá-los, você será um codificador Pró de templates do Django.
 
-* Update all other existing templates within Rango's repertoire to extend from the ``base.html`` template. Follow the same process as we demonstrated above. Once completed, your templates should all inherit from ``base.html``, as demonstrated in Figure :num:`fig-rango-template-inheritance`. While you're at it, make sure you remove the links from our ``index.html`` template. We don't need them anymore! You can also remove the link to Rango's homepage within the ``about.html`` template.
-* Convert the restricted page to use a template. Call the template ``restricted.html``, and ensure that it too extends from our ``base.html`` template.
-* Change all the references to rango urls to use the url template tag.
-* Add another link to our growing link collection that allows users to navigate back to Rango's homepage from anywhere on the website.
+* Atualize todos os outros templates existentes no Rango, para que extendam do template ``base.html``. Siga o mesmo processo que demonstramos acima. Uma vez completado, todos seus templates devem herdar de ``base.html``, como mostrado na Figura :num:`fig-rango-template-inheritance`. Enquanto você faz isso, garanta que você removeu os links do nosso template ``index.html``. Não precisamos mais deles! Você pode também remover o link para a página inicial que está no template ``about.html``.
+* Converta a página restrita para usar um template. Chame o template ``restricted.html``, e garanta que ele também extende de nosso template base.
+* Mude todas as referências de links para usarem a tag URL de template.
+* Adicione outro link para nossa crescente coleção de links que permita usuários navegar de volta para a página principal do Rango a partir de qualquer página do nosso site.
 
-
-.. warning:: Remember to add ``{% load static %}`` to the top of each template that makes use of static media. If you don't, you'll get an error! Django template modules must be imported individually for each template that requires them - *you can't make use of modules included in templates you extend from!*
+.. warning:: Lembre-se de adicionar ``{% load static %}`` no topo de cada template que fizer uso de arquivos estáticos. Se você não fizer isso, terá um erro! Módulos de template do Django devem ser importados individualmente para cada template que eles sejam necessários - *você não pode usar os módulos incluídos nos templates que você herdou"*
 
 .. _fig-rango-template-inheritance:
 
 .. figure:: ../images/rango-template-inheritance.svg
 	:figclass: align-center
 	
-	A class diagram demonstrating how your templates should inherit from ``base.html``.
+	Um diagrama de classe demonstrando como seus templates devem herdar a partir de ``base.html``.
 
-.. note:: Upon completion of these exercises, all of Rango's templates should inherit from ``base.html``. Looking back at the contents of ``base.html``, the ``user`` object - found within the context of a given Django request - is used to determine if the current user of Rango is logged in (through use of ``user.is_authenticated``). As all of Rango's templates should inherit from this base template, we can say that *all of Rango's templates now depend on having access to the context of a given request.*
-	
-	Due to this new dependency, you must check each of Rango's Django views. For each view, ensure that the context for each request is made available to the Django template engine. Throughout this tutorial, we've been using ``render_to_response()`` to achieve this. If you don't ensure this happens, your views may be rendered incorrectly - users may appear to be not logged in, even though Django thinks that they are!
-	
-	As a quick example of the checks you must carry out, have a look at the ``about`` view. Initially, this was implemented with a hard-coded string response, as shown below. Note that we only send the string - we don't make use of the request passed as the ``request`` parameter.
+.. note:: Uma vez completo todos esses exercícios, todos os templates do Rango devem herdar de ``base.html``. Olhando novamente no conteúdo de ``base.html``, o objeto ``user`` - encontrado no contexto de um dado request do Django - é usado para determinar se o usuário atual do Rango está logado (através do uso do ``user.is_authenticated``). Como todos os templates do Rango devem herdar do template base, podemos dizer que *todos os templates do Rango agora dependem de ter acesso ao contexto de um dado request*.
+
+	Devido a esta nova dependência, é preciso checar cada view do Rango. Para cada view, garanta que o contexto para cada request é disponibilizado para a engine de template do Django. Se você não garantir que isso aconteça, suas views podem ser renderizadas incorretamente - usuários podem aparecer que não estão logados, mesmo que o Django pense que eles estão!
+
+	Como um exemplo rápido das verificações que você deve realizar, dê uma olhada na view ``about``. Inicialmente, ela foi implementada com uma string como resposta, como mostrada abaixo. Note que enviamos apenas a string - não usamos a requisição passada como o parâmetro ``request``.
 	
 	.. code-block:: python
 		
 		def about(request):
 		    return HttpResponse('Rango says: Here is the about page. <a href="/rango/">Index</a>')
-	
-	To employ the use of a template, we call the ``render()`` function and pass through the ``request`` object. This will allow the template engine access to objects such as ``user``, which will allow the template engine to determine if the user is logged in (ie. authenticated).
+
+	Para empregar o uso de um template, nós chamamos a função ``render()`` e passamos o objeto ``request``. Isso vai permitir a engine de template acessar os objetos, tais como o ``user``, que permitirá o sistema de template determinar se o usuário está logado (ou seja, autenticado).
 	
 	.. code-block:: python
 		
@@ -257,8 +252,4 @@ Now that you've worked through this chapter, we've got several exercises for you
 		    
 		    return render(request, 'rango/about.html', {})
 	
-	Remember, the last parameter of ``render()`` is a dictionary with which you can use to pass additional data to the Django template engine. As we have no additional data to pass through we pass through an empty dictionary. Have a look at Section :ref:`adding-a-template-label` to refresh your memory on ``render()``.
-	
-	
-	
-	
+	Lembre-se, o último parâmetro do ``render()`` é um dicionário com o qual você pode usar para passar dados adicionais para o sistema de template do Django. Como não temos nenhum dado adicional para passar, passamos então um dicionário vazio. Dê uma olhada na Seção :ref:`adding-a-template-label` pra refrescar a memória sobre o ``render()``.
