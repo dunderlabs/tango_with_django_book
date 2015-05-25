@@ -6,3 +6,6 @@ Tradução do livro *Tango with Django*, originalmente em Inglês no repositóri
 A tradução do livro ocorrerá de acordo com a sequência dos capítulos, e serão publicados em periodicidade a definir.
 
 **Disclaimer**: A tradução do conteúdo se dará em forma de adaptação, pois a tradução literal poderá suprimir ou mesmo modificar algum conceito ou trecho do livro, embora essencialmente seja o mesmo conteúdo.
+
+## Agradecimentos
+- [@fernandogrd](http://www.twitter.com/fernandogrd)
