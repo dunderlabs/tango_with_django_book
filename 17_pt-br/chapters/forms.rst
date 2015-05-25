@@ -2,7 +2,8 @@
 
 Vamos Brincar com Forms
 =======================
-Até agora nós apenas apresentamos os dados através das views e templates que nós criamos. Neste capítulo, iremos ver como capturar dados através de formulários web. Django vem com algumas funcionalidades bacanas de manipulação de formulários, tornando-se um processo muito simples coletar informações a partir dos usuários e enviá-las de volta pra sua aplicação web. De acordo com a `documentação oficial do Django sobre forms <https://docs.djangoproject.com/en/1.7/topics/forms/>`_, a funcionalidade de manipulação de forms permite que você:
+
+Até agora nós apenas apresentamos os dados através das views e templates que nós criamos. Neste capítulo, iremos ver como capturar dados através de formulários web. Django vem com algumas funcionalidades bacanas de manipulação de formulários, tornando-se um processo muito simples coletar informações a partir dos usuários e enviá-las de volta pra sua aplicação web. De acordo com a `documentação do Django sobre forms <https://docs.djangoproject.com/en/1.7/topics/forms/>`_, a funcionalidade de manipulação de forms permite que você:
 
 #. Mostrar um form HTML com campos gerados automaticamente (como um input de texto);
 #. Conferir os dados submetidos em um conjunto de regras de validação;
